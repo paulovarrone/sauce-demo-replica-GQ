@@ -6,7 +6,7 @@ Réplica educacional do site [saucedemo.com](https://www.saucedemo.com/) constru
 
 ## Como executar
 
-Basta abrir o `index.html` no navegador, ou servir a pasta com um servidor local:
+Basta baixar a extensão do `LIVESERVER` no VsCode ou servir a pasta com um servidor local:
 
 ```powershell
 # Opção 1: Python
@@ -79,25 +79,3 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 - Cálculo de imposto (8%) e total no resumo do pedido
 - Menu lateral: All Items, About, Logout, Reset App State
 - Atributos `data-test` em todos os elementos relevantes, para seletores estáveis
-
-## Seletores (em português)
-
-Todas as interações principais possuem **`id`** e **`data-test`**, ambos nomeados em português.
-
-📋 **O mapa completo de seletores, página por página, está em [SELETORES.md](SELETORES.md)** — inclui os slugs de cada produto e exemplos para Playwright, Cypress e Selenium.
-
-> O `id` do botão de carrinho é **estável** (ex.: `botao-carrinho-sauce-labs-backpack`), enquanto o `data-test` **muda conforme o estado** (`adicionar-carrinho-...` ⇄ `remover-...`) — útil para praticar os dois cenários.
-
-## Dicas para automação
-
-```javascript
-// Playwright — por id
-await page.fill('#campo-usuario', 'standard_user');
-await page.fill('#campo-senha', 'secret_sauce');
-await page.click('#botao-entrar');
-await page.click('#botao-carrinho-sauce-labs-backpack');
-
-// ou por data-test
-await page.click('[data-test="adicionar-carrinho-sauce-labs-backpack"]');
-await page.click('[data-test="finalizar-compra"]');
-```
