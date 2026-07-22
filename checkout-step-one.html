@@ -10,49 +10,49 @@
   <header>
     <div class="primary_header">
       <div class="header_label">
-        <button class="bm-burger-button" id="react-burger-menu-btn" aria-label="Open Menu">&#9776;</button>
+        <button class="bm-burger-button" id="botao-menu" data-test="botao-menu" aria-label="Abrir Menu">&#9776;</button>
         <div class="app_logo">Swag Labs</div>
       </div>
       <div class="shopping_cart_container">
-        <a class="shopping_cart_link" data-test="shopping-cart-link" href="cart.html">🛒<span class="shopping_cart_badge" data-test="shopping-cart-badge" style="display:none"></span></a>
+        <a class="shopping_cart_link" id="link-carrinho" data-test="link-carrinho" href="cart.html">🛒<span class="shopping_cart_badge" id="badge-carrinho" data-test="badge-carrinho" style="display:none"></span></a>
       </div>
     </div>
     <div class="header_secondary_container">
-      <span class="title" data-test="title">Checkout: Your Information</span>
+      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Checkout: Your Information</span>
     </div>
-    <nav class="bm-menu" id="bm-menu">
-      <button class="bm-cross-button" id="react-burger-cross-btn" aria-label="Close Menu">&times;</button>
-      <a id="inventory_sidebar_link" data-test="inventory-sidebar-link" href="inventory.html">All Items</a>
-      <a id="about_sidebar_link" data-test="about-sidebar-link" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
-      <a id="logout_sidebar_link" data-test="logout-sidebar-link" href="#">Logout</a>
-      <a id="reset_sidebar_link" data-test="reset-sidebar-link" href="#">Reset App State</a>
+    <nav class="bm-menu" id="menu-lateral" data-test="menu-lateral">
+      <button class="bm-cross-button" id="botao-fechar-menu" data-test="botao-fechar-menu" aria-label="Fechar Menu">&times;</button>
+      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">All Items</a>
+      <a id="link-sobre" data-test="link-sobre" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
+      <a id="link-sair" data-test="link-sair" href="#">Logout</a>
+      <a id="link-resetar" data-test="link-resetar" href="#">Reset App State</a>
     </nav>
-    <div class="bm-overlay" id="bm-overlay"></div>
+    <div class="bm-overlay" id="sobreposicao-menu"></div>
   </header>
 
-  <main class="checkout_container" data-test="checkout-info-container">
-    <form class="checkout_info" id="checkout-form" novalidate>
-      <input type="text" class="form_input" id="first-name" data-test="firstName" placeholder="First Name" autofocus>
-      <input type="text" class="form_input" id="last-name" data-test="lastName" placeholder="Last Name">
-      <input type="text" class="form_input" id="postal-code" data-test="postalCode" placeholder="Zip/Postal Code">
+  <main class="checkout_container" id="container-checkout-dados" data-test="container-checkout-dados">
+    <form class="checkout_info" id="form-checkout" data-test="form-checkout" novalidate>
+      <input type="text" class="form_input" id="campo-nome" data-test="campo-nome" placeholder="First Name" autofocus>
+      <input type="text" class="form_input" id="campo-sobrenome" data-test="campo-sobrenome" placeholder="Last Name">
+      <input type="text" class="form_input" id="campo-cep" data-test="campo-cep" placeholder="Zip/Postal Code">
 
-      <div class="error-message-container" data-test="error-container">
-        <span data-test="error" id="error-text"></span>
-        <button type="button" class="error-button" data-test="error-button" id="error-close" aria-label="Close">&times;</button>
+      <div class="error-message-container" id="container-erro" data-test="container-erro">
+        <span id="texto-erro" data-test="texto-erro"></span>
+        <button type="button" class="error-button" id="botao-fechar-erro" data-test="botao-fechar-erro" aria-label="Fechar">&times;</button>
       </div>
 
-      <a class="btn btn_secondary" data-test="cancel" href="cart.html">Cancel</a>
-      <input type="submit" class="btn btn_action" data-test="continue" id="continue" value="Continue">
+      <a class="btn btn_secondary" id="botao-cancelar" data-test="botao-cancelar" href="cart.html">Cancel</a>
+      <input type="submit" class="btn btn_action" id="botao-continuar" data-test="botao-continuar" value="Continue">
     </form>
   </main>
 
-  <footer class="footer" data-test="footer">
+  <footer class="footer" id="rodape" data-test="rodape">
     <ul class="social">
-      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="social-twitter">Twitter</a></li>
-      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="social-facebook">Facebook</a></li>
-      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="social-linkedin">LinkedIn</a></li>
+      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="rede-twitter">Twitter</a></li>
+      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="rede-facebook">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
     </ul>
-    <div class="footer_copy" data-test="footer-copy">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+    <div class="footer_copy" data-test="texto-rodape">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
   </footer>
 
   <script src="js/data.js" defer></script>

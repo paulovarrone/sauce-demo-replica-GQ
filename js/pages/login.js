@@ -1,12 +1,12 @@
 // ===== Página de login =====
 
-const form = document.getElementById("login-form");
-const userInput = document.getElementById("user-name");
-const passInput = document.getElementById("password");
-const errorBox = document.querySelector(".error-message-container");
-const errorText = document.getElementById("error-text");
-const errorClose = document.getElementById("error-close");
-const loginBtn = document.getElementById("login-button");
+const form = document.getElementById("form-login");
+const userInput = document.getElementById("campo-usuario");
+const passInput = document.getElementById("campo-senha");
+const errorBox = document.getElementById("container-erro");
+const errorText = document.getElementById("texto-erro");
+const errorClose = document.getElementById("botao-fechar-erro");
+const loginBtn = document.getElementById("botao-entrar");
 
 function showError(msg) {
   errorText.textContent = "Epic sadface: " + msg;

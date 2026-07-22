@@ -11,23 +11,23 @@
     <div class="login_logo">Swag Labs</div>
 
     <div class="login_wrapper">
-      <form class="login-box" id="login-form" novalidate>
-        <input type="text" class="form_input" id="user-name" data-test="username"
+      <form class="login-box" id="form-login" data-test="form-login" novalidate>
+        <input type="text" class="form_input" id="campo-usuario" data-test="campo-usuario"
                placeholder="Username" autocomplete="username" autofocus>
-        <input type="password" class="form_input" id="password" data-test="password"
+        <input type="password" class="form_input" id="campo-senha" data-test="campo-senha"
                placeholder="Password" autocomplete="current-password">
 
-        <div class="error-message-container" data-test="error-container">
-          <span data-test="error" id="error-text"></span>
-          <button type="button" class="error-button" data-test="error-button" id="error-close" aria-label="Close">&times;</button>
+        <div class="error-message-container" id="container-erro" data-test="container-erro">
+          <span id="texto-erro" data-test="texto-erro"></span>
+          <button type="button" class="error-button" id="botao-fechar-erro" data-test="botao-fechar-erro" aria-label="Fechar">&times;</button>
         </div>
 
-        <input type="submit" class="btn btn_action" id="login-button" data-test="login-button" value="Login">
+        <input type="submit" class="btn btn_action" id="botao-entrar" data-test="botao-entrar" value="Login">
       </form>
     </div>
 
     <div class="login_credentials_wrap">
-      <div class="login_credentials" data-test="login-credentials">
+      <div class="login_credentials" id="credenciais-login" data-test="credenciais-login">
         <h4>Accepted usernames are:</h4>
         standard_user<br>
         locked_out_user<br>
@@ -36,7 +36,7 @@
         error_user<br>
         visual_user
       </div>
-      <div class="login_password" data-test="login-password">
+      <div class="login_password" id="senha-login" data-test="senha-login">
         <h4>Password for all users:</h4>
         secret_sauce
       </div>

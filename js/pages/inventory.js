@@ -3,9 +3,9 @@
 requireLogin();
 initHeader();
 
-const listEl = document.getElementById("inventory-list");
-const template = document.getElementById("inventory-item-template");
-const sortSelect = document.getElementById("sort-select");
+const listEl = document.getElementById("lista-produtos");
+const template = document.getElementById("modelo-item-produto");
+const sortSelect = document.getElementById("seletor-ordenacao");
 
 const sorters = {
   az:   (a, b) => a.name.localeCompare(b.name),
@@ -23,15 +23,15 @@ function renderList() {
     const node = template.content.cloneNode(true);
     const detailUrl = "inventory-item.html?id=" + p.id;
 
-    node.querySelectorAll(".item-link").forEach((a) => { a.href = detailUrl; });
+    node.querySelectorAll(".link-item").forEach((a) => { a.href = detailUrl; });
 
     const img = node.querySelector("img");
     img.src = isProblemUser ? "img/broken.svg" : p.img;
     img.alt = p.name;
 
-    node.querySelector('[data-test="inventory-item-name"]').textContent = p.name;
-    node.querySelector('[data-test="inventory-item-desc"]').textContent = p.desc;
-    node.querySelector('[data-test="inventory-item-price"]').textContent = money(p.price);
+    node.querySelector('[data-test="nome-item"]').textContent = p.name;
+    node.querySelector('[data-test="descricao-item"]').textContent = p.desc;
+    node.querySelector('[data-test="preco-item"]').textContent = money(p.price);
 
     bindCartButton(node.querySelector("button"), p);
     listEl.appendChild(node);

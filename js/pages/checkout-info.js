@@ -3,9 +3,9 @@
 requireLogin();
 initHeader();
 
-const fields = ["first-name", "last-name", "postal-code"].map((id) => document.getElementById(id));
-const errorBox = document.querySelector(".error-message-container");
-const errorText = document.getElementById("error-text");
+const fields = ["campo-nome", "campo-sobrenome", "campo-cep"].map((id) => document.getElementById(id));
+const errorBox = document.getElementById("container-erro");
+const errorText = document.getElementById("texto-erro");
 
 function showError(msg) {
   errorText.textContent = "Error: " + msg;
@@ -18,9 +18,9 @@ function clearError() {
   fields.forEach((f) => f.classList.remove("input_error"));
 }
 
-document.getElementById("error-close").addEventListener("click", clearError);
+document.getElementById("botao-fechar-erro").addEventListener("click", clearError);
 
-document.getElementById("checkout-form").addEventListener("submit", (e) => {
+document.getElementById("form-checkout").addEventListener("submit", (e) => {
   e.preventDefault();
   clearError();
   const [first, last, postal] = fields.map((f) => f.value.trim());

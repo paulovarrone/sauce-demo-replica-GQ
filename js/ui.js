@@ -3,11 +3,11 @@
 // conecta eventos e atualiza texto/classes/atributos.
 
 function initHeader() {
-  const burgerBtn = document.getElementById("react-burger-menu-btn");
-  const crossBtn = document.getElementById("react-burger-cross-btn");
-  const overlay = document.getElementById("bm-overlay");
-  const logoutLink = document.getElementById("logout_sidebar_link");
-  const resetLink = document.getElementById("reset_sidebar_link");
+  const burgerBtn = document.getElementById("botao-menu");
+  const crossBtn = document.getElementById("botao-fechar-menu");
+  const overlay = document.getElementById("sobreposicao-menu");
+  const logoutLink = document.getElementById("link-sair");
+  const resetLink = document.getElementById("link-resetar");
 
   if (burgerBtn) burgerBtn.addEventListener("click", () => toggleMenu(true));
   if (crossBtn) crossBtn.addEventListener("click", () => toggleMenu(false));
@@ -34,28 +34,33 @@ function initHeader() {
 }
 
 function toggleMenu(open) {
-  const menu = document.getElementById("bm-menu");
-  const overlay = document.getElementById("bm-overlay");
+  const menu = document.getElementById("menu-lateral");
+  const overlay = document.getElementById("sobreposicao-menu");
   if (menu) menu.classList.toggle("open", open);
   if (overlay) overlay.classList.toggle("open", open);
 }
 
 function updateCartBadge() {
-  const badge = document.querySelector(".shopping_cart_badge");
+  const badge = document.getElementById("badge-carrinho");
   if (!badge) return;
   const count = Cart.items.length;
   badge.textContent = count;
   badge.style.display = count > 0 ? "inline-flex" : "none";
 }
 
-// Ajusta texto, classes e data-test de um botão Add to cart / Remove
+// Ajusta texto, classes, id e data-test de um botão Add to cart / Remove
 function updateCartButton(btn, product) {
   const inCart = Cart.has(product.id);
+  const slug = slugify(product.name);
+
   btn.textContent = inCart ? "Remove" : "Add to cart";
   btn.classList.toggle("btn_secondary", inCart);
   btn.classList.toggle("btn_inventory", !inCart);
-  const prefix = inCart ? "remove-" : "add-to-cart-";
-  btn.setAttribute("data-test", prefix + slugify(product.name));
+
+  // id estável (não muda com o estado); data-test dinâmico (muda ao adicionar/remover)
+  if (!btn.id) btn.id = "botao-carrinho-" + slug;
+  const prefix = inCart ? "remover-" : "adicionar-carrinho-";
+  btn.setAttribute("data-test", prefix + slug);
 }
 
 // Conecta o clique de um botão de carrinho a um produto.

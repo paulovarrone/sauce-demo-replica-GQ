@@ -10,62 +10,62 @@
   <header>
     <div class="primary_header">
       <div class="header_label">
-        <button class="bm-burger-button" id="react-burger-menu-btn" aria-label="Open Menu">&#9776;</button>
+        <button class="bm-burger-button" id="botao-menu" data-test="botao-menu" aria-label="Abrir Menu">&#9776;</button>
         <div class="app_logo">Swag Labs</div>
       </div>
       <div class="shopping_cart_container">
-        <a class="shopping_cart_link" data-test="shopping-cart-link" href="cart.html">🛒<span class="shopping_cart_badge" data-test="shopping-cart-badge" style="display:none"></span></a>
+        <a class="shopping_cart_link" id="link-carrinho" data-test="link-carrinho" href="cart.html">🛒<span class="shopping_cart_badge" id="badge-carrinho" data-test="badge-carrinho" style="display:none"></span></a>
       </div>
     </div>
     <div class="header_secondary_container">
-      <span class="title" data-test="title">Your Cart</span>
+      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Your Cart</span>
     </div>
-    <nav class="bm-menu" id="bm-menu">
-      <button class="bm-cross-button" id="react-burger-cross-btn" aria-label="Close Menu">&times;</button>
-      <a id="inventory_sidebar_link" data-test="inventory-sidebar-link" href="inventory.html">All Items</a>
-      <a id="about_sidebar_link" data-test="about-sidebar-link" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
-      <a id="logout_sidebar_link" data-test="logout-sidebar-link" href="#">Logout</a>
-      <a id="reset_sidebar_link" data-test="reset-sidebar-link" href="#">Reset App State</a>
+    <nav class="bm-menu" id="menu-lateral" data-test="menu-lateral">
+      <button class="bm-cross-button" id="botao-fechar-menu" data-test="botao-fechar-menu" aria-label="Fechar Menu">&times;</button>
+      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">All Items</a>
+      <a id="link-sobre" data-test="link-sobre" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
+      <a id="link-sair" data-test="link-sair" href="#">Logout</a>
+      <a id="link-resetar" data-test="link-resetar" href="#">Reset App State</a>
     </nav>
-    <div class="bm-overlay" id="bm-overlay"></div>
+    <div class="bm-overlay" id="sobreposicao-menu"></div>
   </header>
 
-  <main class="cart_contents_container" data-test="cart-contents-container">
+  <main class="cart_contents_container" id="container-carrinho" data-test="container-carrinho">
     <div>
-      <span class="cart_quantity_label" data-test="cart-quantity-label">QTY</span>
-      <span class="cart_desc_label" data-test="cart-desc-label">Description</span>
+      <span class="cart_quantity_label" data-test="rotulo-quantidade">QTY</span>
+      <span class="cart_desc_label" data-test="rotulo-descricao">Description</span>
     </div>
 
-    <p class="cart_empty" data-test="cart-empty" hidden>Seu carrinho está vazio.</p>
-    <div class="cart_list" data-test="cart-list" id="cart-list"></div>
+    <p class="cart_empty" id="carrinho-vazio" data-test="carrinho-vazio" hidden>Seu carrinho está vazio.</p>
+    <div class="cart_list" id="lista-carrinho" data-test="lista-carrinho"></div>
 
     <div class="cart_footer">
-      <a class="btn btn_secondary" data-test="continue-shopping" href="inventory.html">Continue Shopping</a>
-      <a class="btn btn_action" data-test="checkout" href="checkout-step-one.html">Checkout</a>
+      <a class="btn btn_secondary" id="botao-continuar-comprando" data-test="continuar-comprando" href="inventory.html">Continue Shopping</a>
+      <a class="btn btn_action" id="botao-finalizar-compra" data-test="finalizar-compra" href="checkout-step-one.html">Checkout</a>
     </div>
   </main>
 
-  <template id="cart-item-template">
-    <div class="cart_item" data-test="inventory-item">
-      <div class="cart_quantity" data-test="item-quantity">1</div>
+  <template id="modelo-item-carrinho">
+    <div class="cart_item" data-test="item-carrinho">
+      <div class="cart_quantity" data-test="quantidade-item">1</div>
       <div class="cart_item_label">
-        <a class="inventory_item_name" data-test="inventory-item-name"></a>
-        <div class="inventory_item_desc" data-test="inventory-item-desc"></div>
+        <a class="inventory_item_name" data-test="nome-item"></a>
+        <div class="inventory_item_desc" data-test="descricao-item"></div>
         <div class="item_pricebar">
-          <div class="inventory_item_price" data-test="inventory-item-price"></div>
+          <div class="inventory_item_price" data-test="preco-item"></div>
           <button class="btn btn_small"></button>
         </div>
       </div>
     </div>
   </template>
 
-  <footer class="footer" data-test="footer">
+  <footer class="footer" id="rodape" data-test="rodape">
     <ul class="social">
-      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="social-twitter">Twitter</a></li>
-      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="social-facebook">Facebook</a></li>
-      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="social-linkedin">LinkedIn</a></li>
+      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="rede-twitter">Twitter</a></li>
+      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="rede-facebook">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
     </ul>
-    <div class="footer_copy" data-test="footer-copy">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+    <div class="footer_copy" data-test="texto-rodape">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
   </footer>
 
   <script src="js/data.js" defer></script>
