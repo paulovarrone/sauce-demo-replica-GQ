@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swag Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login_container">
+    <div class="login_logo">Swag Labs</div>
+
+    <div class="login_wrapper">
+      <form class="login-box" id="login-form" novalidate>
+        <input type="text" class="form_input" id="user-name" data-test="username"
+               placeholder="Username" autocomplete="username" autofocus>
+        <input type="password" class="form_input" id="password" data-test="password"
+               placeholder="Password" autocomplete="current-password">
+
+        <div class="error-message-container" data-test="error-container">
+          <span data-test="error" id="error-text"></span>
+          <button type="button" class="error-button" data-test="error-button" id="error-close" aria-label="Close">&times;</button>
+        </div>
+
+        <input type="submit" class="btn btn_action" id="login-button" data-test="login-button" value="Login">
+      </form>
+    </div>
+
+    <div class="login_credentials_wrap">
+      <div class="login_credentials" data-test="login-credentials">
+        <h4>Accepted usernames are:</h4>
+        standard_user<br>
+        locked_out_user<br>
+        problem_user<br>
+        performance_glitch_user<br>
+        error_user<br>
+        visual_user
+      </div>
+      <div class="login_password" data-test="login-password">
+        <h4>Password for all users:</h4>
+        secret_sauce
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/pages/login.js" defer></script>
+</body>
+</html>

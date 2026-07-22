@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swag Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="primary_header">
+      <div class="header_label">
+        <button class="bm-burger-button" id="react-burger-menu-btn" aria-label="Open Menu">&#9776;</button>
+        <div class="app_logo">Swag Labs</div>
+      </div>
+      <div class="shopping_cart_container">
+        <a class="shopping_cart_link" data-test="shopping-cart-link" href="cart.html">🛒<span class="shopping_cart_badge" data-test="shopping-cart-badge" style="display:none"></span></a>
+      </div>
+    </div>
+    <div class="header_secondary_container">
+      <span class="title" data-test="title">Checkout: Your Information</span>
+    </div>
+    <nav class="bm-menu" id="bm-menu">
+      <button class="bm-cross-button" id="react-burger-cross-btn" aria-label="Close Menu">&times;</button>
+      <a id="inventory_sidebar_link" data-test="inventory-sidebar-link" href="inventory.html">All Items</a>
+      <a id="about_sidebar_link" data-test="about-sidebar-link" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
+      <a id="logout_sidebar_link" data-test="logout-sidebar-link" href="#">Logout</a>
+      <a id="reset_sidebar_link" data-test="reset-sidebar-link" href="#">Reset App State</a>
+    </nav>
+    <div class="bm-overlay" id="bm-overlay"></div>
+  </header>
+
+  <main class="checkout_container" data-test="checkout-info-container">
+    <form class="checkout_info" id="checkout-form" novalidate>
+      <input type="text" class="form_input" id="first-name" data-test="firstName" placeholder="First Name" autofocus>
+      <input type="text" class="form_input" id="last-name" data-test="lastName" placeholder="Last Name">
+      <input type="text" class="form_input" id="postal-code" data-test="postalCode" placeholder="Zip/Postal Code">
+
+      <div class="error-message-container" data-test="error-container">
+        <span data-test="error" id="error-text"></span>
+        <button type="button" class="error-button" data-test="error-button" id="error-close" aria-label="Close">&times;</button>
+      </div>
+
+      <a class="btn btn_secondary" data-test="cancel" href="cart.html">Cancel</a>
+      <input type="submit" class="btn btn_action" data-test="continue" id="continue" value="Continue">
+    </form>
+  </main>
+
+  <footer class="footer" data-test="footer">
+    <ul class="social">
+      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="social-twitter">Twitter</a></li>
+      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="social-facebook">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="social-linkedin">LinkedIn</a></li>
+    </ul>
+    <div class="footer_copy" data-test="footer-copy">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/pages/checkout-info.js" defer></script>
+</body>
+</html>

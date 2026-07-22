@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swag Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="primary_header">
+      <div class="header_label">
+        <button class="bm-burger-button" id="react-burger-menu-btn" aria-label="Open Menu">&#9776;</button>
+        <div class="app_logo">Swag Labs</div>
+      </div>
+      <div class="shopping_cart_container">
+        <a class="shopping_cart_link" data-test="shopping-cart-link" href="cart.html">🛒<span class="shopping_cart_badge" data-test="shopping-cart-badge" style="display:none"></span></a>
+      </div>
+    </div>
+    <div class="header_secondary_container">
+      <span class="title" data-test="title">Your Cart</span>
+    </div>
+    <nav class="bm-menu" id="bm-menu">
+      <button class="bm-cross-button" id="react-burger-cross-btn" aria-label="Close Menu">&times;</button>
+      <a id="inventory_sidebar_link" data-test="inventory-sidebar-link" href="inventory.html">All Items</a>
+      <a id="about_sidebar_link" data-test="about-sidebar-link" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
+      <a id="logout_sidebar_link" data-test="logout-sidebar-link" href="#">Logout</a>
+      <a id="reset_sidebar_link" data-test="reset-sidebar-link" href="#">Reset App State</a>
+    </nav>
+    <div class="bm-overlay" id="bm-overlay"></div>
+  </header>
+
+  <main class="cart_contents_container" data-test="cart-contents-container">
+    <div>
+      <span class="cart_quantity_label" data-test="cart-quantity-label">QTY</span>
+      <span class="cart_desc_label" data-test="cart-desc-label">Description</span>
+    </div>
+
+    <p class="cart_empty" data-test="cart-empty" hidden>Seu carrinho está vazio.</p>
+    <div class="cart_list" data-test="cart-list" id="cart-list"></div>
+
+    <div class="cart_footer">
+      <a class="btn btn_secondary" data-test="continue-shopping" href="inventory.html">Continue Shopping</a>
+      <a class="btn btn_action" data-test="checkout" href="checkout-step-one.html">Checkout</a>
+    </div>
+  </main>
+
+  <template id="cart-item-template">
+    <div class="cart_item" data-test="inventory-item">
+      <div class="cart_quantity" data-test="item-quantity">1</div>
+      <div class="cart_item_label">
+        <a class="inventory_item_name" data-test="inventory-item-name"></a>
+        <div class="inventory_item_desc" data-test="inventory-item-desc"></div>
+        <div class="item_pricebar">
+          <div class="inventory_item_price" data-test="inventory-item-price"></div>
+          <button class="btn btn_small"></button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <footer class="footer" data-test="footer">
+    <ul class="social">
+      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="social-twitter">Twitter</a></li>
+      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="social-facebook">Facebook</a></li>
+      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="social-linkedin">LinkedIn</a></li>
+    </ul>
+    <div class="footer_copy" data-test="footer-copy">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/pages/cart.js" defer></script>
+</body>
+</html>

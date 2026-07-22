@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#f6f7f8"/>
+  <path d="M70 45 L100 55 L130 45 L160 65 L145 90 L130 80 L130 160 L70 160 L70 80 L55 90 L40 65 Z" fill="#e2231a"/>
+  <text x="100" y="105" text-anchor="middle" font-family="monospace" font-size="13" fill="#fff">Test.all</text>
+  <text x="100" y="122" text-anchor="middle" font-family="monospace" font-size="13" fill="#fff">TheThings()</text>
+</svg>
