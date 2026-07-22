@@ -6,7 +6,7 @@ Réplica educacional do site [saucedemo.com](https://www.saucedemo.com/) constru
 
 ## Como executar
 
-Basta abrir o `index.html` no navegador, ou servir a pasta com um servidor local:
+Basta baixar a extensão do `LIVESERVER` no VsCode ou servir a pasta com um servidor local:
 
 ```powershell
 # Opção 1: Python
