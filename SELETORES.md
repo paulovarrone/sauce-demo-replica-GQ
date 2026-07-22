@@ -99,7 +99,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Descrição | `div` | — | `descricao-item` | `inventory_item_desc` | — |
 | Barra de preço | `div` | — | — | `pricebar` | — |
 | Preço | `div` | — | `preco-item` | `inventory_item_price` | formato `$X.XX` |
-| Botão Add/Remove | `button` | `botao-carrinho-<slug>` ⚠️ estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` ⚠️ dinâmico | `btn`, `btn_small` + `btn_inventory` (fora) ⇄ `btn_secondary` (no carrinho) | texto: "Add to cart" ⇄ "Remove" |
+| Botão Add/Remove | `button` | `botao-carrinho-<slug>` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` dinâmico | `btn`, `btn_small` + `btn_inventory` (fora) ⇄ `btn_secondary` (no carrinho) | texto: "Add to cart" ⇄ "Remove" |
 
 > **Usuário `problem_user`:** todas as imagens carregam `img/broken.svg` em vez da imagem real.
 
@@ -117,7 +117,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Nome do produto | `div` | — | `nome-item` | `inventory_details_name` | — |
 | Descrição | `div` | — | `descricao-item` | `inventory_item_desc` | — |
 | Preço | `div` | — | `preco-item` | `inventory_details_price` | formato `$X.XX` |
-| Botão Add/Remove | `button` | `botao-carrinho` ⚠️ estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` | `btn`, `btn_small` + `btn_inventory` ⇄ `btn_secondary` | texto: "Add to cart" ⇄ "Remove" |
+| Botão Add/Remove | `button` | `botao-carrinho` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` | `btn`, `btn_small` + `btn_inventory` ⇄ `btn_secondary` | texto: "Add to cart" ⇄ "Remove" |
 | Item não encontrado | `p` | `item-nao-encontrado` | `item-nao-encontrado` | — | `hidden` quando há produto; texto: "ITEM NOT FOUND — Sorry, this item does not exist." |
 
 ---
