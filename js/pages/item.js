@@ -15,7 +15,7 @@ if (!product) {
   imgWrap.hidden = true;
   descWrap.hidden = true;
 } else {
-  const isProblemUser = Session.user === "problem_user";
+  const isProblemUser = Session.user === "usuario_problema";
 
   const img = document.getElementById("imagem-item");
   img.src = isProblemUser ? "img/broken.svg" : product.img;

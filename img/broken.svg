@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#f6f7f8"/>
-  <rect x="45" y="55" width="110" height="90" rx="8" fill="none" stroke="#b8bcc4" stroke-width="5" stroke-dasharray="10 6"/>
-  <circle cx="75" cy="85" r="10" fill="#b8bcc4"/>
-  <path d="M55 130 L90 100 L115 125 L135 108 L148 130" stroke="#b8bcc4" stroke-width="5" fill="none" stroke-linecap="round"/>
-  <text x="100" y="170" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#b8bcc4">image not found</text>
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <rect x="45" y="50" width="110" height="90" rx="10" fill="none" stroke="#94a3b8" stroke-width="5" stroke-dasharray="10 6"/>
+  <circle cx="75" cy="80" r="10" fill="#94a3b8"/>
+  <path d="M55 125 L90 95 L115 120 L135 103 L148 125" stroke="#94a3b8" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="100" y="168" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#94a3b8">imagem não encontrada</text>
 </svg>

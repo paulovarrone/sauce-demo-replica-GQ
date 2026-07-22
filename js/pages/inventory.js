@@ -15,7 +15,7 @@ const sorters = {
 };
 
 function renderList() {
-  const isProblemUser = Session.user === "problem_user";
+  const isProblemUser = Session.user === "usuario_problema";
   const products = [...PRODUCTS].sort(sorters[sortSelect.value]);
 
   listEl.replaceChildren();
@@ -37,6 +37,10 @@ function renderList() {
     listEl.appendChild(node);
   });
 }
+
+// Contador de produtos no banner de boas-vindas
+const contador = document.getElementById("contador-produtos");
+if (contador) contador.textContent = PRODUCTS.length;
 
 sortSelect.addEventListener("change", renderList);
 window.onAppReset = renderList;

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <defs>
+    <linearGradient id="porcelana" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbe3ea"/>
+    </linearGradient>
+  </defs>
+  <!-- vapor -->
+  <path d="M82 42 q7 9 0 20 M100 36 q7 11 0 24 M118 42 q7 9 0 20" stroke="#94a3b8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- pires -->
+  <ellipse cx="97" cy="157" rx="46" ry="9" fill="#cbd5e1"/>
+  <!-- alça -->
+  <path d="M134 84 h10 a17 17 0 0 1 0 38 h-10 v-11 h8 a6.5 6.5 0 0 0 0 -16 h-8 z" fill="#dbe3ea"/>
+  <!-- corpo -->
+  <path d="M60 74 h74 v60 a17 17 0 0 1 -17 17 h-40 a17 17 0 0 1 -17 -17 z" fill="url(#porcelana)"/>
+  <!-- borda superior -->
+  <ellipse cx="97" cy="74" rx="37" ry="7" fill="#f8fafc"/>
+  <ellipse cx="97" cy="74" rx="37" ry="7" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- estampa de código -->
+  <text x="97" y="118" text-anchor="middle" font-family="monospace" font-size="22" font-weight="bold" fill="#16a34a">&lt;/&gt;</text>
+</svg>

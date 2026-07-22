@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — LojaQA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="primary_header">
+      <div class="header_label">
+        <button class="bm-burger-button" id="botao-menu" data-test="botao-menu" aria-label="Abrir Menu">&#9776;</button>
+        <div class="app_logo">🧪 LojaQA</div>
+      </div>
+      <div class="shopping_cart_container">
+        <a class="shopping_cart_link" id="link-carrinho" data-test="link-carrinho" href="cart.html">🛒<span class="shopping_cart_badge" id="badge-carrinho" data-test="badge-carrinho" style="display:none"></span></a>
+      </div>
+    </div>
+    <div class="header_secondary_container">
+      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Sobre a LojaQA</span>
+    </div>
+    <nav class="bm-menu" id="menu-lateral" data-test="menu-lateral">
+      <button class="bm-cross-button" id="botao-fechar-menu" data-test="botao-fechar-menu" aria-label="Fechar Menu">&times;</button>
+      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">Todos os Produtos</a>
+      <a id="link-sobre" data-test="link-sobre" href="sobre.html">Sobre</a>
+      <a id="link-sair" data-test="link-sair" href="#">Sair</a>
+      <a id="link-resetar" data-test="link-resetar" href="#">Resetar Aplicação</a>
+    </nav>
+    <div class="bm-overlay" id="sobreposicao-menu"></div>
+  </header>
+
+  <main class="sobre_container" id="container-sobre" data-test="container-sobre">
+    <section class="sobre_card" data-test="sobre-motivo">
+      <h2>Por que este site existe?</h2>
+      <p>
+        A LojaQA é uma loja virtual <strong>fictícia</strong>, criada como ambiente controlado
+        para os <strong>testes automatizados do meu TCC</strong> (Trabalho de Conclusão de Curso).
+      </p>
+      <p>
+        Testar automação em sites reais é arriscado e instável: o conteúdo muda, há captchas,
+        limites de acesso e dados imprevisíveis. Aqui, cada tela, seletor e mensagem de erro
+        é conhecida e documentada — o que permite escrever, executar e demonstrar testes
+        de forma confiável e reproduzível.
+      </p>
+    </section>
+
+    <section class="sobre_card" data-test="sobre-recursos">
+      <h2>O que dá para testar aqui</h2>
+      <ul>
+        <li>Login com validações e perfis de usuário com comportamentos distintos (bloqueado, lento, com problemas visuais);</li>
+        <li>Catálogo com 21 produtos, ordenação e página de detalhe;</li>
+        <li>Carrinho de compras com estado persistente;</li>
+        <li>Fluxo completo de pagamento com validação de formulário;</li>
+        <li>Emissão de nota fiscal fictícia em PDF;</li>
+        <li>Seletores estáveis (<code>id</code> e <code>data-test</code>) em português, mapeados no arquivo <code>SELETORES.md</code>.</li>
+      </ul>
+    </section>
+
+    <section class="sobre_card" data-test="sobre-tecnologias">
+      <h2>Tecnologias</h2>
+      <p>
+        HTML, CSS e JavaScript puros, sem frameworks nem dependências — basta um navegador.
+        A arquitetura separa marcação e lógica para facilitar a manutenção e o estudo do código.
+      </p>
+      <p>
+        Projeto educacional desenvolvido por <strong>Paulo Varrone</strong>. Todos os produtos,
+        preços, empresa e documentos são fictícios.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer" id="rodape" data-test="rodape">
+    <ul class="social">
+      <li><a href="https://github.com/paulovarrone" target="_blank" rel="noopener" data-test="rede-github">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/paulovarrone" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
+    </ul>
+    <div class="footer_copy" data-test="texto-rodape">© 2026 LojaQA — Projeto educacional para prática de testes de automação.</div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/pages/sobre.js" defer></script>
+</body>
+</html>

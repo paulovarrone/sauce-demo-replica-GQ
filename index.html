@@ -3,42 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swag Labs</title>
+  <title>LojaQA</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="login_container">
-    <div class="login_logo">Swag Labs</div>
+    <div class="login_logo">🧪 LojaQA</div>
+    <p class="login_tagline">Sua loja para praticar automação de testes</p>
 
     <div class="login_wrapper">
       <form class="login-box" id="form-login" data-test="form-login" novalidate>
         <input type="text" class="form_input" id="campo-usuario" data-test="campo-usuario"
-               placeholder="Username" autocomplete="username" autofocus>
+               placeholder="Usuário" autocomplete="username" autofocus>
         <input type="password" class="form_input" id="campo-senha" data-test="campo-senha"
-               placeholder="Password" autocomplete="current-password">
+               placeholder="Senha" autocomplete="current-password">
 
         <div class="error-message-container" id="container-erro" data-test="container-erro">
           <span id="texto-erro" data-test="texto-erro"></span>
           <button type="button" class="error-button" id="botao-fechar-erro" data-test="botao-fechar-erro" aria-label="Fechar">&times;</button>
         </div>
 
-        <input type="submit" class="btn btn_action" id="botao-entrar" data-test="botao-entrar" value="Login">
+        <input type="submit" class="btn btn_action" id="botao-entrar" data-test="botao-entrar" value="Entrar">
       </form>
     </div>
 
     <div class="login_credentials_wrap">
       <div class="login_credentials" id="credenciais-login" data-test="credenciais-login">
-        <h4>Accepted usernames are:</h4>
-        standard_user<br>
-        locked_out_user<br>
-        problem_user<br>
-        performance_glitch_user<br>
-        error_user<br>
-        visual_user
+        <h4>Usuários aceitos:</h4>
+        usuario_padrao<br>
+        usuario_bloqueado<br>
+        usuario_problema<br>
+        usuario_lento<br>
+        usuario_erro<br>
+        usuario_visual
       </div>
       <div class="login_password" id="senha-login" data-test="senha-login">
-        <h4>Password for all users:</h4>
-        secret_sauce
+        <h4>Senha para todos os usuários:</h4>
+        senha_teste_123
       </div>
     </div>
   </div>

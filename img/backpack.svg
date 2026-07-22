@@ -1,9 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#f6f7f8"/>
-  <rect x="55" y="50" width="90" height="110" rx="18" fill="#132322"/>
-  <rect x="70" y="35" width="60" height="30" rx="14" fill="#132322"/>
-  <rect x="65" y="95" width="70" height="55" rx="10" fill="#2b3a39"/>
-  <rect x="90" y="115" width="20" height="10" rx="4" fill="#3ddc91"/>
-  <path d="M65 55 q-18 40 0 85" stroke="#3ddc91" stroke-width="6" fill="none"/>
-  <path d="M135 55 q18 40 0 85" stroke="#3ddc91" stroke-width="6" fill="none"/>
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <defs>
+    <linearGradient id="corpo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="1" stop-color="#15803d"/>
+    </linearGradient>
+  </defs>
+  <!-- alças traseiras -->
+  <path d="M68 62 q-16 45 -4 88" stroke="#14532d" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M132 62 q16 45 4 88" stroke="#14532d" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- corpo -->
+  <rect x="58" y="55" width="84" height="100" rx="22" fill="url(#corpo)"/>
+  <!-- alça superior -->
+  <path d="M85 55 q15 -18 30 0" stroke="#14532d" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- tampa -->
+  <path d="M58 86 q42 14 84 0 v-9 a22 22 0 0 0 -22 -22 h-40 a22 22 0 0 0 -22 22 z" fill="#15803d"/>
+  <circle cx="100" cy="90" r="5" fill="#fbbf24"/>
+  <!-- bolso frontal -->
+  <rect x="72" y="104" width="56" height="40" rx="12" fill="#4ade80"/>
+  <line x1="74" y1="116" x2="126" y2="116" stroke="#14532d" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="116" r="4" fill="#14532d"/>
 </svg>

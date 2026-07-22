@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swag Labs</title>
+  <title>LojaQA</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,41 +11,42 @@
     <div class="primary_header">
       <div class="header_label">
         <button class="bm-burger-button" id="botao-menu" data-test="botao-menu" aria-label="Abrir Menu">&#9776;</button>
-        <div class="app_logo">Swag Labs</div>
+        <div class="app_logo">🧪 LojaQA</div>
       </div>
       <div class="shopping_cart_container">
         <a class="shopping_cart_link" id="link-carrinho" data-test="link-carrinho" href="cart.html">🛒<span class="shopping_cart_badge" id="badge-carrinho" data-test="badge-carrinho" style="display:none"></span></a>
       </div>
     </div>
     <div class="header_secondary_container">
-      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Checkout: Complete!</span>
+      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Pedido Concluído!</span>
     </div>
     <nav class="bm-menu" id="menu-lateral" data-test="menu-lateral">
       <button class="bm-cross-button" id="botao-fechar-menu" data-test="botao-fechar-menu" aria-label="Fechar Menu">&times;</button>
-      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">All Items</a>
-      <a id="link-sobre" data-test="link-sobre" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
-      <a id="link-sair" data-test="link-sair" href="#">Logout</a>
-      <a id="link-resetar" data-test="link-resetar" href="#">Reset App State</a>
+      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">Todos os Produtos</a>
+      <a id="link-sobre" data-test="link-sobre" href="sobre.html">Sobre</a>
+      <a id="link-sair" data-test="link-sair" href="#">Sair</a>
+      <a id="link-resetar" data-test="link-resetar" href="#">Resetar Aplicação</a>
     </nav>
     <div class="bm-overlay" id="sobreposicao-menu"></div>
   </header>
 
   <main class="checkout_complete_container" id="container-pedido-concluido" data-test="container-pedido-concluido">
-    <img class="pony_express" src="img/pony-express.svg" alt="Pony Express" id="imagem-confirmacao" data-test="imagem-confirmacao">
-    <h2 class="complete-header" id="titulo-conclusao" data-test="titulo-conclusao">Thank you for your order!</h2>
+    <img class="pony_express" src="img/pony-express.svg" alt="Pedido confirmado" id="imagem-confirmacao" data-test="imagem-confirmacao">
+    <h2 class="complete-header" id="titulo-conclusao" data-test="titulo-conclusao">Obrigado pelo seu pedido!</h2>
     <div class="complete-text" id="texto-conclusao" data-test="texto-conclusao">
-      Your order has been dispatched, and will arrive just as fast as the pony can get there!
+      Pedido <strong id="numero-pedido" data-test="numero-pedido"></strong> confirmado!
+      Ele foi despachado e chegará rapidinho até você.
     </div>
-    <a class="btn btn_action btn_complete" id="botao-voltar-inicio" data-test="voltar-inicio" href="inventory.html">Back Home</a>
+    <a class="btn btn_action btn_complete" id="botao-nota-fiscal" data-test="nota-fiscal" href="nota-fiscal.html">Gerar Nota Fiscal (PDF)</a>
+    <a class="btn btn_secondary btn_complete" id="botao-voltar-inicio" data-test="voltar-inicio" href="inventory.html">Voltar à Loja</a>
   </main>
 
   <footer class="footer" id="rodape" data-test="rodape">
     <ul class="social">
-      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="rede-twitter">Twitter</a></li>
-      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="rede-facebook">Facebook</a></li>
-      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
+      <li><a href="https://github.com/paulovarrone" target="_blank" rel="noopener" data-test="rede-github">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/paulovarrone" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
     </ul>
-    <div class="footer_copy" data-test="texto-rodape">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+    <div class="footer_copy" data-test="texto-rodape">© 2026 LojaQA — Projeto educacional para prática de testes de automação.</div>
   </footer>
 
   <script src="js/data.js" defer></script>

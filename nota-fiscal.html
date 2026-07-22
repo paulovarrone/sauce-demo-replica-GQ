@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nota Fiscal — LojaQA</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="nf_body">
+  <main class="nf_container" id="container-nota-fiscal" data-test="container-nota-fiscal">
+
+    <p id="pedido-nao-encontrado" data-test="pedido-nao-encontrado" hidden>
+      Nenhum pedido encontrado. Finalize uma compra para gerar a nota fiscal.
+    </p>
+
+    <article class="nf_documento" id="nota-fiscal" data-test="nota-fiscal">
+      <div class="nf_marca_dagua">SEM VALOR FISCAL</div>
+
+      <header class="nf_cabecalho">
+        <div>
+          <div class="nf_logo">🧪 LojaQA</div>
+          <div class="nf_empresa" data-test="dados-emitente">
+            LojaQA Comércio Educacional Ltda. (empresa fictícia)<br>
+            CNPJ: 00.000.000/0001-00<br>
+            Av. da Qualidade, 404 — São Paulo/SP
+          </div>
+        </div>
+        <div class="nf_identificacao">
+          <div class="nf_titulo">NOTA FISCAL</div>
+          <div class="nf_subtitulo">Documento fictício para prática de testes</div>
+          <div>Nº <strong id="numero-pedido" data-test="numero-pedido"></strong></div>
+          <div>Emissão: <span id="data-emissao" data-test="data-emissao"></span></div>
+        </div>
+      </header>
+
+      <section class="nf_destinatario" data-test="dados-destinatario">
+        <h3>Destinatário</h3>
+        <div id="cliente-nome" data-test="cliente-nome"></div>
+        <div id="cliente-cep" data-test="cliente-cep"></div>
+      </section>
+
+      <table class="nf_tabela" id="tabela-itens" data-test="tabela-itens">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Descrição</th>
+            <th>Qtd</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="itens-nota" data-test="itens-nota"></tbody>
+      </table>
+
+      <section class="nf_totais" data-test="totais-nota">
+        <div id="nota-subtotal" data-test="nota-subtotal"></div>
+        <div id="nota-imposto" data-test="nota-imposto"></div>
+        <div class="nf_total" id="nota-total" data-test="nota-total"></div>
+      </section>
+
+      <p class="nf_aviso" data-test="aviso-nota">
+        Documento sem valor fiscal — gerado por uma aplicação educacional de prática de testes de automação.
+      </p>
+    </article>
+
+    <div class="nf_acoes no-print">
+      <a class="btn btn_secondary" id="botao-voltar" data-test="botao-voltar" href="checkout-complete.html">Voltar</a>
+      <button class="btn btn_action" id="botao-baixar-pdf" data-test="baixar-pdf">Baixar PDF</button>
+    </div>
+  </main>
+
+  <template id="modelo-linha-item">
+    <tr data-test="linha-item">
+      <td data-test="linha-numero"></td>
+      <td data-test="linha-descricao"></td>
+      <td data-test="linha-quantidade">1</td>
+      <td data-test="linha-valor"></td>
+    </tr>
+  </template>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/store.js" defer></script>
+  <script src="js/pages/nota-fiscal.js" defer></script>
+</body>
+</html>

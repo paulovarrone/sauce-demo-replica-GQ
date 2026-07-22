@@ -15,16 +15,22 @@ const Cart = {
   clear() { localStorage.removeItem("cart-contents"); }
 };
 
+// Formata valores em reais: R$ 149,90
 function money(value) {
-  return "$" + value.toFixed(2);
+  return "R$ " + value.toFixed(2).replace(".", ",");
 }
 
 function productById(id) {
   return PRODUCTS.find(p => p.id === id);
 }
 
+// Gera slug sem acentos: "Camiseta Caça-Bugs" -> "camiseta-caca-bugs"
 function slugify(name) {
-  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  return name
+    .normalize("NFD").replace(new RegExp("[\\u0300-\\u036f]", "g"), "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
 function requireLogin() {

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <defs>
+    <linearGradient id="tecido" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <!-- copa -->
+  <path d="M52 106 a48 46 0 0 1 96 0 z" fill="url(#tecido)"/>
+  <!-- gomos -->
+  <path d="M100 60 v46 M76 66 q-8 18 -6 40 M124 66 q8 18 6 40" stroke="#172554" stroke-width="3" fill="none"/>
+  <!-- botão do topo -->
+  <circle cx="100" cy="60" r="5" fill="#172554"/>
+  <!-- aba curvada -->
+  <path d="M46 106 h108 a10 10 0 0 1 9 13 q-63 20 -126 0 a10 10 0 0 1 9 -13 z" fill="#172554"/>
+  <!-- emblema frontal -->
+  <circle cx="100" cy="88" r="13" fill="#fbbf24"/>
+  <text x="100" y="93" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#172554">QA</text>
+</svg>

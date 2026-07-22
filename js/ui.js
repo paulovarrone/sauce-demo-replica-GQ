@@ -53,7 +53,7 @@ function updateCartButton(btn, product) {
   const inCart = Cart.has(product.id);
   const slug = slugify(product.name);
 
-  btn.textContent = inCart ? "Remove" : "Add to cart";
+  btn.textContent = inCart ? "Remover" : "Adicionar ao carrinho";
   btn.classList.toggle("btn_secondary", inCart);
   btn.classList.toggle("btn_inventory", !inCart);
 

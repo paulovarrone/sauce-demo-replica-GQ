@@ -1,0 +1,4 @@
+// ===== Página Sobre =====
+
+requireLogin();
+initHeader();

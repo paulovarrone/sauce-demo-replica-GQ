@@ -1,8 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#f6f7f8"/>
-  <path d="M75 50 L100 58 L125 50 L150 70 L138 92 L127 85 L127 130 L108 130 L108 155 L92 155 L92 130 L73 130 L73 85 L62 92 L50 70 Z" fill="#e2231a"/>
-  <circle cx="100" cy="95" r="16" fill="#fff" opacity=".9"/>
-  <path d="M93 95 q7 8 14 0" stroke="#e2231a" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <circle cx="94" cy="90" r="2.5" fill="#e2231a"/>
-  <circle cx="106" cy="90" r="2.5" fill="#e2231a"/>
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <defs>
+    <linearGradient id="tecido" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ef4444"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+  <!-- body infantil -->
+  <path d="M80 52 Q100 64 120 52 L140 62 Q150 68 148 80 L142 93 Q140 97 135 95 L127 90 L127 118 Q127 132 116 136 L112 138 Q113 150 100 150 Q87 150 88 138 L84 136 Q73 132 73 118 L73 90 L65 95 Q60 97 58 93 L52 80 Q50 68 60 62 Z" fill="url(#tecido)"/>
+  <!-- gola -->
+  <path d="M82 53 Q100 66 118 53" stroke="#7f1d1d" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- botões de pressão -->
+  <circle cx="93" cy="143" r="2.5" fill="#fecaca"/>
+  <circle cx="100" cy="145" r="2.5" fill="#fecaca"/>
+  <circle cx="107" cy="143" r="2.5" fill="#fecaca"/>
+  <!-- estampa: joaninha -->
+  <circle cx="100" cy="102" r="15" fill="#ffffff"/>
+  <ellipse cx="100" cy="105" rx="9" ry="8" fill="#dc2626"/>
+  <circle cx="100" cy="94" r="4.5" fill="#132322"/>
+  <line x1="100" y1="97" x2="100" y2="113" stroke="#132322" stroke-width="1.5"/>
+  <circle cx="96" cy="103" r="1.5" fill="#132322"/>
+  <circle cx="104" cy="106" r="1.5" fill="#132322"/>
 </svg>

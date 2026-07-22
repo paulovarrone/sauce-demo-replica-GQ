@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swag Labs</title>
+  <title>LojaQA</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,46 +11,46 @@
     <div class="primary_header">
       <div class="header_label">
         <button class="bm-burger-button" id="botao-menu" data-test="botao-menu" aria-label="Abrir Menu">&#9776;</button>
-        <div class="app_logo">Swag Labs</div>
+        <div class="app_logo">🧪 LojaQA</div>
       </div>
       <div class="shopping_cart_container">
         <a class="shopping_cart_link" id="link-carrinho" data-test="link-carrinho" href="cart.html">🛒<span class="shopping_cart_badge" id="badge-carrinho" data-test="badge-carrinho" style="display:none"></span></a>
       </div>
     </div>
     <div class="header_secondary_container">
-      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Checkout: Overview</span>
+      <span class="title" id="titulo-pagina" data-test="titulo-pagina">Pagamento: Resumo</span>
     </div>
     <nav class="bm-menu" id="menu-lateral" data-test="menu-lateral">
       <button class="bm-cross-button" id="botao-fechar-menu" data-test="botao-fechar-menu" aria-label="Fechar Menu">&times;</button>
-      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">All Items</a>
-      <a id="link-sobre" data-test="link-sobre" href="https://saucelabs.com/" target="_blank" rel="noopener">About</a>
-      <a id="link-sair" data-test="link-sair" href="#">Logout</a>
-      <a id="link-resetar" data-test="link-resetar" href="#">Reset App State</a>
+      <a id="link-todos-itens" data-test="link-todos-itens" href="inventory.html">Todos os Produtos</a>
+      <a id="link-sobre" data-test="link-sobre" href="sobre.html">Sobre</a>
+      <a id="link-sair" data-test="link-sair" href="#">Sair</a>
+      <a id="link-resetar" data-test="link-resetar" href="#">Resetar Aplicação</a>
     </nav>
     <div class="bm-overlay" id="sobreposicao-menu"></div>
   </header>
 
   <main class="checkout_container" id="container-checkout-resumo" data-test="container-checkout-resumo">
     <div>
-      <span class="cart_quantity_label" data-test="rotulo-quantidade">QTY</span>
-      <span class="cart_desc_label" data-test="rotulo-descricao">Description</span>
+      <span class="cart_quantity_label" data-test="rotulo-quantidade">QTD</span>
+      <span class="cart_desc_label" data-test="rotulo-descricao">Descrição</span>
     </div>
     <div class="cart_list" id="lista-resumo" data-test="lista-resumo"></div>
 
     <div class="summary_info" id="info-resumo" data-test="info-resumo">
-      <div class="summary_info_label" data-test="rotulo-pagamento">Payment Information:</div>
-      <div class="summary_value_label" data-test="valor-pagamento">SauceCard #31337</div>
-      <div class="summary_info_label" data-test="rotulo-entrega">Shipping Information:</div>
-      <div class="summary_value_label" data-test="valor-entrega">Free Pony Express Delivery!</div>
-      <div class="summary_info_label" data-test="rotulo-total">Price Total</div>
+      <div class="summary_info_label" data-test="rotulo-pagamento">Forma de Pagamento:</div>
+      <div class="summary_value_label" data-test="valor-pagamento">CartãoQA #31337</div>
+      <div class="summary_info_label" data-test="rotulo-entrega">Entrega:</div>
+      <div class="summary_value_label" data-test="valor-entrega">Entrega Expressa Grátis!</div>
+      <div class="summary_info_label" data-test="rotulo-total">Resumo de Valores</div>
       <div class="summary_subtotal_label" id="valor-subtotal" data-test="valor-subtotal"></div>
       <div class="summary_tax_label" id="valor-imposto" data-test="valor-imposto"></div>
       <div class="summary_total_label" id="valor-total" data-test="valor-total"></div>
     </div>
 
     <div class="cart_footer">
-      <a class="btn btn_secondary" id="botao-cancelar" data-test="botao-cancelar" href="inventory.html">Cancel</a>
-      <button class="btn btn_action" id="botao-finalizar" data-test="botao-finalizar">Finish</button>
+      <a class="btn btn_secondary" id="botao-cancelar" data-test="botao-cancelar" href="inventory.html">Cancelar</a>
+      <button class="btn btn_action" id="botao-finalizar" data-test="botao-finalizar">Finalizar Pedido</button>
     </div>
   </main>
 
@@ -69,11 +69,10 @@
 
   <footer class="footer" id="rodape" data-test="rodape">
     <ul class="social">
-      <li><a href="https://twitter.com/saucelabs" target="_blank" rel="noopener" data-test="rede-twitter">Twitter</a></li>
-      <li><a href="https://www.facebook.com/saucelabs" target="_blank" rel="noopener" data-test="rede-facebook">Facebook</a></li>
-      <li><a href="https://www.linkedin.com/company/sauce-labs/" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
+      <li><a href="https://github.com/paulovarrone" target="_blank" rel="noopener" data-test="rede-github">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/paulovarrone" target="_blank" rel="noopener" data-test="rede-linkedin">LinkedIn</a></li>
     </ul>
-    <div class="footer_copy" data-test="texto-rodape">© 2026 Réplica educacional para prática de testes. Inspirado no Sauce Demo.</div>
+    <div class="footer_copy" data-test="texto-rodape">© 2026 LojaQA — Projeto educacional para prática de testes de automação.</div>
   </footer>
 
   <script src="js/data.js" defer></script>

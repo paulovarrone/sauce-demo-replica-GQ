@@ -1,5 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#f6f7f8"/>
-  <path d="M70 45 L100 55 L130 45 L160 65 L145 90 L130 80 L130 160 L70 160 L70 80 L55 90 L40 65 Z" fill="#132322"/>
-  <path d="M105 75 L88 110 L100 110 L92 140 L115 100 L103 100 Z" fill="#3ddc91"/>
+  <rect width="200" height="200" fill="#eef7ff"/>
+  <defs>
+    <linearGradient id="tecido" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#334155"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <!-- camiseta -->
+  <path d="M78 48 L58 56 Q42 64 38 82 L46 99 Q48 103 53 101 L65 95 L65 150 Q65 158 73 158 L127 158 Q135 158 135 150 L135 95 L147 101 Q152 103 154 99 L162 82 Q158 64 142 56 L122 48 Q114 62 100 62 Q86 62 78 48 Z" fill="url(#tecido)"/>
+  <!-- gola -->
+  <path d="M80 49 Q100 64 120 49" stroke="#0f172a" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- bainhas das mangas -->
+  <path d="M47 97 l14 -7 M153 97 l-14 -7" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+  <!-- raio -->
+  <path d="M107 76 L87 112 L99 112 L91 140 L116 100 L104 100 Z" fill="#3ddc91"/>
 </svg>

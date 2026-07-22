@@ -10,7 +10,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ---
 
-## Elementos globais (todas as páginas, exceto Login)
+## Elementos globais (todas as páginas, exceto Login e Nota Fiscal)
 
 ### Cabeçalho
 
@@ -19,7 +19,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Barra superior | `div` | — | — | `primary_header` | — |
 | Agrupador menu + logo | `div` | — | — | `header_label` | — |
 | Botão abrir menu (☰) | `button` | `botao-menu` | `botao-menu` | `bm-burger-button` | `aria-label="Abrir Menu"` |
-| Logo | `div` | — | — | `app_logo` | texto: "Swag Labs" |
+| Logo | `div` | — | — | `app_logo` | texto: "🧪 LojaQA" |
 | Container do carrinho | `div` | — | — | `shopping_cart_container` | — |
 | Link do carrinho (🛒) | `a` | `link-carrinho` | `link-carrinho` | `shopping_cart_link` | `href="cart.html"` |
 | Badge de contagem | `span` | `badge-carrinho` | `badge-carrinho` | `shopping_cart_badge` | oculto via `style` quando carrinho vazio; texto = nº de itens |
@@ -32,10 +32,10 @@ Referência **completa** dos seletores da aplicação para automação de testes
 |---|---|---|---|---|---|
 | Container do menu | `nav` | `menu-lateral` | `menu-lateral` | `bm-menu` (+ `open` quando aberto) | — |
 | Botão fechar (×) | `button` | `botao-fechar-menu` | `botao-fechar-menu` | `bm-cross-button` | `aria-label="Fechar Menu"` |
-| All Items | `a` | `link-todos-itens` | `link-todos-itens` | — | `href="inventory.html"` |
-| About | `a` | `link-sobre` | `link-sobre` | — | `href="https://saucelabs.com/"`, `target="_blank"` |
-| Logout | `a` | `link-sair` | `link-sair` | — | `href="#"` — encerra sessão → `index.html` |
-| Reset App State | `a` | `link-resetar` | `link-resetar` | — | `href="#"` — limpa o carrinho |
+| Todos os Produtos | `a` | `link-todos-itens` | `link-todos-itens` | — | `href="inventory.html"` |
+| Sobre | `a` | `link-sobre` | `link-sobre` | — | `href="sobre.html"` — página sobre o projeto/TCC |
+| Sair | `a` | `link-sair` | `link-sair` | — | `href="#"` — encerra sessão → `index.html` |
+| Resetar Aplicação | `a` | `link-resetar` | `link-resetar` | — | `href="#"` — limpa o carrinho |
 | Overlay (fundo escuro) | `div` | `sobreposicao-menu` | — | `bm-overlay` (+ `open` quando visível) | clique fecha o menu |
 
 ### Rodapé
@@ -44,10 +44,9 @@ Referência **completa** dos seletores da aplicação para automação de testes
 |---|---|---|---|---|---|
 | Rodapé | `footer` | `rodape` | `rodape` | `footer` | — |
 | Lista de redes sociais | `ul` | — | — | `social` | — |
-| Link Twitter | `a` | — | `rede-twitter` | — | `target="_blank"`, texto: "Twitter" |
-| Link Facebook | `a` | — | `rede-facebook` | — | `target="_blank"`, texto: "Facebook" |
-| Link LinkedIn | `a` | — | `rede-linkedin` | — | `target="_blank"`, texto: "LinkedIn" |
-| Texto de copyright | `div` | — | `texto-rodape` | `footer_copy` | — |
+| Link GitHub | `a` | — | `rede-github` | — | `href="https://github.com/paulovarrone"`, `target="_blank"`, texto: "GitHub" |
+| Link LinkedIn | `a` | — | `rede-linkedin` | — | `href="https://www.linkedin.com/in/paulovarrone"`, `target="_blank"`, texto: "LinkedIn" |
+| Texto de copyright | `div` | — | `texto-rodape` | `footer_copy` | "© 2026 LojaQA — Projeto educacional..." |
 
 ---
 
@@ -56,18 +55,19 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `div` | — | — | `login_container` | — |
-| Logo | `div` | — | — | `login_logo` | texto: "Swag Labs" |
+| Logo | `div` | — | — | `login_logo` | texto: "🧪 LojaQA" |
+| Tagline | `p` | — | — | `login_tagline` | "Sua loja para praticar automação de testes" |
 | Wrapper do formulário | `div` | — | — | `login_wrapper` | — |
 | Formulário | `form` | `form-login` | `form-login` | `login-box` | `novalidate` |
-| Campo de usuário | `input` | `campo-usuario` | `campo-usuario` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Username"`, `autocomplete="username"`, `autofocus` |
-| Campo de senha | `input` | `campo-senha` | `campo-senha` | `form_input` (+ `input_error` em erro) | `type="password"`, `placeholder="Password"`, `autocomplete="current-password"` |
-| Botão de login | `input` | `botao-entrar` | `botao-entrar` | `btn`, `btn_action` | `type="submit"`, `value="Login"` (vira "Loading..." no glitch user) |
+| Campo de usuário | `input` | `campo-usuario` | `campo-usuario` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Usuário"`, `autocomplete="username"`, `autofocus` |
+| Campo de senha | `input` | `campo-senha` | `campo-senha` | `form_input` (+ `input_error` em erro) | `type="password"`, `placeholder="Senha"`, `autocomplete="current-password"` |
+| Botão de login | `input` | `botao-entrar` | `botao-entrar` | `btn`, `btn_action` | `type="submit"`, `value="Entrar"` (vira "Carregando..." no glitch user) |
 | Container de erro | `div` | `container-erro` | `container-erro` | `error-message-container` (+ `visible` quando exibido) | — |
 | Texto do erro | `span` | `texto-erro` | `texto-erro` | — | ver seção Mensagens de erro |
 | Botão fechar erro (×) | `button` | `botao-fechar-erro` | `botao-fechar-erro` | `error-button` | `type="button"`, `aria-label="Fechar"` |
 | Bloco de credenciais | `div` | — | — | `login_credentials_wrap` | — |
-| Lista de usuários aceitos | `div` | `credenciais-login` | `credenciais-login` | `login_credentials` | contém os 6 usernames |
-| Senha dos usuários | `div` | `senha-login` | `senha-login` | `login_password` | contém "secret_sauce" |
+| Lista de usuários aceitos | `div` | `credenciais-login` | `credenciais-login` | `login_credentials` | contém os 6 usernames (`usuario_padrao`, `usuario_bloqueado`, `usuario_problema`, `usuario_lento`, `usuario_erro`, `usuario_visual`) |
+| Senha dos usuários | `div` | `senha-login` | `senha-login` | `login_password` | contém "senha_teste_123" |
 
 ---
 
@@ -75,6 +75,8 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 | Elemento | Tag | `id` | `data-test` | Classes | Atributos |
 |---|---|---|---|---|---|
+| Banner de boas-vindas | `section` | `banner-boas-vindas` | `banner-boas-vindas` | `hero_banner` | contém h1 "Bem-vindo à LojaQA!" |
+| Contador de produtos | `strong` | `contador-produtos` | `contador-produtos` | — | texto: "21" (preenchido via JS) |
 | Container da página | `main` | `container-inventario` | `container-inventario` | `inventory_container` | — |
 | Lista de produtos | `div` | `lista-produtos` | `lista-produtos` | `inventory_list` | preenchida via JS |
 | Seletor de ordenação | `select` | `seletor-ordenacao` | `seletor-ordenacao` | `product_sort_container` | 4 `option` (ver abaixo) |
@@ -83,10 +85,10 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 | `value` | Texto visível |
 |---|---|
-| `az` | Name (A to Z) |
-| `za` | Name (Z to A) |
-| `lohi` | Price (low to high) |
-| `hilo` | Price (high to low) |
+| `az` | Nome (A a Z) |
+| `za` | Nome (Z a A) |
+| `lohi` | Preço (menor ao maior) |
+| `hilo` | Preço (maior ao menor) |
 
 ### Card de produto (dinâmico — um por produto)
 
@@ -98,10 +100,10 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Nome do produto (link) | `a` | — | `nome-item` | `inventory_item_name`, `link-item` | `href="inventory-item.html?id=N"` |
 | Descrição | `div` | — | `descricao-item` | `inventory_item_desc` | — |
 | Barra de preço | `div` | — | — | `pricebar` | — |
-| Preço | `div` | — | `preco-item` | `inventory_item_price` | formato `$X.XX` |
-| Botão Add/Remove | `button` | `botao-carrinho-<slug>` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` dinâmico | `btn`, `btn_small` + `btn_inventory` (fora) ⇄ `btn_secondary` (no carrinho) | texto: "Add to cart" ⇄ "Remove" |
+| Preço | `div` | — | `preco-item` | `inventory_item_price` | formato `R$ X,XX` |
+| Botão Adicionar/Remover | `button` | `botao-carrinho-<slug>` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` dinâmico | `btn`, `btn_small` + `btn_inventory` (fora) ⇄ `btn_secondary` (no carrinho) | texto: "Adicionar ao carrinho" ⇄ "Remover" |
 
-> **Usuário `problem_user`:** todas as imagens carregam `img/broken.svg` em vez da imagem real.
+> **Usuário `usuario_problema`:** todas as imagens carregam `img/broken.svg` em vez da imagem real.
 
 ---
 
@@ -110,15 +112,15 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `detalhes-produto` | `detalhes-produto` | `inventory_details` | — |
-| Voltar para produtos | `a` | `link-voltar-produtos` | `voltar-produtos` | `btn`, `btn_small`, `btn_back` | `href="inventory.html"`, texto: "← Back to products" |
+| Voltar aos produtos | `a` | `link-voltar-produtos` | `voltar-produtos` | `btn`, `btn_small`, `btn_back` | `href="inventory.html"`, texto: "← Voltar aos produtos" |
 | Wrapper da imagem | `div` | — | — | `inventory_details_img` | `hidden` quando item não existe |
 | Imagem do produto | `img` | `imagem-item` | `imagem-item` | — | `alt` = nome do produto |
 | Wrapper da descrição | `div` | — | — | `inventory_details_desc_container` | `hidden` quando item não existe |
 | Nome do produto | `div` | — | `nome-item` | `inventory_details_name` | — |
 | Descrição | `div` | — | `descricao-item` | `inventory_item_desc` | — |
-| Preço | `div` | — | `preco-item` | `inventory_details_price` | formato `$X.XX` |
-| Botão Add/Remove | `button` | `botao-carrinho` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` | `btn`, `btn_small` + `btn_inventory` ⇄ `btn_secondary` | texto: "Add to cart" ⇄ "Remove" |
-| Item não encontrado | `p` | `item-nao-encontrado` | `item-nao-encontrado` | — | `hidden` quando há produto; texto: "ITEM NOT FOUND — Sorry, this item does not exist." |
+| Preço | `div` | — | `preco-item` | `inventory_details_price` | formato `R$ X,XX` |
+| Botão Adicionar/Remover | `button` | `botao-carrinho` estável | `adicionar-carrinho-<slug>` ⇄ `remover-<slug>` | `btn`, `btn_small` + `btn_inventory` ⇄ `btn_secondary` | texto: "Adicionar ao carrinho" ⇄ "Remover" |
+| Item não encontrado | `p` | `item-nao-encontrado` | `item-nao-encontrado` | — | `hidden` quando há produto; texto: "ITEM NÃO ENCONTRADO — Este produto não existe." |
 
 ---
 
@@ -127,13 +129,13 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `container-carrinho` | `container-carrinho` | `cart_contents_container` | — |
-| Rótulo "QTY" | `span` | — | `rotulo-quantidade` | `cart_quantity_label` | — |
-| Rótulo "Description" | `span` | — | `rotulo-descricao` | `cart_desc_label` | — |
+| Rótulo "QTD" | `span` | — | `rotulo-quantidade` | `cart_quantity_label` | — |
+| Rótulo "Descrição" | `span` | — | `rotulo-descricao` | `cart_desc_label` | — |
 | Carrinho vazio | `p` | `carrinho-vazio` | `carrinho-vazio` | `cart_empty` | `hidden` quando há itens; texto: "Seu carrinho está vazio." |
 | Lista de itens | `div` | `lista-carrinho` | `lista-carrinho` | `cart_list` | preenchida via JS |
 | Rodapé de ações | `div` | — | — | `cart_footer` | — |
-| Continue Shopping | `a` | `botao-continuar-comprando` | `continuar-comprando` | `btn`, `btn_secondary` | `href="inventory.html"` |
-| Checkout | `a` | `botao-finalizar-compra` | `finalizar-compra` | `btn`, `btn_action` | `href="checkout-step-one.html"` |
+| Continuar Comprando | `a` | `botao-continuar-comprando` | `continuar-comprando` | `btn`, `btn_secondary` | `href="inventory.html"` |
+| Finalizar Compra | `a` | `botao-finalizar-compra` | `finalizar-compra` | `btn`, `btn_action` | `href="checkout-step-one.html"` |
 
 ### Item do carrinho (dinâmico — um por item)
 
@@ -145,8 +147,8 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Nome (link) | `a` | — | `nome-item` | `inventory_item_name` | `href="inventory-item.html?id=N"` |
 | Descrição | `div` | — | `descricao-item` | `inventory_item_desc` | — |
 | Barra de preço | `div` | — | — | `item_pricebar` | — |
-| Preço | `div` | — | `preco-item` | `inventory_item_price` | formato `$X.XX` |
-| Botão Remove | `button` | `botao-carrinho-<slug>` | `remover-<slug>` | `btn`, `btn_small`, `btn_secondary` | texto: "Remove" |
+| Preço | `div` | — | `preco-item` | `inventory_item_price` | formato `R$ X,XX` |
+| Botão Remover | `button` | `botao-carrinho-<slug>` | `remover-<slug>` | `btn`, `btn_small`, `btn_secondary` | texto: "Remover" |
 
 ---
 
@@ -156,14 +158,14 @@ Referência **completa** dos seletores da aplicação para automação de testes
 |---|---|---|---|---|---|
 | Container da página | `main` | `container-checkout-dados` | `container-checkout-dados` | `checkout_container` | — |
 | Formulário | `form` | `form-checkout` | `form-checkout` | `checkout_info` | `novalidate` |
-| First Name | `input` | `campo-nome` | `campo-nome` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="First Name"`, `autofocus` |
-| Last Name | `input` | `campo-sobrenome` | `campo-sobrenome` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Last Name"` |
-| Zip/Postal Code | `input` | `campo-cep` | `campo-cep` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Zip/Postal Code"` |
+| Nome | `input` | `campo-nome` | `campo-nome` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Nome"`, `autofocus` |
+| Sobrenome | `input` | `campo-sobrenome` | `campo-sobrenome` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="Sobrenome"` |
+| CEP | `input` | `campo-cep` | `campo-cep` | `form_input` (+ `input_error` em erro) | `type="text"`, `placeholder="CEP"` |
 | Container de erro | `div` | `container-erro` | `container-erro` | `error-message-container` (+ `visible`) | — |
 | Texto do erro | `span` | `texto-erro` | `texto-erro` | — | ver seção Mensagens de erro |
 | Botão fechar erro (×) | `button` | `botao-fechar-erro` | `botao-fechar-erro` | `error-button` | `type="button"`, `aria-label="Fechar"` |
-| Cancel | `a` | `botao-cancelar` | `botao-cancelar` | `btn`, `btn_secondary` | `href="cart.html"` |
-| Continue | `input` | `botao-continuar` | `botao-continuar` | `btn`, `btn_action` | `type="submit"`, `value="Continue"` |
+| Cancelar | `a` | `botao-cancelar` | `botao-cancelar` | `btn`, `btn_secondary` | `href="cart.html"` |
+| Continuar | `input` | `botao-continuar` | `botao-continuar` | `btn`, `btn_action` | `type="submit"`, `value="Continuar"` |
 
 ---
 
@@ -172,23 +174,23 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Elemento | Tag | `id` | `data-test` | Classes | Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `container-checkout-resumo` | `container-checkout-resumo` | `checkout_container` | — |
-| Rótulo "QTY" | `span` | — | `rotulo-quantidade` | `cart_quantity_label` | — |
-| Rótulo "Description" | `span` | — | `rotulo-descricao` | `cart_desc_label` | — |
+| Rótulo "QTD" | `span` | — | `rotulo-quantidade` | `cart_quantity_label` | — |
+| Rótulo "Descrição" | `span` | — | `rotulo-descricao` | `cart_desc_label` | — |
 | Lista de itens | `div` | `lista-resumo` | `lista-resumo` | `cart_list` | preenchida via JS |
 | Bloco de resumo | `div` | `info-resumo` | `info-resumo` | `summary_info` | — |
-| Rótulo pagamento | `div` | — | `rotulo-pagamento` | `summary_info_label` | "Payment Information:" |
-| Valor pagamento | `div` | — | `valor-pagamento` | `summary_value_label` | "SauceCard #31337" |
-| Rótulo entrega | `div` | — | `rotulo-entrega` | `summary_info_label` | "Shipping Information:" |
-| Valor entrega | `div` | — | `valor-entrega` | `summary_value_label` | "Free Pony Express Delivery!" |
-| Rótulo total | `div` | — | `rotulo-total` | `summary_info_label` | "Price Total" |
-| Subtotal | `div` | `valor-subtotal` | `valor-subtotal` | `summary_subtotal_label` | "Item total: $X.XX" |
-| Imposto (8%) | `div` | `valor-imposto` | `valor-imposto` | `summary_tax_label` | "Tax: $X.XX" |
-| Total | `div` | `valor-total` | `valor-total` | `summary_total_label` | "Total: $X.XX" |
+| Rótulo pagamento | `div` | — | `rotulo-pagamento` | `summary_info_label` | "Forma de Pagamento:" |
+| Valor pagamento | `div` | — | `valor-pagamento` | `summary_value_label` | "CartãoQA #31337" |
+| Rótulo entrega | `div` | — | `rotulo-entrega` | `summary_info_label` | "Entrega:" |
+| Valor entrega | `div` | — | `valor-entrega` | `summary_value_label` | "Entrega Expressa Grátis!" |
+| Rótulo total | `div` | — | `rotulo-total` | `summary_info_label` | "Resumo de Valores" |
+| Subtotal | `div` | `valor-subtotal` | `valor-subtotal` | `summary_subtotal_label` | "Subtotal: R$ X,XX" |
+| Impostos (8%) | `div` | `valor-imposto` | `valor-imposto` | `summary_tax_label` | "Impostos (8%): R$ X,XX" |
+| Total | `div` | `valor-total` | `valor-total` | `summary_total_label` | "Total: R$ X,XX" |
 | Rodapé de ações | `div` | — | — | `cart_footer` | — |
-| Cancel | `a` | `botao-cancelar` | `botao-cancelar` | `btn`, `btn_secondary` | `href="inventory.html"` |
-| Finish | `button` | `botao-finalizar` | `botao-finalizar` | `btn`, `btn_action` | limpa o carrinho → `checkout-complete.html` |
+| Cancelar | `a` | `botao-cancelar` | `botao-cancelar` | `btn`, `btn_secondary` | `href="inventory.html"` |
+| Finalizar Pedido | `button` | `botao-finalizar` | `botao-finalizar` | `btn`, `btn_action` | registra o pedido, limpa o carrinho → `checkout-complete.html` |
 
-Os itens da lista usam os mesmos seletores do carrinho (`item-carrinho`, `quantidade-item`, `nome-item`, `descricao-item`, `preco-item`), porém **sem** botão Remove.
+Os itens da lista usam os mesmos seletores do carrinho (`item-carrinho`, `quantidade-item`, `nome-item`, `descricao-item`, `preco-item`), porém **sem** botão Remover.
 
 ---
 
@@ -197,10 +199,70 @@ Os itens da lista usam os mesmos seletores do carrinho (`item-carrinho`, `quanti
 | Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `container-pedido-concluido` | `container-pedido-concluido` | `checkout_complete_container` | — |
-| Imagem de confirmação (✓) | `img` | `imagem-confirmacao` | `imagem-confirmacao` | `pony_express` | `src="img/pony-express.svg"`, `alt="Pony Express"` |
-| Título | `h2` | `titulo-conclusao` | `titulo-conclusao` | `complete-header` | "Thank you for your order!" |
-| Texto de confirmação | `div` | `texto-conclusao` | `texto-conclusao` | `complete-text` | "Your order has been dispatched..." |
-| Back Home | `a` | `botao-voltar-inicio` | `voltar-inicio` | `btn`, `btn_action`, `btn_complete` | `href="inventory.html"` |
+| Imagem de confirmação (✓) | `img` | `imagem-confirmacao` | `imagem-confirmacao` | `pony_express` | `src="img/pony-express.svg"`, `alt="Pedido confirmado"` |
+| Título | `h2` | `titulo-conclusao` | `titulo-conclusao` | `complete-header` | "Obrigado pelo seu pedido!" |
+| Texto de confirmação | `div` | `texto-conclusao` | `texto-conclusao` | `complete-text` | "Pedido #XXXXXXXX confirmado! Ele foi despachado..." |
+| Número do pedido | `strong` | `numero-pedido` | `numero-pedido` | — | "#XXXXXXXX" (8 dígitos, preenchido via JS) |
+| Gerar Nota Fiscal (PDF) | `a` | `botao-nota-fiscal` | `nota-fiscal` | `btn`, `btn_action`, `btn_complete` | `href="nota-fiscal.html"` |
+| Voltar à Loja | `a` | `botao-voltar-inicio` | `voltar-inicio` | `btn`, `btn_secondary`, `btn_complete` | `href="inventory.html"` |
+
+---
+
+## Sobre — `sobre.html`
+
+Página que explica o propósito do site (ambiente de testes para o TCC). Usa o cabeçalho/menu/rodapé globais.
+
+| Elemento | Tag | `id` | `data-test` | Classes | Texto |
+|---|---|---|---|---|---|
+| Container da página | `main` | `container-sobre` | `container-sobre` | `sobre_container` | — |
+| Card "Por que este site existe?" | `section` | — | `sobre-motivo` | `sobre_card` | explica o propósito (TCC) |
+| Card "O que dá para testar aqui" | `section` | — | `sobre-recursos` | `sobre_card` | lista de funcionalidades |
+| Card "Tecnologias" | `section` | — | `sobre-tecnologias` | `sobre_card` | stack e autoria |
+
+---
+
+## Nota Fiscal — `nota-fiscal.html`
+
+Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" abre o diálogo de impressão do navegador (Salvar como PDF).
+
+| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+|---|---|---|---|---|---|
+| Corpo da página | `body` | — | — | `nf_body` | fundo cinza (branco na impressão) |
+| Container da página | `main` | `container-nota-fiscal` | `container-nota-fiscal` | `nf_container` | — |
+| Pedido não encontrado | `p` | `pedido-nao-encontrado` | `pedido-nao-encontrado` | — | `hidden` quando há pedido; texto: "Nenhum pedido encontrado..." |
+| Documento da nota | `article` | `nota-fiscal` | `nota-fiscal` | `nf_documento` | `hidden` quando não há pedido |
+| Marca d'água | `div` | — | — | `nf_marca_dagua` | "SEM VALOR FISCAL" |
+| Cabeçalho da nota | `header` | — | — | `nf_cabecalho` | — |
+| Logo na nota | `div` | — | — | `nf_logo` | texto: "🧪 LojaQA" |
+| Dados do emitente | `div` | — | `dados-emitente` | `nf_empresa` | empresa fictícia + CNPJ 00.000.000/0001-00 |
+| Bloco de identificação | `div` | — | — | `nf_identificacao` | número + data de emissão |
+| Título "NOTA FISCAL" | `div` | — | — | `nf_titulo` | "NOTA FISCAL" |
+| Subtítulo | `div` | — | — | `nf_subtitulo` | "Documento fictício para prática de testes" |
+| Número da nota | `strong` | `numero-pedido` | `numero-pedido` | — | 8 dígitos |
+| Data de emissão | `span` | `data-emissao` | `data-emissao` | — | "DD/MM/AAAA HH:MM:SS" |
+| Bloco do destinatário | `section` | — | `dados-destinatario` | `nf_destinatario` | — |
+| Nome do cliente | `div` | `cliente-nome` | `cliente-nome` | — | nome + sobrenome do checkout |
+| CEP do cliente | `div` | `cliente-cep` | `cliente-cep` | — | "CEP: XXXXX" |
+| Tabela de itens | `table` | `tabela-itens` | `tabela-itens` | `nf_tabela` | colunas: Item, Descrição, Qtd, Valor |
+| Corpo da tabela | `tbody` | `itens-nota` | `itens-nota` | — | preenchido via JS |
+| Bloco de totais | `section` | — | `totais-nota` | `nf_totais` | — |
+| Subtotal | `div` | `nota-subtotal` | `nota-subtotal` | — | "Subtotal: R$ X,XX" |
+| Impostos | `div` | `nota-imposto` | `nota-imposto` | — | "Impostos (8%): R$ X,XX" |
+| Total | `div` | `nota-total` | `nota-total` | `nf_total` | "Total: R$ X,XX" |
+| Aviso legal | `p` | — | `aviso-nota` | `nf_aviso` | "Documento sem valor fiscal..." |
+| Ações (ocultas na impressão) | `div` | — | — | `nf_acoes`, `no-print` | — |
+| Voltar | `a` | `botao-voltar` | `botao-voltar` | `btn`, `btn_secondary` | `href="checkout-complete.html"` |
+| Baixar PDF | `button` | `botao-baixar-pdf` | `baixar-pdf` | `btn`, `btn_action` | chama `window.print()` |
+
+### Linha de item da nota (dinâmica — uma por item)
+
+| Elemento | Tag | `data-test` | Texto |
+|---|---|---|---|
+| Linha | `tr` | `linha-item` | — |
+| Número sequencial | `td` | `linha-numero` | 1, 2, 3... |
+| Descrição | `td` | `linha-descricao` | nome do produto |
+| Quantidade | `td` | `linha-quantidade` | "1" |
+| Valor | `td` | `linha-valor` | "R$ X,XX" |
 
 ---
 
@@ -213,22 +275,22 @@ Classes e atributos que **mudam durante a execução** — úteis para asserçõ
 | `open` | `#menu-lateral`, `#sobreposicao-menu` | menu lateral aberto |
 | `visible` | `#container-erro` | mensagem de erro exibida |
 | `input_error` | campos `.form_input` | campo com erro de validação (borda vermelha) |
-| `hidden` (atributo) | `#carrinho-vazio`, `#item-nao-encontrado`, wrappers do detalhe | elemento oculto condicionalmente |
+| `hidden` (atributo) | `#carrinho-vazio`, `#item-nao-encontrado`, `#nota-fiscal`, `#pedido-nao-encontrado`, wrappers do detalhe | elemento oculto condicionalmente |
 | `style="display:none"` ⇄ `inline-flex` | `#badge-carrinho` | badge oculto quando o carrinho está vazio |
-| `btn_inventory` ⇄ `btn_secondary` | botões Add/Remove | fora do carrinho ⇄ dentro do carrinho |
-| `disabled` (atributo) | `#botao-entrar` | durante o delay do `performance_glitch_user` |
+| `btn_inventory` ⇄ `btn_secondary` | botões Adicionar/Remover | fora do carrinho ⇄ dentro do carrinho |
+| `disabled` (atributo) | `#botao-entrar` | durante o delay do `usuario_lento` |
 
 ## Classes de botões (estáticas)
 
 | Classe | Estilo |
 |---|---|
-| `btn` | base de todos os botões |
-| `btn_action` | verde, destaque (Login, Checkout, Continue, Finish, Back Home) |
-| `btn_secondary` | borda vermelha (Cancel, Continue Shopping, Remove) |
-| `btn_inventory` | largura total (Add to cart) |
+| `btn` | base de todos os botões (formato pílula) |
+| `btn_action` | azul preenchido, destaque (Entrar, Finalizar Compra, Continuar, Finalizar Pedido, Gerar Nota Fiscal, Baixar PDF) |
+| `btn_secondary` | borda vermelha (Cancelar, Continuar Comprando, Remover, Voltar à Loja, Voltar) |
+| `btn_inventory` | largura total (Adicionar ao carrinho) |
 | `btn_small` | padding reduzido |
 | `btn_back` | botão de voltar (detalhe do produto) |
-| `btn_complete` | largura limitada (Back Home) |
+| `btn_complete` | largura limitada (botões da página de conclusão) |
 
 ---
 
@@ -238,32 +300,34 @@ Classes e atributos que **mudam durante a execução** — úteis para asserçõ
 
 | Contexto | Texto |
 |---|---|
-| Títulos de página (`#titulo-pagina`) | "Products", "Your Cart", "Checkout: Your Information", "Checkout: Overview", "Checkout: Complete!" |
-| Botões de carrinho | "Add to cart" ⇄ "Remove" |
-| Ações | "Login", "Continue Shopping", "Checkout", "Cancel", "Continue", "Finish", "Back Home", "← Back to products" |
-| Menu lateral | "All Items", "About", "Logout", "Reset App State" |
-| Conclusão | "Thank you for your order!" |
-| Estados vazios | "Seu carrinho está vazio.", "ITEM NOT FOUND — Sorry, this item does not exist." |
+| Títulos de página (`#titulo-pagina`) | "Produtos", "Seu Carrinho", "Pagamento: Seus Dados", "Pagamento: Resumo", "Pedido Concluído!", "Sobre a LojaQA" |
+| Banner de boas-vindas | "Bem-vindo à LojaQA!" |
+| Botões de carrinho | "Adicionar ao carrinho" ⇄ "Remover" |
+| Ações | "Entrar", "Continuar Comprando", "Finalizar Compra", "Cancelar", "Continuar", "Finalizar Pedido", "Voltar à Loja", "← Voltar aos produtos", "Gerar Nota Fiscal (PDF)", "Baixar PDF", "Voltar" |
+| Menu lateral | "Todos os Produtos", "Sobre", "Sair", "Resetar Aplicação" |
+| Conclusão | "Obrigado pelo seu pedido!" |
+| Nota fiscal | "NOTA FISCAL", "SEM VALOR FISCAL", "Destinatário" |
+| Estados vazios | "Seu carrinho está vazio.", "ITEM NÃO ENCONTRADO — Este produto não existe.", "Nenhum pedido encontrado. Finalize uma compra para gerar a nota fiscal." |
 
 ## Mensagens de erro (`#texto-erro`)
 
-### Login (prefixo "Epic sadface: ")
+### Login (prefixo "Ops! ")
 
 | Cenário | Mensagem |
 |---|---|
-| Usuário vazio | `Epic sadface: Username is required` |
-| Senha vazia | `Epic sadface: Password is required` |
-| Credenciais inválidas | `Epic sadface: Username and password do not match any user in this service` |
-| Usuário bloqueado | `Epic sadface: Sorry, this user has been locked out.` |
-| Acesso sem sessão | `Epic sadface: You can only access '/inventory.html' when you are logged in.` |
+| Usuário vazio | `Ops! O campo usuário é obrigatório` |
+| Senha vazia | `Ops! O campo senha é obrigatório` |
+| Credenciais inválidas | `Ops! Usuário e senha não conferem com nenhum usuário cadastrado` |
+| Usuário bloqueado | `Ops! Desculpe, este usuário foi bloqueado.` |
+| Acesso sem sessão | `Ops! Você precisa estar logado para acessar esta página.` |
 
-### Checkout (prefixo "Error: ")
+### Checkout (prefixo "Erro: ")
 
 | Cenário | Mensagem |
 |---|---|
-| Nome vazio | `Error: First Name is required` |
-| Sobrenome vazio | `Error: Last Name is required` |
-| CEP vazio | `Error: Postal Code is required` |
+| Nome vazio | `Erro: O nome é obrigatório` |
+| Sobrenome vazio | `Erro: O sobrenome é obrigatório` |
+| CEP vazio | `Erro: O CEP é obrigatório` |
 
 ---
 
@@ -276,28 +340,44 @@ Elementos `<template>` clonados pelo JavaScript para gerar o conteúdo dinâmico
 | `modelo-item-produto` | `inventory.html` | cards da lista de produtos |
 | `modelo-item-carrinho` | `cart.html` | linhas do carrinho |
 | `modelo-item-resumo` | `checkout-step-two.html` | linhas do resumo do pedido |
+| `modelo-linha-item` | `nota-fiscal.html` | linhas da tabela da nota fiscal |
 
 ---
 
 ## Slugs dos produtos
 
-Usados nos seletores dinâmicos dos botões de carrinho:
+Usados nos seletores dinâmicos dos botões de carrinho (acentos são removidos):
 
 | Produto | `<slug>` | `id` do card (URL) | Preço |
 |---|---|---|---|
-| Sauce Labs Backpack | `sauce-labs-backpack` | `?id=4` | $29.99 |
-| Sauce Labs Bike Light | `sauce-labs-bike-light` | `?id=0` | $9.99 |
-| Sauce Labs Bolt T-Shirt | `sauce-labs-bolt-t-shirt` | `?id=1` | $15.99 |
-| Sauce Labs Fleece Jacket | `sauce-labs-fleece-jacket` | `?id=5` | $49.99 |
-| Sauce Labs Onesie | `sauce-labs-onesie` | `?id=2` | $7.99 |
-| Test.allTheThings() T-Shirt (Red) | `test-allthethings-t-shirt-red` | `?id=3` | $15.99 |
+| Mochila do Testador | `mochila-do-testador` | `?id=4` | R$ 149,90 |
+| Lanterna de Bike LED | `lanterna-de-bike-led` | `?id=0` | R$ 49,90 |
+| Camiseta Caça-Bugs | `camiseta-caca-bugs` | `?id=1` | R$ 79,90 |
+| Jaqueta Fleece QA | `jaqueta-fleece-qa` | `?id=5` | R$ 249,90 |
+| Body do Testadorzinho | `body-do-testadorzinho` | `?id=2` | R$ 39,90 |
+| Camiseta Teste.Tudo() Salmão | `camiseta-teste-tudo-salmao` | `?id=3` | R$ 79,90 |
+| Caneca do Depurador | `caneca-do-depurador` | `?id=6` | R$ 34,90 |
+| Teclado Mecânico TesteMaster | `teclado-mecanico-testemaster` | `?id=7` | R$ 349,90 |
+| Mouse Sem Fio ClickCerto | `mouse-sem-fio-clickcerto` | `?id=8` | R$ 89,90 |
+| Fone Anti-Ruído FocoTotal | `fone-anti-ruido-focototal` | `?id=9` | R$ 199,90 |
+| Boné Automatize Tudo | `bone-automatize-tudo` | `?id=10` | R$ 59,90 |
+| Moletom Deploy na Sexta | `moletom-deploy-na-sexta` | `?id=11` | R$ 189,90 |
+| Garrafa Térmica CaféContínuo | `garrafa-termica-cafecontinuo` | `?id=12` | R$ 69,90 |
+| Pacote de Adesivos de Bugs | `pacote-de-adesivos-de-bugs` | `?id=13` | R$ 19,90 |
+| Caderno de Casos de Teste | `caderno-de-casos-de-teste` | `?id=14` | R$ 29,90 |
+| Luminária PixelPerfect | `luminaria-pixelperfect` | `?id=15` | R$ 119,90 |
+| Mousepad Gigante DevOps | `mousepad-gigante-devops` | `?id=16` | R$ 49,90 |
+| Webcam Full HD VisãoQA | `webcam-full-hd-visaoqa` | `?id=17` | R$ 159,90 |
+| Suporte de Notebook ErgoTeste | `suporte-de-notebook-ergoteste` | `?id=18` | R$ 99,90 |
+| Pelúcia do Bug | `pelucia-do-bug` | `?id=19` | R$ 44,90 |
+| Quebra-Cabeça 404 Peças | `quebra-cabeca-404-pecas` | `?id=20` | R$ 54,90 |
 
 **Exemplos completos do botão de carrinho:**
 
 | Estado | `id` | `data-test` | Texto | Classe extra |
 |---|---|---|---|---|
-| Fora do carrinho | `#botao-carrinho-sauce-labs-backpack` | `[data-test="adicionar-carrinho-sauce-labs-backpack"]` | "Add to cart" | `btn_inventory` |
-| No carrinho | `#botao-carrinho-sauce-labs-backpack` (não muda) | `[data-test="remover-sauce-labs-backpack"]` | "Remove" | `btn_secondary` |
+| Fora do carrinho | `#botao-carrinho-mochila-do-testador` | `[data-test="adicionar-carrinho-mochila-do-testador"]` | "Adicionar ao carrinho" | `btn_inventory` |
+| No carrinho | `#botao-carrinho-mochila-do-testador` (não muda) | `[data-test="remover-mochila-do-testador"]` | "Remover" | `btn_secondary` |
 
 ---
 
@@ -307,7 +387,7 @@ Chaves usadas pela aplicação — úteis para preparar estado sem passar pela U
 
 | Chave | Onde | Conteúdo |
 |---|---|---|
-| `session-username` | `sessionStorage` | username logado (ex.: `"standard_user"`) |
+| `session-username` | `sessionStorage` | username logado (ex.: `"usuario_padrao"`) |
 | `cart-contents` | `localStorage` | array JSON de ids de produtos (ex.: `[4,0]`) |
-| `checkout-info` | `sessionStorage` | JSON `{first, last, postal}` da etapa 1 |
-
+| `checkout-info` | `sessionStorage` | JSON `{first, last, postal}` da etapa 1 (removido ao finalizar) |
+| `ultimo-pedido` | `sessionStorage` | JSON do pedido finalizado: `{numero, data, hora, cliente, itens, subtotal, imposto, total}` — usado pela conclusão e pela nota fiscal |

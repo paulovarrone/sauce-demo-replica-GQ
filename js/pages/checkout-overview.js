@@ -23,13 +23,28 @@ items.forEach((p) => {
 
 const subtotal = items.reduce((sum, p) => sum + p.price, 0);
 const tax = Math.round(subtotal * TAX_RATE * 100) / 100;
+const total = Math.round((subtotal + tax) * 100) / 100;
 
-document.getElementById("valor-subtotal").textContent = "Item total: " + money(subtotal);
-document.getElementById("valor-imposto").textContent = "Tax: " + money(tax);
-document.getElementById("valor-total").textContent = "Total: " + money(subtotal + tax);
+document.getElementById("valor-subtotal").textContent = "Subtotal: " + money(subtotal);
+document.getElementById("valor-imposto").textContent = "Impostos (8%): " + money(tax);
+document.getElementById("valor-total").textContent = "Total: " + money(total);
 
 document.getElementById("botao-finalizar").addEventListener("click", () => {
-  Cart.clear();
+  // Registra o pedido para a página de conclusão e a nota fiscal
+  const info = JSON.parse(sessionStorage.getItem("checkout-info") || "{}");
+  const agora = new Date();
+  const pedido = {
+    numero: String(agora.getTime()).slice(-8),
+    data: agora.toLocaleDateString("pt-BR"),
+    hora: agora.toLocaleTimeString("pt-BR"),
+    cliente: info,
+    itens: items.map((p) => ({ id: p.id, nome: p.name, preco: p.price })),
+    subtotal: subtotal,
+    imposto: tax,
+    total: total
+  };
+  sessionStorage.setItem("ultimo-pedido", JSON.stringify(pedido));
   sessionStorage.removeItem("checkout-info");
+  Cart.clear();
   window.location.href = "checkout-complete.html";
 });
