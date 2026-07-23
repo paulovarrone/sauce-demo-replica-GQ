@@ -6,7 +6,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 - Todos os seletores são exibidos **prontos para uso**: `#id`, `.classe` e `[data-test="..."]` — basta copiar e colar no seu framework.
 - Todas as interações principais possuem `id` e `data-test`. Em geral compartilham o mesmo nome; as exceções estão indicadas.
 - Seletores marcados como **dinâmico** são gerados por produto ou mudam conforme o estado.
-- A coluna **Classes** lista as classes CSS do elemento, utilizáveis como seletor alternativo.
+- A coluna **`class`** lista as classes CSS do elemento, utilizáveis como seletor alternativo.
 
 ---
 
@@ -14,7 +14,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ### Cabeçalho
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Barra superior | `div` | — | — | `.primary_header` | — |
 | Agrupador menu + logo | `div` | — | — | `.header_label` | — |
@@ -28,7 +28,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ### Menu lateral
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Ação |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Ação |
 |---|---|---|---|---|---|
 | Container do menu | `nav` | `#menu-lateral` | `[data-test="menu-lateral"]` | `.bm-menu` (+ `.open` quando aberto) | — |
 | Botão fechar (×) | `button` | `#botao-fechar-menu` | `[data-test="botao-fechar-menu"]` | `.bm-cross-button` | `aria-label="Fechar Menu"` |
@@ -40,7 +40,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ### Rodapé
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Rodapé | `footer` | `#rodape` | `[data-test="rodape"]` | `.footer` | — |
 | Lista de redes sociais | `ul` | — | — | `.social` | — |
@@ -52,7 +52,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Login — `index.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `div` | — | — | `.login_container` | — |
 | Logo | `div` | — | — | `.login_logo` | texto: "🧪 LojaQA" |
@@ -73,7 +73,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Produtos — `inventory.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos |
 |---|---|---|---|---|---|
 | Banner de boas-vindas | `section` | `#banner-boas-vindas` | `[data-test="banner-boas-vindas"]` | `.hero_banner` | contém h1 "Bem-vindo à LojaQA!" |
 | Contador de produtos | `strong` | `#contador-produtos` | `[data-test="contador-produtos"]` | — | texto: "21" (preenchido via JS) |
@@ -92,7 +92,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ### Card de produto (dinâmico — um por produto)
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos |
 |---|---|---|---|---|---|
 | Card do produto | `div` | — | `[data-test="item-inventario"]` | `.inventory_item` | — |
 | Link da imagem | `a` | — | — | `.inventory_item_img`, `.link-item` | `href="inventory-item.html?id=N"` |
@@ -109,7 +109,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Detalhe do produto — `inventory-item.html?id=N`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#detalhes-produto` | `[data-test="detalhes-produto"]` | `.inventory_details` | — |
 | Voltar aos produtos | `a` | `#link-voltar-produtos` | `[data-test="voltar-produtos"]` | `.btn`, `.btn_small`, `.btn_back` | `href="inventory.html"`, texto: "← Voltar aos produtos" |
@@ -126,7 +126,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Carrinho — `cart.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#container-carrinho` | `[data-test="container-carrinho"]` | `.cart_contents_container` | — |
 | Rótulo "QTD" | `span` | — | `[data-test="rotulo-quantidade"]` | `.cart_quantity_label` | — |
@@ -139,7 +139,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ### Item do carrinho (dinâmico — um por item)
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Linha do item | `div` | — | `[data-test="item-carrinho"]` | `.cart_item` | — |
 | Quantidade | `div` | — | `[data-test="quantidade-item"]` | `.cart_quantity` | texto: "1" |
@@ -154,7 +154,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Checkout: dados — `checkout-step-one.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#container-checkout-dados` | `[data-test="container-checkout-dados"]` | `.checkout_container` | — |
 | Formulário | `form` | `#form-checkout` | `[data-test="form-checkout"]` | `.checkout_info` | `novalidate` |
@@ -171,7 +171,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ## Checkout: resumo — `checkout-step-two.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#container-checkout-resumo` | `[data-test="container-checkout-resumo"]` | `.checkout_container` | — |
 | Rótulo "QTD" | `span` | — | `[data-test="rotulo-quantidade"]` | `.cart_quantity_label` | — |
@@ -196,7 +196,7 @@ Os itens da lista usam os mesmos seletores do carrinho (`[data-test="item-carrin
 
 ## Pedido concluído — `checkout-complete.html`
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#container-pedido-concluido` | `[data-test="container-pedido-concluido"]` | `.checkout_complete_container` | — |
 | Imagem de confirmação (✓) | `img` | `#imagem-confirmacao` | `[data-test="imagem-confirmacao"]` | `.pony_express` | `src="img/pony-express.svg"`, `alt="Pedido confirmado"` |
@@ -212,7 +212,7 @@ Os itens da lista usam os mesmos seletores do carrinho (`[data-test="item-carrin
 
 Página que explica o propósito do site (ambiente de testes para o TCC). Usa o cabeçalho/menu/rodapé globais.
 
-| Elemento | Tag | `id` | `data-test` | Classes | Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#container-sobre` | `[data-test="container-sobre"]` | `.sobre_container` | — |
 | Card "Por que este site existe?" | `section` | — | `[data-test="sobre-motivo"]` | `.sobre_card` | explica o propósito (TCC) |
@@ -225,7 +225,7 @@ Página que explica o propósito do site (ambiente de testes para o TCC). Usa o 
 
 Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" abre o diálogo de impressão do navegador (Salvar como PDF).
 
-| Elemento | Tag | `id` | `data-test` | Classes | Atributos / Texto |
+| Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Corpo da página | `body` | — | — | `.nf_body` | fundo cinza (branco na impressão) |
 | Container da página | `main` | `#container-nota-fiscal` | `[data-test="container-nota-fiscal"]` | `.nf_container` | — |
@@ -266,11 +266,11 @@ Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" abre o di
 
 ---
 
-## Classes de estado (dinâmicas)
+## `class` de estado (dinâmicas)
 
-Classes e atributos que **mudam durante a execução** — úteis para asserções de visibilidade/estado:
+Valores de `class` e atributos que **mudam durante a execução** — úteis para asserções de visibilidade/estado:
 
-| Classe / Atributo | Aplicada em | Significado |
+| `class` / Atributo | Aplicada em | Significado |
 |---|---|---|
 | `.open` | `#menu-lateral`, `#sobreposicao-menu` | menu lateral aberto |
 | `.visible` | `#container-erro` | mensagem de erro exibida |
@@ -280,9 +280,9 @@ Classes e atributos que **mudam durante a execução** — úteis para asserçõ
 | `.btn_inventory` ⇄ `.btn_secondary` | botões Adicionar/Remover | fora do carrinho ⇄ dentro do carrinho |
 | `[disabled]` | `#botao-entrar` | durante o delay do `usuario_lento` |
 
-## Classes de botões (estáticas)
+## `class` de botões (estáticas)
 
-| Classe | Estilo |
+| `class` | Estilo |
 |---|---|
 | `.btn` | base de todos os botões (formato pílula) |
 | `.btn_action` | azul preenchido, destaque (Entrar, Finalizar Compra, Continuar, Finalizar Pedido, Gerar Nota Fiscal, Baixar PDF) |
@@ -374,7 +374,7 @@ Usados nos seletores dinâmicos dos botões de carrinho (acentos são removidos)
 
 **Exemplos completos do botão de carrinho:**
 
-| Estado | `id` | `data-test` | Texto | Classe extra |
+| Estado | `id` | `data-test` | Texto | `class` extra |
 |---|---|---|---|---|
 | Fora do carrinho | `#botao-carrinho-mochila-do-testador` | `[data-test="adicionar-carrinho-mochila-do-testador"]` | "Adicionar ao carrinho" | `.btn_inventory` |
 | No carrinho | `#botao-carrinho-mochila-do-testador` (não muda) | `[data-test="remover-mochila-do-testador"]` | "Remover" | `.btn_secondary` |
