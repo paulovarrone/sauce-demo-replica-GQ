@@ -26,8 +26,8 @@ Depois acesse `http://localhost:8000`.
 | `usuario_bloqueado` | Bloqueado — exibe erro no login |
 | `usuario_problema` | Todas as imagens de produto aparecem quebradas |
 | `usuario_lento` | Login com atraso artificial de ~5s |
-| `usuario_erro` | Login normal (reservado para cenários de erro) |
-| `usuario_visual` | Login normal (reservado para testes visuais) |
+| `usuario_erro` | Ações falham: ordenação dispara `alert` de erro, produtos de id ímpar não podem ser adicionados ao carrinho e "Finalizar Pedido" falha |
+| `usuario_visual` | Defeitos visuais propositais: imagens tortas, badge do carrinho deslocado, botões desalinhados, preços em vermelho e alguns preços errados na vitrine |
 
 **Senha para todos:** `senha_teste_123`
 

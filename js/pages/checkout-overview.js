@@ -30,6 +30,12 @@ document.getElementById("valor-imposto").textContent = "Impostos (8%): " + money
 document.getElementById("valor-total").textContent = "Total: " + money(total);
 
 document.getElementById("botao-finalizar").addEventListener("click", () => {
+  // usuario_erro: finalizar o pedido falha (defeito proposital)
+  if (Session.user === "usuario_erro") {
+    alert("Ops! Não foi possível finalizar o pedido. Defeito proposital para testes.");
+    return;
+  }
+
   // Registra o pedido para a página de conclusão e a nota fiscal
   const info = JSON.parse(sessionStorage.getItem("checkout-info") || "{}");
   const agora = new Date();

@@ -279,6 +279,7 @@ Valores de `class` e atributos que **mudam durante a execução** — úteis par
 | `style="display:none"` ⇄ `inline-flex` | `#badge-carrinho` | badge oculto quando o carrinho está vazio |
 | `.btn_inventory` ⇄ `.btn_secondary` | botões Adicionar/Remover | fora do carrinho ⇄ dentro do carrinho |
 | `[disabled]` | `#botao-entrar` | durante o delay do `usuario_lento` |
+| `.bugs-visuais` | `body` | adicionada quando o usuário logado é `usuario_visual` — ativa os defeitos visuais propositais |
 
 ## `class` de botões (estáticas)
 
@@ -328,6 +329,25 @@ Valores de `class` e atributos que **mudam durante a execução** — úteis par
 | Nome vazio | `Erro: O nome é obrigatório` |
 | Sobrenome vazio | `Erro: O sobrenome é obrigatório` |
 | CEP vazio | `Erro: O CEP é obrigatório` |
+
+---
+
+## Comportamentos especiais por usuário
+
+Todos usam a senha `senha_teste_123`.
+
+| Usuário | Comportamento | Onde observar |
+|---|---|---|
+| `usuario_padrao` | fluxo normal, sem defeitos | — |
+| `usuario_bloqueado` | login recusado | `#texto-erro`: "Ops! Desculpe, este usuário foi bloqueado." |
+| `usuario_lento` | login com atraso de ~5s | `#botao-entrar` fica `[disabled]` com `value="Carregando..."` |
+| `usuario_problema` | todas as imagens de produto quebradas | `img` com `src="img/broken.svg"` na vitrine e no detalhe |
+| `usuario_erro` | ações falham de propósito | 1) trocar `#seletor-ordenacao` dispara `alert` e volta para `az`; 2) clicar em Adicionar de produtos com **id ímpar** não tem efeito (badge não muda, `console.error` emitido); 3) `#botao-finalizar` dispara `alert` e o pedido não é concluído |
+| `usuario_visual` | defeitos visuais propositais | `body` recebe `.bugs-visuais`: logo deslocado, `#badge-carrinho` no canto errado, imagens de cards `:nth-child(3n)` tortas, botões de cards `:nth-child(4n)` desalinhados, preços em vermelho itálico, e **preços errados na vitrine** (+R$ 10,00 nos produtos de id múltiplo de 5: ids 0, 5, 10, 15 e 20 — carrinho e checkout mostram o preço correto) |
+
+**Textos dos `alert` do `usuario_erro`** (para testes de diálogo):
+- Ordenação: `Ops! A ordenação está quebrada para este usuário. Defeito proposital para testes.`
+- Finalizar: `Ops! Não foi possível finalizar o pedido. Defeito proposital para testes.`
 
 ---
 

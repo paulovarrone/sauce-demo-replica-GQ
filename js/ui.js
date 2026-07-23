@@ -3,6 +3,11 @@
 // conecta eventos e atualiza texto/classes/atributos.
 
 function initHeader() {
+  // usuario_visual: ativa os defeitos visuais propositais (regras .bugs-visuais no CSS)
+  if (Session.user === "usuario_visual") {
+    document.body.classList.add("bugs-visuais");
+  }
+
   const burgerBtn = document.getElementById("botao-menu");
   const crossBtn = document.getElementById("botao-fechar-menu");
   const overlay = document.getElementById("sobreposicao-menu");
@@ -68,6 +73,11 @@ function updateCartButton(btn, product) {
 function bindCartButton(btn, product, onChange) {
   updateCartButton(btn, product);
   btn.addEventListener("click", () => {
+    // usuario_erro: adicionar falha para produtos de id ímpar (defeito proposital)
+    if (Session.user === "usuario_erro" && !Cart.has(product.id) && product.id % 2 === 1) {
+      console.error("LojaQA: falha proposital — não foi possível adicionar o produto " + product.id);
+      return;
+    }
     if (Cart.has(product.id)) Cart.remove(product.id); else Cart.add(product.id);
     updateCartBadge();
     updateCartButton(btn, product);

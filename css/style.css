@@ -515,6 +515,17 @@ main { width: 100%; margin-bottom: 40px; }
 }
 .nf_acoes .btn { min-width: 160px; }
 
+/* ===== Defeitos visuais propositais (usuario_visual) =====
+   A classe .bugs-visuais é adicionada ao <body> pelo ui.js quando o
+   usuário logado é "usuario_visual". Útil para testes de regressão visual. */
+.bugs-visuais .app_logo { margin-left: 48px; }
+.bugs-visuais .shopping_cart_badge { top: auto; bottom: -8px; right: auto; left: -12px; }
+.bugs-visuais .inventory_item:nth-child(3n) .inventory_item_img img { transform: rotate(7deg); }
+.bugs-visuais .inventory_item:nth-child(4n) .pricebar .btn { transform: rotate(-4deg) translateY(5px); }
+.bugs-visuais .inventory_item_price { color: var(--vermelho); font-style: italic; }
+.bugs-visuais .title { letter-spacing: 5px; }
+.bugs-visuais .cart_quantity { border-radius: 50%; transform: rotate(12deg); }
+
 /* ===== Impressão (Salvar como PDF) ===== */
 @media print {
   .no-print { display: none !important; }

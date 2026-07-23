@@ -16,6 +16,7 @@ const sorters = {
 
 function renderList() {
   const isProblemUser = Session.user === "usuario_problema";
+  const isVisualUser = Session.user === "usuario_visual";
   const products = [...PRODUCTS].sort(sorters[sortSelect.value]);
 
   listEl.replaceChildren();
@@ -29,9 +30,13 @@ function renderList() {
     img.src = isProblemUser ? "img/broken.svg" : p.img;
     img.alt = p.name;
 
+    // usuario_visual: preço exibido errado (+R$ 10) para ids múltiplos de 5,
+    // apenas na vitrine — carrinho e checkout usam o preço correto
+    const precoExibido = isVisualUser && p.id % 5 === 0 ? p.price + 10 : p.price;
+
     node.querySelector('[data-test="nome-item"]').textContent = p.name;
     node.querySelector('[data-test="descricao-item"]').textContent = p.desc;
-    node.querySelector('[data-test="preco-item"]').textContent = money(p.price);
+    node.querySelector('[data-test="preco-item"]').textContent = money(precoExibido);
 
     bindCartButton(node.querySelector("button"), p);
     listEl.appendChild(node);
@@ -42,6 +47,14 @@ function renderList() {
 const contador = document.getElementById("contador-produtos");
 if (contador) contador.textContent = PRODUCTS.length;
 
-sortSelect.addEventListener("change", renderList);
+sortSelect.addEventListener("change", () => {
+  // usuario_erro: a ordenação está quebrada (defeito proposital)
+  if (Session.user === "usuario_erro") {
+    alert("Ops! A ordenação está quebrada para este usuário. Defeito proposital para testes.");
+    sortSelect.value = "az";
+    return;
+  }
+  renderList();
+});
 window.onAppReset = renderList;
 renderList();
