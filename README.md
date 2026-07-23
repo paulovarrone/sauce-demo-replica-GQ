@@ -35,9 +35,11 @@ Depois acesse `http://localhost:8000`.
 
 **21 produtos** fictícios com tema de QA/tecnologia, de R$ 19,90 a R$ 349,90 — mochila, camisetas, caneca, teclado, mouse, fone, boné, moletom, garrafa, adesivos, caderno, luminária, mousepad, webcam, suporte de notebook, pelúcia do bug, quebra-cabeça de 404 peças e mais. A lista completa com slugs e preços está em [SELETORES.md](SELETORES.md).
 
+```
 ✅ 75 ids presentes como #id
 ✅ 96 data-test presentes como [data-test="..."]
 ✅ 89 classes presentes como .classe
+```
 
 ## Arquitetura
 
