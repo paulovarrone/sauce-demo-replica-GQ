@@ -3,7 +3,7 @@ titulo: Mapa de Seletores da LojaQA
 projeto: LojaQA — loja virtual fictícia para prática de automação de testes
 idioma: pt-BR
 finalidade: Base de conhecimento (RAG) com todos os seletores, textos, comportamentos e dados de teste da aplicação LojaQA
-frameworks_alvo: Selenium, Playwright, Cypress, Robot Framework
+frameworks_alvo: Cypress
 convencao_seletores: cada elemento tem id (usar como "#id"), data-test (usar como "[data-test=...]") e classes CSS (usar como ".classe")
 versao_produtos: 21 produtos
 ---
