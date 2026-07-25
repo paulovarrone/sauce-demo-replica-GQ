@@ -105,7 +105,7 @@ Página principal da loja, exibida logo após o login bem-sucedido.
 | Descrição | `div` | — | `[data-test="descricao-item"]` | `.inventory_item_desc` | — |
 | Barra de preço | `div` | — | — | `.pricebar` | — |
 | Preço | `div` | — | `[data-test="preco-item"]` | `.inventory_item_price` | formato `R$ X,XX` |
-| Botão Adicionar/Remover | `button` | `#botao-carrinho-<slug>` estável | `[data-test="adicionar-carrinho-<slug>"]` ⇄ `[data-test="remover-<slug>"]` dinâmico | `.btn`, `.btn_small` + `.btn_inventory` (fora) ⇄ `.btn_secondary` (no carrinho) | texto: "Adicionar ao carrinho" ⇄ "Remover" |
+| Botão Adicionar/Remover | `button` | um por produto, estável (ver [Botões de carrinho por produto](#botões-de-carrinho-por-produto)) | alterna entre `adicionar-carrinho-…` e `remover-…` do produto | `.btn`, `.btn_small` + `.btn_inventory` (fora) ⇄ `.btn_secondary` (no carrinho) | texto: "Adicionar ao carrinho" ⇄ "Remover" |
 
 > **Usuário `usuario_problema`:** todas as imagens carregam `img/broken.svg` em vez da imagem real.
 
@@ -123,7 +123,7 @@ Página principal da loja, exibida logo após o login bem-sucedido.
 | Nome do produto | `div` | — | `[data-test="nome-item"]` | `.inventory_details_name` | — |
 | Descrição | `div` | — | `[data-test="descricao-item"]` | `.inventory_item_desc` | — |
 | Preço | `div` | — | `[data-test="preco-item"]` | `.inventory_details_price` | formato `R$ X,XX` |
-| Botão Adicionar/Remover | `button` | `#botao-carrinho` estável | `[data-test="adicionar-carrinho-<slug>"]` ⇄ `[data-test="remover-<slug>"]` | `.btn`, `.btn_small` + `.btn_inventory` ⇄ `.btn_secondary` | texto: "Adicionar ao carrinho" ⇄ "Remover" |
+| Botão Adicionar/Remover | `button` | `#botao-carrinho` (fixo — só há um produto na tela) | do produto aberto: alterna entre `adicionar-carrinho-…` e `remover-…` (ver [Botões de carrinho por produto](#botões-de-carrinho-por-produto)) | `.btn`, `.btn_small` + `.btn_inventory` ⇄ `.btn_secondary` | texto: "Adicionar ao carrinho" ⇄ "Remover" |
 | Item não encontrado | `p` | `#item-nao-encontrado` | `[data-test="item-nao-encontrado"]` | — | `hidden` quando há produto; texto: "ITEM NÃO ENCONTRADO — Este produto não existe." |
 
 ---
@@ -152,7 +152,7 @@ Página principal da loja, exibida logo após o login bem-sucedido.
 | Descrição | `div` | — | `[data-test="descricao-item"]` | `.inventory_item_desc` | — |
 | Barra de preço | `div` | — | — | `.item_pricebar` | — |
 | Preço | `div` | — | `[data-test="preco-item"]` | `.inventory_item_price` | formato `R$ X,XX` |
-| Botão Remover | `button` | `#botao-carrinho-<slug>` | `[data-test="remover-<slug>"]` | `.btn`, `.btn_small`, `.btn_secondary` | texto: "Remover" |
+| Botão Remover | `button` | um por produto (ver [Botões de carrinho por produto](#botões-de-carrinho-por-produto)) | `remover-…` do produto, ex.: `[data-test="remover-caneca-do-depurador"]` | `.btn`, `.btn_small`, `.btn_secondary` | texto: "Remover" |
 
 ---
 
@@ -227,7 +227,7 @@ Página que explica o propósito do site (ambiente de testes para o TCC). Usa o 
 
 ## Nota Fiscal — `nota-fiscal.html`
 
-Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" abre o diálogo de impressão do navegador (Salvar como PDF).
+Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" gera o arquivo e baixa direto, sem diálogo: o download é `nota-fiscal-<numero-do-pedido>.pdf`.
 
 | Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
@@ -256,7 +256,7 @@ Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" abre o di
 | Aviso legal | `p` | — | `[data-test="aviso-nota"]` | `.nf_aviso` | "Documento sem valor fiscal..." |
 | Ações (ocultas na impressão) | `div` | — | — | `.nf_acoes`, `.no-print` | — |
 | Voltar | `a` | `#botao-voltar` | `[data-test="botao-voltar"]` | `.btn`, `.btn_secondary` | `href="checkout-complete.html"` |
-| Baixar PDF | `button` | `#botao-baixar-pdf` | `[data-test="baixar-pdf"]` | `.btn`, `.btn_action` | chama `window.print()` |
+| Baixar PDF | `button` | `#botao-baixar-pdf` | `[data-test="baixar-pdf"]` | `.btn`, `.btn_action` | baixa `nota-fiscal-<numero>.pdf` direto (sem diálogo) |
 
 ### Linha de item da nota (dinâmica — uma por item)
 
@@ -368,41 +368,40 @@ Elementos `<template>` clonados pelo JavaScript para gerar o conteúdo dinâmico
 
 ---
 
-## Slugs dos produtos
+## Botões de carrinho por produto
 
-Usados nos seletores dinâmicos dos botões de carrinho (acentos são removidos):
+Seletores prontos dos 21 produtos. O `id` do botão é estável; o `data-test` alterna entre adicionar e remover conforme o produto entra ou sai do carrinho.
 
-| Produto | `<slug>` | `id` do card (URL) | Preço |
-|---|---|---|---|
-| Mochila do Testador | `mochila-do-testador` | `?id=4` | R$ 149,90 |
-| Lanterna de Bike LED | `lanterna-de-bike-led` | `?id=0` | R$ 49,90 |
-| Camiseta Caça-Bugs | `camiseta-caca-bugs` | `?id=1` | R$ 79,90 |
-| Jaqueta Fleece QA | `jaqueta-fleece-qa` | `?id=5` | R$ 249,90 |
-| Body do Testadorzinho | `body-do-testadorzinho` | `?id=2` | R$ 39,90 |
-| Camiseta Teste.Tudo() Salmão | `camiseta-teste-tudo-salmao` | `?id=3` | R$ 79,90 |
-| Caneca do Depurador | `caneca-do-depurador` | `?id=6` | R$ 34,90 |
-| Teclado Mecânico TesteMaster | `teclado-mecanico-testemaster` | `?id=7` | R$ 349,90 |
-| Mouse Sem Fio ClickCerto | `mouse-sem-fio-clickcerto` | `?id=8` | R$ 89,90 |
-| Fone Anti-Ruído FocoTotal | `fone-anti-ruido-focototal` | `?id=9` | R$ 199,90 |
-| Boné Automatize Tudo | `bone-automatize-tudo` | `?id=10` | R$ 59,90 |
-| Moletom Deploy na Sexta | `moletom-deploy-na-sexta` | `?id=11` | R$ 189,90 |
-| Garrafa Térmica CaféContínuo | `garrafa-termica-cafecontinuo` | `?id=12` | R$ 69,90 |
-| Pacote de Adesivos de Bugs | `pacote-de-adesivos-de-bugs` | `?id=13` | R$ 19,90 |
-| Caderno de Casos de Teste | `caderno-de-casos-de-teste` | `?id=14` | R$ 29,90 |
-| Luminária PixelPerfect | `luminaria-pixelperfect` | `?id=15` | R$ 119,90 |
-| Mousepad Gigante DevOps | `mousepad-gigante-devops` | `?id=16` | R$ 49,90 |
-| Webcam Full HD VisãoQA | `webcam-full-hd-visaoqa` | `?id=17` | R$ 159,90 |
-| Suporte de Notebook ErgoTeste | `suporte-de-notebook-ergoteste` | `?id=18` | R$ 99,90 |
-| Pelúcia do Bug | `pelucia-do-bug` | `?id=19` | R$ 44,90 |
-| Quebra-Cabeça 404 Peças | `quebra-cabeca-404-pecas` | `?id=20` | R$ 54,90 |
+| Produto | `data-test` para adicionar | `data-test` para remover | `id` do botão | Detalhe do produto | Preço |
+|---|---|---|---|---|---|
+| Mochila do Testador | `[data-test="adicionar-carrinho-mochila-do-testador"]` | `[data-test="remover-mochila-do-testador"]` | `#botao-carrinho-mochila-do-testador` | `inventory-item.html?id=4` | R$ 149,90 |
+| Lanterna de Bike LED | `[data-test="adicionar-carrinho-lanterna-de-bike-led"]` | `[data-test="remover-lanterna-de-bike-led"]` | `#botao-carrinho-lanterna-de-bike-led` | `inventory-item.html?id=0` | R$ 49,90 |
+| Camiseta Caça-Bugs | `[data-test="adicionar-carrinho-camiseta-caca-bugs"]` | `[data-test="remover-camiseta-caca-bugs"]` | `#botao-carrinho-camiseta-caca-bugs` | `inventory-item.html?id=1` | R$ 79,90 |
+| Jaqueta Fleece QA | `[data-test="adicionar-carrinho-jaqueta-fleece-qa"]` | `[data-test="remover-jaqueta-fleece-qa"]` | `#botao-carrinho-jaqueta-fleece-qa` | `inventory-item.html?id=5` | R$ 249,90 |
+| Body do Testadorzinho | `[data-test="adicionar-carrinho-body-do-testadorzinho"]` | `[data-test="remover-body-do-testadorzinho"]` | `#botao-carrinho-body-do-testadorzinho` | `inventory-item.html?id=2` | R$ 39,90 |
+| Camiseta Teste.Tudo() Salmão | `[data-test="adicionar-carrinho-camiseta-teste-tudo-salmao"]` | `[data-test="remover-camiseta-teste-tudo-salmao"]` | `#botao-carrinho-camiseta-teste-tudo-salmao` | `inventory-item.html?id=3` | R$ 79,90 |
+| Caneca do Depurador | `[data-test="adicionar-carrinho-caneca-do-depurador"]` | `[data-test="remover-caneca-do-depurador"]` | `#botao-carrinho-caneca-do-depurador` | `inventory-item.html?id=6` | R$ 34,90 |
+| Teclado Mecânico TesteMaster | `[data-test="adicionar-carrinho-teclado-mecanico-testemaster"]` | `[data-test="remover-teclado-mecanico-testemaster"]` | `#botao-carrinho-teclado-mecanico-testemaster` | `inventory-item.html?id=7` | R$ 349,90 |
+| Mouse Sem Fio ClickCerto | `[data-test="adicionar-carrinho-mouse-sem-fio-clickcerto"]` | `[data-test="remover-mouse-sem-fio-clickcerto"]` | `#botao-carrinho-mouse-sem-fio-clickcerto` | `inventory-item.html?id=8` | R$ 89,90 |
+| Fone Anti-Ruído FocoTotal | `[data-test="adicionar-carrinho-fone-anti-ruido-focototal"]` | `[data-test="remover-fone-anti-ruido-focototal"]` | `#botao-carrinho-fone-anti-ruido-focototal` | `inventory-item.html?id=9` | R$ 199,90 |
+| Boné Automatize Tudo | `[data-test="adicionar-carrinho-bone-automatize-tudo"]` | `[data-test="remover-bone-automatize-tudo"]` | `#botao-carrinho-bone-automatize-tudo` | `inventory-item.html?id=10` | R$ 59,90 |
+| Moletom Deploy na Sexta | `[data-test="adicionar-carrinho-moletom-deploy-na-sexta"]` | `[data-test="remover-moletom-deploy-na-sexta"]` | `#botao-carrinho-moletom-deploy-na-sexta` | `inventory-item.html?id=11` | R$ 189,90 |
+| Garrafa Térmica CaféContínuo | `[data-test="adicionar-carrinho-garrafa-termica-cafecontinuo"]` | `[data-test="remover-garrafa-termica-cafecontinuo"]` | `#botao-carrinho-garrafa-termica-cafecontinuo` | `inventory-item.html?id=12` | R$ 69,90 |
+| Pacote de Adesivos de Bugs | `[data-test="adicionar-carrinho-pacote-de-adesivos-de-bugs"]` | `[data-test="remover-pacote-de-adesivos-de-bugs"]` | `#botao-carrinho-pacote-de-adesivos-de-bugs` | `inventory-item.html?id=13` | R$ 19,90 |
+| Caderno de Casos de Teste | `[data-test="adicionar-carrinho-caderno-de-casos-de-teste"]` | `[data-test="remover-caderno-de-casos-de-teste"]` | `#botao-carrinho-caderno-de-casos-de-teste` | `inventory-item.html?id=14` | R$ 29,90 |
+| Luminária PixelPerfect | `[data-test="adicionar-carrinho-luminaria-pixelperfect"]` | `[data-test="remover-luminaria-pixelperfect"]` | `#botao-carrinho-luminaria-pixelperfect` | `inventory-item.html?id=15` | R$ 119,90 |
+| Mousepad Gigante DevOps | `[data-test="adicionar-carrinho-mousepad-gigante-devops"]` | `[data-test="remover-mousepad-gigante-devops"]` | `#botao-carrinho-mousepad-gigante-devops` | `inventory-item.html?id=16` | R$ 49,90 |
+| Webcam Full HD VisãoQA | `[data-test="adicionar-carrinho-webcam-full-hd-visaoqa"]` | `[data-test="remover-webcam-full-hd-visaoqa"]` | `#botao-carrinho-webcam-full-hd-visaoqa` | `inventory-item.html?id=17` | R$ 159,90 |
+| Suporte de Notebook ErgoTeste | `[data-test="adicionar-carrinho-suporte-de-notebook-ergoteste"]` | `[data-test="remover-suporte-de-notebook-ergoteste"]` | `#botao-carrinho-suporte-de-notebook-ergoteste` | `inventory-item.html?id=18` | R$ 99,90 |
+| Pelúcia do Bug | `[data-test="adicionar-carrinho-pelucia-do-bug"]` | `[data-test="remover-pelucia-do-bug"]` | `#botao-carrinho-pelucia-do-bug` | `inventory-item.html?id=19` | R$ 44,90 |
+| Quebra-Cabeça 404 Peças | `[data-test="adicionar-carrinho-quebra-cabeca-404-pecas"]` | `[data-test="remover-quebra-cabeca-404-pecas"]` | `#botao-carrinho-quebra-cabeca-404-pecas` | `inventory-item.html?id=20` | R$ 54,90 |
 
-**Exemplos completos do botão de carrinho:**
+**Estados do botão** (exemplo com a Mochila do Testador):
 
 | Estado | `id` | `data-test` | Texto | `class` extra |
 |---|---|---|---|---|
 | Fora do carrinho | `#botao-carrinho-mochila-do-testador` | `[data-test="adicionar-carrinho-mochila-do-testador"]` | "Adicionar ao carrinho" | `.btn_inventory` |
 | No carrinho | `#botao-carrinho-mochila-do-testador` (não muda) | `[data-test="remover-mochila-do-testador"]` | "Remover" | `.btn_secondary` |
-
 ---
 
 ## Armazenamento (setup/teardown de testes)

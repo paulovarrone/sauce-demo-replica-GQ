@@ -16,7 +16,7 @@ Como interpretar os seletores em qualquer seção deste documento:
 - Um seletor iniciado por `#` é um seletor de **id** (ex.: `#botao-entrar`).
 - Um seletor no formato `[data-test="..."]` é um seletor de **atributo data-test** (ex.: `[data-test="botao-entrar"]`).
 - Um seletor iniciado por `.` é um seletor de **classe CSS** (ex.: `.btn_action`).
-- Seletores "dinâmicos" contêm um `<slug>` que varia por produto (ver a seção "Slugs e dados dos produtos da LojaQA").
+- Os botões de carrinho têm um seletor próprio por produto, derivado do nome do produto. A lista completa e pronta para copiar está na seção "Seletores dos botões de carrinho, por produto, na LojaQA".
 
 ---
 
@@ -130,7 +130,7 @@ Cada produto é exibido em um card (repetido para os 21 produtos). Dentro de cad
 - **Descrição do produto:** seletor `[data-test="descricao-item"]`, classe `.inventory_item_desc`.
 - **Preço do produto:** seletor `[data-test="preco-item"]`, classe `.inventory_item_price`. Formato `R$ X,XX`.
 - **Imagem do produto:** dentro de um `<a>` com classes `.inventory_item_img` e `.link-item`; o atributo `alt` da imagem é o nome do produto.
-- **Botão Adicionar ao carrinho / Remover** (o mesmo botão alterna conforme o estado): id estável `#botao-carrinho-<slug>` (não muda) e data-test dinâmico `[data-test="adicionar-carrinho-<slug>"]` quando fora do carrinho e `[data-test="remover-<slug>"]` quando já está no carrinho. Fora do carrinho: texto "Adicionar ao carrinho", classes `.btn .btn_small .btn_inventory`. No carrinho: texto "Remover", classes `.btn .btn_small .btn_secondary`. Substitua `<slug>` pelo slug do produto (ver seção "Slugs e dados dos produtos da LojaQA"). Exemplo: para a Mochila do Testador, o botão é `#botao-carrinho-mochila-do-testador`, e o data-test é `[data-test="adicionar-carrinho-mochila-do-testador"]` (ou `[data-test="remover-mochila-do-testador"]` quando já no carrinho).
+- **Botão Adicionar ao carrinho / Remover** (o mesmo botão alterna conforme o estado): cada produto tem o seu, com `id` e `data-test` próprios — a lista completa está na seção "Seletores dos botões de carrinho, por produto, na LojaQA". O `id` é estável e não muda; o `data-test` alterna entre adicionar e remover. Fora do carrinho: texto "Adicionar ao carrinho", classes `.btn .btn_small .btn_inventory`. No carrinho: texto "Remover", classes `.btn .btn_small .btn_secondary`. Exemplo: para a Mochila do Testador, o botão é `#botao-carrinho-mochila-do-testador`, e o data-test é `[data-test="adicionar-carrinho-mochila-do-testador"]` (ou `[data-test="remover-mochila-do-testador"]` quando já no carrinho).
 
 Observação de comportamento: com o usuário `usuario_problema`, todas as imagens dos cards carregam `img/broken.svg` (imagem quebrada) em vez da imagem real.
 
@@ -148,7 +148,7 @@ Elementos da página de Detalhe do Produto da LojaQA:
 - **Nome do produto:** seletor `[data-test="nome-item"]`, classe `.inventory_details_name`.
 - **Descrição do produto:** seletor `[data-test="descricao-item"]`, classe `.inventory_item_desc`.
 - **Preço do produto:** seletor `[data-test="preco-item"]`, classe `.inventory_details_price`. Formato `R$ X,XX`.
-- **Botão Adicionar ao carrinho / Remover:** id estável `#botao-carrinho` e data-test dinâmico `[data-test="adicionar-carrinho-<slug>"]` ⇄ `[data-test="remover-<slug>"]`. Texto "Adicionar ao carrinho" ⇄ "Remover".
+- **Botão Adicionar ao carrinho / Remover:** nesta página o id é fixo `#botao-carrinho` (só existe um produto na tela), e o data-test é o do produto aberto — `[data-test="adicionar-carrinho-..."]` ⇄ `[data-test="remover-..."]`, conforme a lista da seção "Seletores dos botões de carrinho, por produto, na LojaQA". Texto "Adicionar ao carrinho" ⇄ "Remover".
 - **Mensagem "item não encontrado":** seletores `#item-nao-encontrado`, `[data-test="item-nao-encontrado"]`. Fica oculta (atributo `hidden`) quando o produto existe; aparece com o texto "ITEM NÃO ENCONTRADO — Este produto não existe." quando o id da URL é inválido.
 
 ---
@@ -175,7 +175,7 @@ Cada produto no carrinho aparece como uma linha com:
 - **Nome do item (link):** seletor `[data-test="nome-item"]`, leva ao detalhe do produto.
 - **Descrição do item:** seletor `[data-test="descricao-item"]`.
 - **Preço do item:** seletor `[data-test="preco-item"]`, formato `R$ X,XX`.
-- **Botão Remover:** id `#botao-carrinho-<slug>`, data-test `[data-test="remover-<slug>"]`, texto "Remover", classes `.btn .btn_small .btn_secondary`.
+- **Botão Remover:** um por produto no carrinho — `[data-test="remover-..."]` e id `#botao-carrinho-...` do produto correspondente (lista completa na seção "Seletores dos botões de carrinho, por produto, na LojaQA"). Texto "Remover", classes `.btn .btn_small .btn_secondary`. Exemplo: `[data-test="remover-caneca-do-depurador"]`.
 
 ---
 
@@ -238,7 +238,7 @@ Elementos da página de Pedido Concluído da LojaQA:
 
 ## Página de Nota Fiscal da LojaQA (nota-fiscal.html)
 
-A página de Nota Fiscal (`nota-fiscal.html`) exibe um documento fictício de nota fiscal do último pedido e tem um botão "Baixar PDF" que abre o diálogo de impressão do navegador (para salvar como PDF). Não possui o cabeçalho global. Só mostra dados se houver um pedido finalizado; caso contrário mostra a mensagem de pedido não encontrado.
+A página de Nota Fiscal (`nota-fiscal.html`) exibe um documento fictício de nota fiscal do último pedido e tem um botão "Baixar PDF" que gera o arquivo e faz o download direto, sem abrir diálogo de impressão. O arquivo baixado se chama `nota-fiscal-<numero-do-pedido>.pdf` (exemplo: `nota-fiscal-4821.pdf`), o que permite validar o download no teste (por exemplo, com `cy.readFile` na pasta de downloads do Cypress). Não possui o cabeçalho global. Só mostra dados se houver um pedido finalizado; caso contrário mostra a mensagem de pedido não encontrado e o botão não gera arquivo.
 
 Elementos da página de Nota Fiscal da LojaQA:
 
@@ -260,7 +260,7 @@ Elementos da página de Nota Fiscal da LojaQA:
 - **Total da nota:** seletores `#nota-total`, `[data-test="nota-total"]`, classe `.nf_total`. Texto "Total: R$ X,XX".
 - **Aviso legal:** seletor `[data-test="aviso-nota"]`, classe `.nf_aviso`. Texto "Documento sem valor fiscal...".
 - **Botão Voltar:** seletores `#botao-voltar`, `[data-test="botao-voltar"]`, classes `.btn .btn_secondary`. Volta para `checkout-complete.html`.
-- **Botão "Baixar PDF":** seletores `#botao-baixar-pdf`, `[data-test="baixar-pdf"]`, classes `.btn .btn_action`. Chama a impressão do navegador (`window.print()`) para salvar como PDF.
+- **Botão "Baixar PDF":** seletores `#botao-baixar-pdf`, `[data-test="baixar-pdf"]`, classes `.btn .btn_action`. Ao clicar, gera o PDF e baixa o arquivo `nota-fiscal-<numero-do-pedido>.pdf` diretamente, sem diálogo de impressão e sem abrir nova aba. Se não houver pedido finalizado, o clique não gera arquivo.
 
 Cada linha de item da tabela da nota fiscal contém: a linha `[data-test="linha-item"]` (`<tr>`); o número sequencial `[data-test="linha-numero"]`; a descrição `[data-test="linha-descricao"]` (nome do produto); a quantidade `[data-test="linha-quantidade"]` (sempre "1"); e o valor `[data-test="linha-valor"]` (formato "R$ X,XX").
 
@@ -355,36 +355,33 @@ Textos exatos exibidos na LojaQA, úteis para localizar elementos por texto (`ge
 
 ---
 
-## Slugs e dados dos produtos da LojaQA
+## Seletores dos botões de carrinho, por produto, na LojaQA
 
-A LojaQA tem 21 produtos. Cada produto tem um `<slug>` (nome normalizado, sem acentos, em minúsculas e com hifens) que é usado nos seletores dinâmicos dos botões de carrinho: o botão é `#botao-carrinho-<slug>`, e o data-test é `[data-test="adicionar-carrinho-<slug>"]` (fora do carrinho) ou `[data-test="remover-<slug>"]` (no carrinho). O `id` na coluna abaixo é o parâmetro usado na URL da página de detalhe (`inventory-item.html?id=N`).
+A LojaQA tem 21 produtos. Cada produto tem um botão de carrinho próprio, com `id` e `data-test` únicos e fixos — basta copiar o seletor da lista abaixo e usar direto no teste. O `id` do botão nunca muda; o `data-test` alterna conforme o estado: começa como `adicionar-carrinho-...` (produto fora do carrinho, texto "Adicionar ao carrinho", classe `.btn_inventory`) e vira `remover-...` depois de adicionado (texto "Remover", classe `.btn_secondary`).
 
-| Produto | slug | id na URL | Preço |
-|---|---|---|---|
-| Mochila do Testador | `mochila-do-testador` | 4 | R$ 149,90 |
-| Lanterna de Bike LED | `lanterna-de-bike-led` | 0 | R$ 49,90 |
-| Camiseta Caça-Bugs | `camiseta-caca-bugs` | 1 | R$ 79,90 |
-| Jaqueta Fleece QA | `jaqueta-fleece-qa` | 5 | R$ 249,90 |
-| Body do Testadorzinho | `body-do-testadorzinho` | 2 | R$ 39,90 |
-| Camiseta Teste.Tudo() Salmão | `camiseta-teste-tudo-salmao` | 3 | R$ 79,90 |
-| Caneca do Depurador | `caneca-do-depurador` | 6 | R$ 34,90 |
-| Teclado Mecânico TesteMaster | `teclado-mecanico-testemaster` | 7 | R$ 349,90 |
-| Mouse Sem Fio ClickCerto | `mouse-sem-fio-clickcerto` | 8 | R$ 89,90 |
-| Fone Anti-Ruído FocoTotal | `fone-anti-ruido-focototal` | 9 | R$ 199,90 |
-| Boné Automatize Tudo | `bone-automatize-tudo` | 10 | R$ 59,90 |
-| Moletom Deploy na Sexta | `moletom-deploy-na-sexta` | 11 | R$ 189,90 |
-| Garrafa Térmica CaféContínuo | `garrafa-termica-cafecontinuo` | 12 | R$ 69,90 |
-| Pacote de Adesivos de Bugs | `pacote-de-adesivos-de-bugs` | 13 | R$ 19,90 |
-| Caderno de Casos de Teste | `caderno-de-casos-de-teste` | 14 | R$ 29,90 |
-| Luminária PixelPerfect | `luminaria-pixelperfect` | 15 | R$ 119,90 |
-| Mousepad Gigante DevOps | `mousepad-gigante-devops` | 16 | R$ 49,90 |
-| Webcam Full HD VisãoQA | `webcam-full-hd-visaoqa` | 17 | R$ 159,90 |
-| Suporte de Notebook ErgoTeste | `suporte-de-notebook-ergoteste` | 18 | R$ 99,90 |
-| Pelúcia do Bug | `pelucia-do-bug` | 19 | R$ 44,90 |
-| Quebra-Cabeça 404 Peças | `quebra-cabeca-404-pecas` | 20 | R$ 54,90 |
+- **Mochila do Testador** — preço R$ 149,90, página de detalhe `inventory-item.html?id=4`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-mochila-do-testador"]`. Botão de remover do carrinho: `[data-test="remover-mochila-do-testador"]`. Id do botão (não muda com o estado): `#botao-carrinho-mochila-do-testador`.
+- **Lanterna de Bike LED** — preço R$ 49,90, página de detalhe `inventory-item.html?id=0`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-lanterna-de-bike-led"]`. Botão de remover do carrinho: `[data-test="remover-lanterna-de-bike-led"]`. Id do botão (não muda com o estado): `#botao-carrinho-lanterna-de-bike-led`.
+- **Camiseta Caça-Bugs** — preço R$ 79,90, página de detalhe `inventory-item.html?id=1`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-camiseta-caca-bugs"]`. Botão de remover do carrinho: `[data-test="remover-camiseta-caca-bugs"]`. Id do botão (não muda com o estado): `#botao-carrinho-camiseta-caca-bugs`.
+- **Jaqueta Fleece QA** — preço R$ 249,90, página de detalhe `inventory-item.html?id=5`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-jaqueta-fleece-qa"]`. Botão de remover do carrinho: `[data-test="remover-jaqueta-fleece-qa"]`. Id do botão (não muda com o estado): `#botao-carrinho-jaqueta-fleece-qa`.
+- **Body do Testadorzinho** — preço R$ 39,90, página de detalhe `inventory-item.html?id=2`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-body-do-testadorzinho"]`. Botão de remover do carrinho: `[data-test="remover-body-do-testadorzinho"]`. Id do botão (não muda com o estado): `#botao-carrinho-body-do-testadorzinho`.
+- **Camiseta Teste.Tudo() Salmão** — preço R$ 79,90, página de detalhe `inventory-item.html?id=3`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-camiseta-teste-tudo-salmao"]`. Botão de remover do carrinho: `[data-test="remover-camiseta-teste-tudo-salmao"]`. Id do botão (não muda com o estado): `#botao-carrinho-camiseta-teste-tudo-salmao`.
+- **Caneca do Depurador** — preço R$ 34,90, página de detalhe `inventory-item.html?id=6`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-caneca-do-depurador"]`. Botão de remover do carrinho: `[data-test="remover-caneca-do-depurador"]`. Id do botão (não muda com o estado): `#botao-carrinho-caneca-do-depurador`.
+- **Teclado Mecânico TesteMaster** — preço R$ 349,90, página de detalhe `inventory-item.html?id=7`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-teclado-mecanico-testemaster"]`. Botão de remover do carrinho: `[data-test="remover-teclado-mecanico-testemaster"]`. Id do botão (não muda com o estado): `#botao-carrinho-teclado-mecanico-testemaster`.
+- **Mouse Sem Fio ClickCerto** — preço R$ 89,90, página de detalhe `inventory-item.html?id=8`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-mouse-sem-fio-clickcerto"]`. Botão de remover do carrinho: `[data-test="remover-mouse-sem-fio-clickcerto"]`. Id do botão (não muda com o estado): `#botao-carrinho-mouse-sem-fio-clickcerto`.
+- **Fone Anti-Ruído FocoTotal** — preço R$ 199,90, página de detalhe `inventory-item.html?id=9`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-fone-anti-ruido-focototal"]`. Botão de remover do carrinho: `[data-test="remover-fone-anti-ruido-focototal"]`. Id do botão (não muda com o estado): `#botao-carrinho-fone-anti-ruido-focototal`.
+- **Boné Automatize Tudo** — preço R$ 59,90, página de detalhe `inventory-item.html?id=10`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-bone-automatize-tudo"]`. Botão de remover do carrinho: `[data-test="remover-bone-automatize-tudo"]`. Id do botão (não muda com o estado): `#botao-carrinho-bone-automatize-tudo`.
+- **Moletom Deploy na Sexta** — preço R$ 189,90, página de detalhe `inventory-item.html?id=11`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-moletom-deploy-na-sexta"]`. Botão de remover do carrinho: `[data-test="remover-moletom-deploy-na-sexta"]`. Id do botão (não muda com o estado): `#botao-carrinho-moletom-deploy-na-sexta`.
+- **Garrafa Térmica CaféContínuo** — preço R$ 69,90, página de detalhe `inventory-item.html?id=12`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-garrafa-termica-cafecontinuo"]`. Botão de remover do carrinho: `[data-test="remover-garrafa-termica-cafecontinuo"]`. Id do botão (não muda com o estado): `#botao-carrinho-garrafa-termica-cafecontinuo`.
+- **Pacote de Adesivos de Bugs** — preço R$ 19,90, página de detalhe `inventory-item.html?id=13`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-pacote-de-adesivos-de-bugs"]`. Botão de remover do carrinho: `[data-test="remover-pacote-de-adesivos-de-bugs"]`. Id do botão (não muda com o estado): `#botao-carrinho-pacote-de-adesivos-de-bugs`.
+- **Caderno de Casos de Teste** — preço R$ 29,90, página de detalhe `inventory-item.html?id=14`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-caderno-de-casos-de-teste"]`. Botão de remover do carrinho: `[data-test="remover-caderno-de-casos-de-teste"]`. Id do botão (não muda com o estado): `#botao-carrinho-caderno-de-casos-de-teste`.
+- **Luminária PixelPerfect** — preço R$ 119,90, página de detalhe `inventory-item.html?id=15`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-luminaria-pixelperfect"]`. Botão de remover do carrinho: `[data-test="remover-luminaria-pixelperfect"]`. Id do botão (não muda com o estado): `#botao-carrinho-luminaria-pixelperfect`.
+- **Mousepad Gigante DevOps** — preço R$ 49,90, página de detalhe `inventory-item.html?id=16`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-mousepad-gigante-devops"]`. Botão de remover do carrinho: `[data-test="remover-mousepad-gigante-devops"]`. Id do botão (não muda com o estado): `#botao-carrinho-mousepad-gigante-devops`.
+- **Webcam Full HD VisãoQA** — preço R$ 159,90, página de detalhe `inventory-item.html?id=17`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-webcam-full-hd-visaoqa"]`. Botão de remover do carrinho: `[data-test="remover-webcam-full-hd-visaoqa"]`. Id do botão (não muda com o estado): `#botao-carrinho-webcam-full-hd-visaoqa`.
+- **Suporte de Notebook ErgoTeste** — preço R$ 99,90, página de detalhe `inventory-item.html?id=18`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-suporte-de-notebook-ergoteste"]`. Botão de remover do carrinho: `[data-test="remover-suporte-de-notebook-ergoteste"]`. Id do botão (não muda com o estado): `#botao-carrinho-suporte-de-notebook-ergoteste`.
+- **Pelúcia do Bug** — preço R$ 44,90, página de detalhe `inventory-item.html?id=19`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-pelucia-do-bug"]`. Botão de remover do carrinho: `[data-test="remover-pelucia-do-bug"]`. Id do botão (não muda com o estado): `#botao-carrinho-pelucia-do-bug`.
+- **Quebra-Cabeça 404 Peças** — preço R$ 54,90, página de detalhe `inventory-item.html?id=20`. Botão de adicionar ao carrinho: `[data-test="adicionar-carrinho-quebra-cabeca-404-pecas"]`. Botão de remover do carrinho: `[data-test="remover-quebra-cabeca-404-pecas"]`. Id do botão (não muda com o estado): `#botao-carrinho-quebra-cabeca-404-pecas`.
 
-Exemplo do botão de carrinho para a Mochila do Testador: quando o produto está fora do carrinho, o botão tem id `#botao-carrinho-mochila-do-testador`, data-test `[data-test="adicionar-carrinho-mochila-do-testador"]`, texto "Adicionar ao carrinho" e classe extra `.btn_inventory`. Depois de adicionado ao carrinho, o mesmo botão mantém o id `#botao-carrinho-mochila-do-testador`, mas o data-test passa a ser `[data-test="remover-mochila-do-testador"]`, o texto vira "Remover" e a classe extra vira `.btn_secondary`.
-
+Exemplo em Cypress para adicionar a Mochila do Testador ao carrinho e depois removê-la: `cy.get('[data-test="adicionar-carrinho-mochila-do-testador"]').click()` e em seguida `cy.get('[data-test="remover-mochila-do-testador"]').click()`.
 ---
 
 ## Templates internos da LojaQA (não interagíveis)
@@ -421,8 +418,8 @@ Perguntas comuns e respostas diretas para localizar seletores e comportamentos n
 - **Qual é a senha dos usuários da LojaQA?** `senha_teste_123`, para todos os 6 usuários.
 - **Quais são os usuários da LojaQA?** `usuario_padrao`, `usuario_bloqueado`, `usuario_problema`, `usuario_lento`, `usuario_erro` e `usuario_visual`.
 - **Qual usuário usar para o teste de compra bem-sucedida (caminho feliz)?** `usuario_padrao`.
-- **Qual o seletor do botão de adicionar um produto ao carrinho?** `#botao-carrinho-<slug>` (id) ou `[data-test="adicionar-carrinho-<slug>"]` (data-test), substituindo `<slug>` pelo slug do produto. Ex.: `[data-test="adicionar-carrinho-caneca-do-depurador"]`.
-- **Qual o seletor do botão de remover um produto do carrinho?** `[data-test="remover-<slug>"]` (o id continua `#botao-carrinho-<slug>`).
+- **Qual o seletor do botão de adicionar um produto ao carrinho?** Cada produto tem o seu, listado na seção "Seletores dos botões de carrinho, por produto, na LojaQA". Ex.: a Caneca do Depurador usa `[data-test="adicionar-carrinho-caneca-do-depurador"]` (ou o id `#botao-carrinho-caneca-do-depurador`).
+- **Qual o seletor do botão de remover um produto do carrinho?** O mesmo botão, com o data-test trocado para remover. Ex.: `[data-test="remover-caneca-do-depurador"]`; o id continua `#botao-carrinho-caneca-do-depurador`.
 - **Como ir para o carrinho?** Clicar no ícone do carrinho no topo: `#link-carrinho`.
 - **Como verificar quantos itens há no carrinho?** Ler o texto do badge `#badge-carrinho`; ele fica oculto quando o carrinho está vazio.
 - **Como finalizar a compra na LojaQA?** No carrinho, clicar em `#botao-finalizar-compra`; preencher `#campo-nome`, `#campo-sobrenome` e `#campo-cep` e clicar em `#botao-continuar`; na etapa de resumo, clicar em `#botao-finalizar`.
@@ -433,6 +430,7 @@ Perguntas comuns e respostas diretas para localizar seletores e comportamentos n
 - **Qual usuário deixa o login lento?** `usuario_lento` (~5s de atraso; `#botao-entrar` fica `disabled` com texto "Carregando...").
 - **Qual usuário provoca erros nas ações?** `usuario_erro` (ordenação, adicionar itens de id ímpar e finalizar pedido falham, alguns com `alert`).
 - **Qual usuário provoca defeitos visuais?** `usuario_visual` (o `body` recebe `.bugs-visuais`; há preços errados na vitrine para ids 0, 5, 10, 15 e 20).
-- **Como gerar/baixar a nota fiscal em PDF?** Após finalizar o pedido, na página de conclusão clicar em `#botao-nota-fiscal`; na página da nota, clicar em `#botao-baixar-pdf` (que abre o diálogo de impressão do navegador).
+- **Como gerar/baixar a nota fiscal em PDF?** Após finalizar o pedido, na página de conclusão clicar em `#botao-nota-fiscal`; na página da nota, clicar em `#botao-baixar-pdf`. O arquivo `nota-fiscal-<numero-do-pedido>.pdf` é baixado direto, sem diálogo de impressão.
+- **Como validar o download do PDF no Cypress?** Clicar em `#botao-baixar-pdf` e ler o arquivo na pasta de downloads, por exemplo `cy.readFile('cypress/downloads/nota-fiscal-4821.pdf')`. Não é preciso stub de `window.print()` — a aplicação não usa impressão para gerar o PDF.
 - **Como preparar o estado do teste sem passar pela UI?** Definir `session-username` no `sessionStorage` e `cart-contents` no `localStorage` (ver a seção "Armazenamento").
 - **Qual a taxa de imposto do checkout?** 8% sobre o subtotal.

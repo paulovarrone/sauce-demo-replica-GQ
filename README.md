@@ -33,7 +33,7 @@ Depois acesse `http://localhost:8000`.
 
 ## Produtos
 
-**21 produtos** fictícios com tema de QA/tecnologia, de R$ 19,90 a R$ 349,90 — mochila, camisetas, caneca, teclado, mouse, fone, boné, moletom, garrafa, adesivos, caderno, luminária, mousepad, webcam, suporte de notebook, pelúcia do bug, quebra-cabeça de 404 peças e mais. A lista completa com slugs e preços está em [SELETORES.md](SELETORES.md).
+**21 produtos** fictícios com tema de QA/tecnologia, de R$ 19,90 a R$ 349,90 — mochila, camisetas, caneca, teclado, mouse, fone, boné, moletom, garrafa, adesivos, caderno, luminária, mousepad, webcam, suporte de notebook, pelúcia do bug, quebra-cabeça de 404 peças e mais. A lista completa com preços e os seletores de cada produto está em [SELETORES.md](SELETORES.md).
 
 
 - ✅ 75 ids presentes como #id
@@ -53,6 +53,7 @@ js/
   data.js                  # Dados: produtos, usuários, taxa de imposto
   store.js                 # Estado: sessão, carrinho, utilidades
   ui.js                    # UI compartilhada: menu lateral, badge, botões de carrinho
+  pdf.js                   # Gerador de PDF próprio (sem dependências), usado pela nota fiscal
   pages/
     login.js               # login.html
     index.js               # index.html (home / lista de produtos)
@@ -67,7 +68,7 @@ css/style.css              # Estilos globais (inclui estilos de impressão da no
 img/*.svg                  # Imagens dos produtos
 ```
 
-Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → `pages/<página>.js`.
+Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → `pages/<página>.js`. A nota fiscal não tem cabeçalho, então troca o `ui.js` pelo `pdf.js`.
 
 ## Páginas
 
@@ -92,7 +93,7 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 - Validação dos campos do pagamento (Nome, Sobrenome, CEP)
 - Preços em reais (`R$ X,XX`) e cálculo de impostos (8%) no resumo
 - Registro do pedido com número, data/hora e itens (`sessionStorage`)
-- **Nota fiscal fictícia** com marca d'água "SEM VALOR FISCAL", tabela de itens e totais — botão "Baixar PDF" via diálogo de impressão do navegador
+- **Nota fiscal fictícia** com marca d'água "SEM VALOR FISCAL", tabela de itens e totais — o botão "Baixar PDF" gera o arquivo e baixa direto (`nota-fiscal-<numero>.pdf`), sem diálogo de impressão
 - Catálogo com 21 produtos e banner de boas-vindas com contador
 - Página "Sobre" explicando o propósito do projeto (ambiente de testes para TCC)
 - Menu lateral: Todos os Produtos, Sobre, Sair, Resetar Aplicação
@@ -100,4 +101,4 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 
 ## Seletores
 
-📋 **O mapa completo de seletores, página por página, está em [SELETORES.md](SELETORES.md)** — inclui tags, classes, atributos, textos, mensagens de erro, slugs dos produtos e chaves de armazenamento.
+📋 **O mapa completo de seletores, página por página, está em [SELETORES.md](SELETORES.md)** — inclui tags, classes, atributos, textos, mensagens de erro, os botões de carrinho de cada produto e chaves de armazenamento.
