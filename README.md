@@ -54,8 +54,8 @@ js/
   store.js                 # Estado: sessão, carrinho, utilidades
   ui.js                    # UI compartilhada: menu lateral, badge, botões de carrinho
   pages/
-    login.js               # index.html
-    inventory.js           # inventory.html
+    login.js               # login.html
+    index.js               # index.html (home / lista de produtos)
     item.js                # inventory-item.html
     cart.js                # cart.html
     checkout-info.js       # checkout-step-one.html
@@ -73,8 +73,8 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 
 | Página | Arquivo |
 |---|---|
-| Login | `index.html` |
-| Lista de produtos (com ordenação) | `inventory.html` |
+| **Página inicial (home)** — lista de produtos com ordenação | `index.html` |
+| Login (tela de entrada) | `login.html` |
 | Detalhe do produto | `inventory-item.html?id=N` |
 | Carrinho | `cart.html` |
 | Pagamento — dados | `checkout-step-one.html` |
@@ -86,7 +86,7 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 ## Funcionalidades
 
 - Validação de login com mensagens "Ops! ..."
-- Proteção de rotas (redireciona para o login sem sessão)
+- Proteção de rotas: todas as páginas exceto `login.html` exigem sessão e redirecionam para `login.html?error=auth` sem ela
 - Adicionar/remover itens do carrinho com badge no ícone
 - Ordenação por nome (A–Z / Z–A) e preço (menor–maior / maior–menor)
 - Validação dos campos do pagamento (Nome, Sobrenome, CEP)

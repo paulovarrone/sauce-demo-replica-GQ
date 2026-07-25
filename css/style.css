@@ -156,7 +156,7 @@ a.btn { text-decoration: none; display: inline-block; text-align: center; }
   position: relative;
 }
 .header_label { display: flex; align-items: center; gap: 16px; }
-.app_logo { font-size: 20px; font-weight: 800; letter-spacing: .5px; }
+.app_logo { font-size: 20px; font-weight: 800; letter-spacing: .5px; text-decoration: none; }
 .bm-burger-button {
   background: none; border: none;
   font-size: 22px;

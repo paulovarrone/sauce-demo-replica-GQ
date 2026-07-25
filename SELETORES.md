@@ -19,7 +19,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Barra superior | `div` | — | — | `.primary_header` | — |
 | Agrupador menu + logo | `div` | — | — | `.header_label` | — |
 | Botão abrir menu (☰) | `button` | `#botao-menu` | `[data-test="botao-menu"]` | `.bm-burger-button` | `aria-label="Abrir Menu"` |
-| Logo | `div` | — | — | `.app_logo` | texto: "🧪 LojaQA" |
+| Logo (link para a home) | `a` | `#link-logo` | `[data-test="link-logo"]` | `.app_logo` | `href="index.html"`, texto: "🧪 LojaQA" |
 | Container do carrinho | `div` | — | — | `.shopping_cart_container` | — |
 | Link do carrinho (🛒) | `a` | `#link-carrinho` | `[data-test="link-carrinho"]` | `.shopping_cart_link` | `href="cart.html"` |
 | Badge de contagem | `span` | `#badge-carrinho` | `[data-test="badge-carrinho"]` | `.shopping_cart_badge` | oculto via `style` quando carrinho vazio; texto = nº de itens |
@@ -32,9 +32,9 @@ Referência **completa** dos seletores da aplicação para automação de testes
 |---|---|---|---|---|---|
 | Container do menu | `nav` | `#menu-lateral` | `[data-test="menu-lateral"]` | `.bm-menu` (+ `.open` quando aberto) | — |
 | Botão fechar (×) | `button` | `#botao-fechar-menu` | `[data-test="botao-fechar-menu"]` | `.bm-cross-button` | `aria-label="Fechar Menu"` |
-| Todos os Produtos | `a` | `#link-todos-itens` | `[data-test="link-todos-itens"]` | — | `href="inventory.html"` |
+| Todos os Produtos | `a` | `#link-todos-itens` | `[data-test="link-todos-itens"]` | — | `href="index.html"` — volta para a página inicial (home) |
 | Sobre | `a` | `#link-sobre` | `[data-test="link-sobre"]` | — | `href="sobre.html"` — página sobre o projeto/TCC |
-| Sair | `a` | `#link-sair` | `[data-test="link-sair"]` | — | `href="#"` — encerra sessão → `index.html` |
+| Sair | `a` | `#link-sair` | `[data-test="link-sair"]` | — | `href="#"` — encerra sessão → `login.html` |
 | Resetar Aplicação | `a` | `#link-resetar` | `[data-test="link-resetar"]` | — | `href="#"` — limpa o carrinho |
 | Overlay (fundo escuro) | `div` | `#sobreposicao-menu` | — | `.bm-overlay` (+ `.open` quando visível) | clique fecha o menu |
 
@@ -50,7 +50,9 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ---
 
-## Login — `index.html`
+## Login — `login.html`
+
+Tela de entrada da aplicação (exibida enquanto não há sessão ativa). Após o login o usuário vai para a página inicial da loja, `index.html`.
 
 | Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
@@ -71,7 +73,9 @@ Referência **completa** dos seletores da aplicação para automação de testes
 
 ---
 
-## Produtos — `inventory.html`
+## Produtos (página inicial / home) — `index.html`
+
+Página principal da loja, exibida logo após o login bem-sucedido.
 
 | Elemento | Tag | `id` | `data-test` | `class` | Atributos |
 |---|---|---|---|---|---|
@@ -112,7 +116,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
 | Container da página | `main` | `#detalhes-produto` | `[data-test="detalhes-produto"]` | `.inventory_details` | — |
-| Voltar aos produtos | `a` | `#link-voltar-produtos` | `[data-test="voltar-produtos"]` | `.btn`, `.btn_small`, `.btn_back` | `href="inventory.html"`, texto: "← Voltar aos produtos" |
+| Voltar aos produtos | `a` | `#link-voltar-produtos` | `[data-test="voltar-produtos"]` | `.btn`, `.btn_small`, `.btn_back` | `href="index.html"`, texto: "← Voltar aos produtos" |
 | Wrapper da imagem | `div` | — | — | `.inventory_details_img` | `hidden` quando item não existe |
 | Imagem do produto | `img` | `#imagem-item` | `[data-test="imagem-item"]` | — | `alt` = nome do produto |
 | Wrapper da descrição | `div` | — | — | `.inventory_details_desc_container` | `hidden` quando item não existe |
@@ -134,7 +138,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Carrinho vazio | `p` | `#carrinho-vazio` | `[data-test="carrinho-vazio"]` | `.cart_empty` | `hidden` quando há itens; texto: "Seu carrinho está vazio." |
 | Lista de itens | `div` | `#lista-carrinho` | `[data-test="lista-carrinho"]` | `.cart_list` | preenchida via JS |
 | Rodapé de ações | `div` | — | — | `.cart_footer` | — |
-| Continuar Comprando | `a` | `#botao-continuar-comprando` | `[data-test="continuar-comprando"]` | `.btn`, `.btn_secondary` | `href="inventory.html"` |
+| Continuar Comprando | `a` | `#botao-continuar-comprando` | `[data-test="continuar-comprando"]` | `.btn`, `.btn_secondary` | `href="index.html"` |
 | Finalizar Compra | `a` | `#botao-finalizar-compra` | `[data-test="finalizar-compra"]` | `.btn`, `.btn_action` | `href="checkout-step-one.html"` |
 
 ### Item do carrinho (dinâmico — um por item)
@@ -187,7 +191,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Impostos (8%) | `div` | `#valor-imposto` | `[data-test="valor-imposto"]` | `.summary_tax_label` | "Impostos (8%): R$ X,XX" |
 | Total | `div` | `#valor-total` | `[data-test="valor-total"]` | `.summary_total_label` | "Total: R$ X,XX" |
 | Rodapé de ações | `div` | — | — | `.cart_footer` | — |
-| Cancelar | `a` | `#botao-cancelar` | `[data-test="botao-cancelar"]` | `.btn`, `.btn_secondary` | `href="inventory.html"` |
+| Cancelar | `a` | `#botao-cancelar` | `[data-test="botao-cancelar"]` | `.btn`, `.btn_secondary` | `href="index.html"` |
 | Finalizar Pedido | `button` | `#botao-finalizar` | `[data-test="botao-finalizar"]` | `.btn`, `.btn_action` | registra o pedido, limpa o carrinho → `checkout-complete.html` |
 
 Os itens da lista usam os mesmos seletores do carrinho (`[data-test="item-carrinho"]`, `[data-test="quantidade-item"]`, `[data-test="nome-item"]`, `[data-test="descricao-item"]`, `[data-test="preco-item"]`), porém **sem** botão Remover.
@@ -204,7 +208,7 @@ Os itens da lista usam os mesmos seletores do carrinho (`[data-test="item-carrin
 | Texto de confirmação | `div` | `#texto-conclusao` | `[data-test="texto-conclusao"]` | `.complete-text` | "Pedido #XXXXXXXX confirmado! Ele foi despachado..." |
 | Número do pedido | `strong` | `#numero-pedido` | `[data-test="numero-pedido"]` | — | "#XXXXXXXX" (8 dígitos, preenchido via JS) |
 | Gerar Nota Fiscal (PDF) | `a` | `#botao-nota-fiscal` | `[data-test="nota-fiscal"]` | `.btn`, `.btn_action`, `.btn_complete` | `href="nota-fiscal.html"` |
-| Voltar à Loja | `a` | `#botao-voltar-inicio` | `[data-test="voltar-inicio"]` | `.btn`, `.btn_secondary`, `.btn_complete` | `href="inventory.html"` |
+| Voltar à Loja | `a` | `#botao-voltar-inicio` | `[data-test="voltar-inicio"]` | `.btn`, `.btn_secondary`, `.btn_complete` | `href="index.html"` |
 
 ---
 
@@ -357,7 +361,7 @@ Elementos `<template>` clonados pelo JavaScript para gerar o conteúdo dinâmico
 
 | `id` | Página | Gera |
 |---|---|---|
-| `#modelo-item-produto` | `inventory.html` | cards da lista de produtos |
+| `#modelo-item-produto` | `index.html` | cards da lista de produtos |
 | `#modelo-item-carrinho` | `cart.html` | linhas do carrinho |
 | `#modelo-item-resumo` | `checkout-step-two.html` | linhas do resumo do pedido |
 | `#modelo-linha-item` | `nota-fiscal.html` | linhas da tabela da nota fiscal |

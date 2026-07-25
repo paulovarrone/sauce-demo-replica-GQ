@@ -22,7 +22,7 @@ function initHeader() {
     logoutLink.addEventListener("click", (e) => {
       e.preventDefault();
       Session.logout();
-      window.location.href = "index.html";
+      window.location.href = "login.html";
     });
   }
 

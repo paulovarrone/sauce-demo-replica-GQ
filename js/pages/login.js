@@ -52,5 +52,5 @@ form.addEventListener("submit", (e) => {
     loginBtn.value = "Carregando...";
     loginBtn.disabled = true;
   }
-  setTimeout(() => { window.location.href = "inventory.html"; }, delay);
+  setTimeout(() => { window.location.href = "index.html"; }, delay);
 });

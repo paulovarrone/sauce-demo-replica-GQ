@@ -36,8 +36,8 @@ Fatos fundamentais para escrever testes na LojaQA:
 
 ### Arquivos de página (URLs) da LojaQA
 
-- `index.html` — página de Login (página inicial).
-- `inventory.html` — página de Produtos (catálogo / vitrine / lista de produtos).
+- `index.html` — **página inicial (home)** da LojaQA e raiz do site (o que é servido em `/`). É a página de Produtos (catálogo / vitrine / lista de produtos / inventário), exibida logo após o login bem-sucedido. É uma página protegida: sem sessão ativa, redireciona para `login.html?error=auth`.
+- `login.html` — página de Login (tela de entrada da aplicação, exibida quando não há sessão ativa).
 - `inventory-item.html?id=N` — página de Detalhe de um produto (N é o id do produto).
 - `cart.html` — página do Carrinho de compras.
 - `checkout-step-one.html` — Checkout etapa 1, formulário de dados do comprador ("Pagamento: Seus Dados").
@@ -55,7 +55,7 @@ Estes elementos aparecem em todas as páginas da LojaQA que têm cabeçalho (tod
 ### Cabeçalho da LojaQA
 
 - **Botão de abrir o menu lateral (ícone hambúrguer ☰)** na página LojaQA: seletores `#botao-menu`, `[data-test="botao-menu"]`, classe `.bm-burger-button`. É um `<button>` com `aria-label="Abrir Menu"`. Clicar abre o menu lateral.
-- **Logotipo da LojaQA** no topo: classe `.app_logo`, texto "🧪 LojaQA". Não tem id nem data-test.
+- **Logotipo da LojaQA** no topo (link para a home): seletores `#link-logo`, `[data-test="link-logo"]`, classe `.app_logo`. É um `<a>` com texto "🧪 LojaQA" e `href="index.html"`. Clicar no logotipo volta para a página inicial (home) da loja.
 - **Link/ícone do carrinho de compras (🛒)** no topo: seletores `#link-carrinho`, `[data-test="link-carrinho"]`, classe `.shopping_cart_link`. É um `<a>` que leva para `cart.html`. Clicar vai para o carrinho.
 - **Badge de contagem do carrinho** (número de itens sobre o ícone do carrinho): seletores `#badge-carrinho`, `[data-test="badge-carrinho"]`, classe `.shopping_cart_badge`. Fica oculto (via `style="display:none"`) quando o carrinho está vazio e mostra o número de itens quando há produtos. Para verificar a quantidade no carrinho, leia o texto deste elemento.
 - **Título da página atual** (barra secundária): seletores `#titulo-pagina`, `[data-test="titulo-pagina"]`, classe `.title`. O texto muda conforme a página: "Produtos", "Seu Carrinho", "Pagamento: Seus Dados", "Pagamento: Resumo", "Pedido Concluído!" ou "Sobre a LojaQA".
@@ -66,9 +66,9 @@ O menu lateral abre ao clicar em `#botao-menu`. Contém:
 
 - **Container do menu lateral:** seletores `#menu-lateral`, `[data-test="menu-lateral"]`, classe `.bm-menu`. Recebe a classe `.open` quando está aberto.
 - **Botão de fechar o menu (×):** seletores `#botao-fechar-menu`, `[data-test="botao-fechar-menu"]`, classe `.bm-cross-button`, com `aria-label="Fechar Menu"`.
-- **Item de menu "Todos os Produtos":** seletores `#link-todos-itens`, `[data-test="link-todos-itens"]`. Leva para `inventory.html`.
+- **Item de menu "Todos os Produtos":** seletores `#link-todos-itens`, `[data-test="link-todos-itens"]`. Leva de volta para a página inicial (home) da loja, `index.html`.
 - **Item de menu "Sobre":** seletores `#link-sobre`, `[data-test="link-sobre"]`. Leva para `sobre.html`.
-- **Item de menu "Sair" (logout):** seletores `#link-sair`, `[data-test="link-sair"]`. Encerra a sessão e volta para `index.html`.
+- **Item de menu "Sair" (logout):** seletores `#link-sair`, `[data-test="link-sair"]`. Encerra a sessão e volta para `login.html`.
 - **Item de menu "Resetar Aplicação":** seletores `#link-resetar`, `[data-test="link-resetar"]`. Limpa o carrinho.
 - **Overlay (fundo escurecido atrás do menu):** seletor `#sobreposicao-menu`, classe `.bm-overlay`. Clicar nele fecha o menu. Recebe `.open` quando visível.
 
@@ -81,9 +81,9 @@ O menu lateral abre ao clicar em `#botao-menu`. Contém:
 
 ---
 
-## Página de Login da LojaQA (index.html)
+## Página de Login da LojaQA (login.html)
 
-A página de Login é a página inicial da LojaQA (`index.html`). Nela o usuário digita usuário e senha para entrar. Não possui o cabeçalho global. Para fazer login: preencher o campo de usuário, preencher o campo de senha e clicar no botão Entrar.
+A página de Login (`login.html`) é a tela de entrada da LojaQA: é por onde o usuário começa, mas **não** é a página inicial/home da loja — a home é `index.html`, exibida depois do login. Nela o usuário digita usuário e senha para entrar. Não possui o cabeçalho global. Para fazer login: preencher o campo de usuário, preencher o campo de senha e clicar no botão Entrar.
 
 Elementos da página de Login da LojaQA:
 
@@ -99,13 +99,13 @@ Elementos da página de Login da LojaQA:
 - **Logotipo da tela de login:** classe `.login_logo`, texto "🧪 LojaQA".
 - **Tagline (subtítulo):** classe `.login_tagline`, texto "Sua loja para praticar automação de testes".
 
-Exemplo de login bem-sucedido: digitar `usuario_padrao` no campo `#campo-usuario`, `senha_teste_123` no campo `#campo-senha` e clicar em `#botao-entrar`. Após o sucesso, o usuário vai para `inventory.html`.
+Exemplo de login bem-sucedido: digitar `usuario_padrao` no campo `#campo-usuario`, `senha_teste_123` no campo `#campo-senha` e clicar em `#botao-entrar`. Após o sucesso, o usuário é redirecionado para a página inicial (home) da loja, que é `index.html` — a página de Produtos.
 
 ---
 
-## Página de Produtos / Catálogo da LojaQA (inventory.html)
+## Página Inicial / Home / Página de Produtos / Catálogo da LojaQA (index.html)
 
-A página de Produtos (`inventory.html`), também chamada de catálogo, vitrine ou inventário, lista os 21 produtos da LojaQA em cards. Tem um banner de boas-vindas no topo e um seletor de ordenação. É a página exibida logo após o login.
+A página `index.html` é a **página inicial (home) da LojaQA**, ou seja, a página principal exibida logo após o usuário realizar o login com sucesso. Também é chamada de página de Produtos, catálogo, vitrine ou inventário. Lista os 21 produtos da LojaQA em cards, tem um banner de boas-vindas no topo e um seletor de ordenação. Quando um teste precisa "ir para a home" ou "voltar à página inicial" da loja, o destino é `index.html` (a tela de login `login.html` só aparece antes do login ou após o logout).
 
 Elementos gerais da página de Produtos da LojaQA:
 
@@ -143,7 +143,7 @@ A página de Detalhe (`inventory-item.html?id=N`) mostra um único produto em ta
 Elementos da página de Detalhe do Produto da LojaQA:
 
 - **Container da página de detalhe:** seletores `#detalhes-produto`, `[data-test="detalhes-produto"]`, classe `.inventory_details`.
-- **Botão/link "Voltar aos produtos":** seletores `#link-voltar-produtos`, `[data-test="voltar-produtos"]`, classes `.btn .btn_small .btn_back`. Texto "← Voltar aos produtos", leva para `inventory.html`.
+- **Botão/link "Voltar aos produtos":** seletores `#link-voltar-produtos`, `[data-test="voltar-produtos"]`, classes `.btn .btn_small .btn_back`. Texto "← Voltar aos produtos", leva para `index.html`.
 - **Imagem do produto:** seletores `#imagem-item`, `[data-test="imagem-item"]`. O `alt` é o nome do produto.
 - **Nome do produto:** seletor `[data-test="nome-item"]`, classe `.inventory_details_name`.
 - **Descrição do produto:** seletor `[data-test="descricao-item"]`, classe `.inventory_item_desc`.
@@ -164,7 +164,7 @@ Elementos da página do Carrinho da LojaQA:
 - **Rótulo de coluna "Descrição":** seletor `[data-test="rotulo-descricao"]`, classe `.cart_desc_label`.
 - **Mensagem de carrinho vazio:** seletores `#carrinho-vazio`, `[data-test="carrinho-vazio"]`, classe `.cart_empty`. Fica oculta (atributo `hidden`) quando há itens; aparece com o texto "Seu carrinho está vazio." quando o carrinho está vazio.
 - **Lista de itens do carrinho:** seletores `#lista-carrinho`, `[data-test="lista-carrinho"]`, classe `.cart_list`. Preenchida via JavaScript.
-- **Botão "Continuar Comprando":** seletores `#botao-continuar-comprando`, `[data-test="continuar-comprando"]`, classes `.btn .btn_secondary`. Leva para `inventory.html`.
+- **Botão "Continuar Comprando":** seletores `#botao-continuar-comprando`, `[data-test="continuar-comprando"]`, classes `.btn .btn_secondary`. Leva para `index.html`.
 - **Botão "Finalizar Compra" (ir para o checkout):** seletores `#botao-finalizar-compra`, `[data-test="finalizar-compra"]`, classes `.btn .btn_action`. Leva para `checkout-step-one.html`.
 
 ### Item dentro do Carrinho da LojaQA
@@ -215,7 +215,7 @@ Elementos da página de Checkout Etapa 2 (resumo) da LojaQA:
 - **Subtotal:** seletores `#valor-subtotal`, `[data-test="valor-subtotal"]`. Texto no formato "Subtotal: R$ X,XX".
 - **Impostos (8%):** seletores `#valor-imposto`, `[data-test="valor-imposto"]`. Texto no formato "Impostos (8%): R$ X,XX".
 - **Total:** seletores `#valor-total`, `[data-test="valor-total"]`. Texto no formato "Total: R$ X,XX". O total é o subtotal mais 8% de impostos.
-- **Botão Cancelar:** seletores `#botao-cancelar`, `[data-test="botao-cancelar"]`, classes `.btn .btn_secondary`. Volta para `inventory.html`.
+- **Botão Cancelar:** seletores `#botao-cancelar`, `[data-test="botao-cancelar"]`, classes `.btn .btn_secondary`. Volta para `index.html`.
 - **Botão Finalizar Pedido:** seletores `#botao-finalizar`, `[data-test="botao-finalizar"]`, classes `.btn .btn_action`. Registra o pedido, limpa o carrinho e vai para `checkout-complete.html`.
 
 ---
@@ -232,7 +232,7 @@ Elementos da página de Pedido Concluído da LojaQA:
 - **Texto de confirmação:** seletores `#texto-conclusao`, `[data-test="texto-conclusao"]`, classe `.complete-text`. Contém "Pedido #XXXXXXXX confirmado! Ele foi despachado...".
 - **Número do pedido:** seletores `#numero-pedido`, `[data-test="numero-pedido"]`. Mostra "#XXXXXXXX" (8 dígitos), preenchido via JavaScript.
 - **Botão "Gerar Nota Fiscal (PDF)":** seletores `#botao-nota-fiscal`, `[data-test="nota-fiscal"]`, classes `.btn .btn_action .btn_complete`. Leva para `nota-fiscal.html`.
-- **Botão "Voltar à Loja":** seletores `#botao-voltar-inicio`, `[data-test="voltar-inicio"]`, classes `.btn .btn_secondary .btn_complete`. Leva para `inventory.html`.
+- **Botão "Voltar à Loja":** seletores `#botao-voltar-inicio`, `[data-test="voltar-inicio"]`, classes `.btn .btn_secondary .btn_complete`. Leva para `index.html`.
 
 ---
 
@@ -390,7 +390,7 @@ Exemplo do botão de carrinho para a Mochila do Testador: quando o produto está
 ## Templates internos da LojaQA (não interagíveis)
 
 A LojaQA usa elementos `<template>` que o JavaScript clona para gerar conteúdo dinâmico. Eles NÃO são alvos de automação (são inertes e invisíveis), listados só para referência:
-- `#modelo-item-produto` na página `inventory.html`: gera os cards da lista de produtos.
+- `#modelo-item-produto` na página `index.html`: gera os cards da lista de produtos.
 - `#modelo-item-carrinho` na página `cart.html`: gera as linhas do carrinho.
 - `#modelo-item-resumo` na página `checkout-step-two.html`: gera as linhas do resumo do pedido.
 - `#modelo-linha-item` na página `nota-fiscal.html`: gera as linhas da tabela da nota fiscal.
@@ -405,7 +405,7 @@ A LojaQA guarda estado no navegador. Para preparar ou limpar o estado de um test
 - Chave `checkout-info` no `sessionStorage`: guarda um JSON `{first, last, postal}` preenchido na etapa 1 do checkout; é removido ao finalizar o pedido.
 - Chave `ultimo-pedido` no `sessionStorage`: guarda um JSON do pedido finalizado com `{numero, data, hora, cliente, itens, subtotal, imposto, total}`, usado pela página de conclusão e pela nota fiscal.
 
-Exemplo para iniciar um teste já logado e com um item no carrinho: definir `sessionStorage["session-username"] = "usuario_padrao"` e `localStorage["cart-contents"] = "[4]"`, depois navegar para `inventory.html`.
+Exemplo para iniciar um teste já logado e com um item no carrinho: definir `sessionStorage["session-username"] = "usuario_padrao"` e `localStorage["cart-contents"] = "[4]"`, depois navegar para `index.html`.
 
 ---
 
@@ -413,6 +413,10 @@ Exemplo para iniciar um teste já logado e com um item no carrinho: definir `ses
 
 Perguntas comuns e respostas diretas para localizar seletores e comportamentos na LojaQA:
 
+- **Qual é a página inicial (home) da LojaQA?** É `index.html`, a página de Produtos/catálogo, exibida logo após o login. A tela de login (`login.html`) é apenas a porta de entrada, exibida enquanto não há sessão ativa.
+- **Para onde o usuário vai depois do login?** Para `index.html` (a home / lista de produtos).
+- **Como voltar para a home/página inicial durante um teste?** Clicar no logotipo "🧪 LojaQA" do cabeçalho (`#link-logo`), ou abrir o menu (`#botao-menu`) e clicar em "Todos os Produtos" (`#link-todos-itens`), ou navegar direto para `index.html`.
+- **O logotipo da LojaQA é clicável?** Sim — no cabeçalho ele é um link (`#link-logo`, `[data-test="link-logo"]`) que leva para a home `index.html`. Na tela de login o logotipo é apenas texto (classe `.login_logo`), sem link.
 - **Como fazer login na LojaQA?** Preencher `#campo-usuario` com um usuário válido (ex.: `usuario_padrao`), preencher `#campo-senha` com `senha_teste_123` e clicar em `#botao-entrar`.
 - **Qual é a senha dos usuários da LojaQA?** `senha_teste_123`, para todos os 6 usuários.
 - **Quais são os usuários da LojaQA?** `usuario_padrao`, `usuario_bloqueado`, `usuario_problema`, `usuario_lento`, `usuario_erro` e `usuario_visual`.

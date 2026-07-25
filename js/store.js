@@ -35,6 +35,6 @@ function slugify(name) {
 
 function requireLogin() {
   if (!Session.user) {
-    window.location.href = "index.html?error=auth";
+    window.location.href = "login.html?error=auth";
   }
 }
