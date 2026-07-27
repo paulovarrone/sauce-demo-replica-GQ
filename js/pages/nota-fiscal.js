@@ -36,7 +36,7 @@ if (!pedido) {
 }
 
 // ===== Geração do PDF =====
-// O arquivo é montado pelo js/pdf.js e baixado direto, sem diálogo de impressão.
+// O arquivo é montado pelo js/pdf.js e baixado direto.
 
 const NF_MARGEM = 40;
 const NF_DIREITA = PDF_LARGURA_A4 - NF_MARGEM;
@@ -151,7 +151,7 @@ function gerarPdfNota(pedido) {
   return doc.bytes();
 }
 
-// "Baixar PDF" gera e baixa o arquivo direto, sem diálogo de impressão.
+// "Baixar PDF" gera e baixa o arquivo direto.
 document.getElementById("botao-baixar-pdf").addEventListener("click", () => {
   if (!pedido) return;
   baixarPdf(gerarPdfNota(pedido), "nota-fiscal-" + pedido.numero + ".pdf");

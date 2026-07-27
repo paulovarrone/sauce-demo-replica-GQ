@@ -526,15 +526,6 @@ main { width: 100%; margin-bottom: 40px; }
 .bugs-visuais .title { letter-spacing: 5px; }
 .bugs-visuais .cart_quantity { border-radius: 50%; transform: rotate(12deg); }
 
-/* ===== Impressão (Salvar como PDF) ===== */
-@media print {
-  .no-print { display: none !important; }
-  body { display: block; min-height: auto; }
-  .nf_body { background: var(--branco); }
-  .nf_container { margin: 0; max-width: none; padding: 0; }
-  .nf_documento { border: none; border-radius: 0; padding: 10mm; }
-}
-
 /* ===== Rodapé (claro) ===== */
 .footer {
   margin-top: auto; /* cola o rodapé na base mesmo em páginas curtas */

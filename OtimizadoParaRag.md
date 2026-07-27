@@ -68,7 +68,7 @@ O menu lateral abre ao clicar em `#botao-menu`. Contém:
 - **Botão de fechar o menu (×):** seletores `#botao-fechar-menu`, `[data-test="botao-fechar-menu"]`, classe `.bm-cross-button`, com `aria-label="Fechar Menu"`.
 - **Item de menu "Todos os Produtos":** seletores `#link-todos-itens`, `[data-test="link-todos-itens"]`. Leva de volta para a página inicial (home) da loja, `index.html`.
 - **Item de menu "Sobre":** seletores `#link-sobre`, `[data-test="link-sobre"]`. Leva para `sobre.html`.
-- **Item de menu "Sair" (logout):** seletores `#link-sair`, `[data-test="link-sair"]`. Encerra a sessão e volta para `login.html`.
+- **Item de menu "Sair" (deslogar):** seletores `#link-sair`, `[data-test="link-sair"]`. Sair é a mesma coisa que deslogar. Encerra a sessão e volta para `login.html`.
 - **Item de menu "Resetar Aplicação":** seletores `#link-resetar`, `[data-test="link-resetar"]`. Limpa o carrinho.
 - **Overlay (fundo escurecido atrás do menu):** seletor `#sobreposicao-menu`, classe `.bm-overlay`. Clicar nele fecha o menu. Recebe `.open` quando visível.
 
@@ -116,10 +116,12 @@ Elementos gerais da página de Produtos da LojaQA:
 - **Seletor de ordenação (dropdown de ordenar produtos):** seletores `#seletor-ordenacao`, `[data-test="seletor-ordenacao"]`, classe `.product_sort_container`. É um `<select>` com 4 opções.
 
 Opções do seletor de ordenação da LojaQA (valor do `<option>` → texto exibido):
-- valor `az` → "Nome (A a Z)" (ordena por nome crescente).
-- valor `za` → "Nome (Z a A)" (ordena por nome decrescente).
-- valor `lohi` → "Preço (menor ao maior)" (ordena por preço crescente).
-- valor `hilo` → "Preço (maior ao menor)" (ordena por preço decrescente).
+- valor `az` → "Nome (A a Z)": **ordem alfabética crescente**, pelo nome do produto. Primeiro item: "Body do Testadorzinho"; último: "Webcam Full HD VisãoQA".
+- valor `za` → "Nome (Z a A)": **ordem alfabética decrescente**, pelo nome do produto. É o inverso de `az`.
+- valor `lohi` → "Preço (menor ao maior)": **ordem por preço crescente**, do mais barato ao mais caro. Primeiro item: "Pacote de Adesivos de Bugs" (R$ 19,90); último: "Teclado Mecânico TesteMaster" (R$ 349,90).
+- valor `hilo` → "Preço (maior ao menor)": **ordem por preço decrescente**, do mais caro ao mais barato. É o inverso de `lohi`.
+
+Ou seja, `az`/`za` ordenam por **nome** (ordem alfabética) e `lohi`/`hilo` ordenam por **preço** — não confundir "crescente/decrescente" de nome com o de preço.
 
 ### Card de produto na página de Produtos da LojaQA
 
@@ -238,7 +240,7 @@ Elementos da página de Pedido Concluído da LojaQA:
 
 ## Página de Nota Fiscal da LojaQA (nota-fiscal.html)
 
-A página de Nota Fiscal (`nota-fiscal.html`) exibe um documento fictício de nota fiscal do último pedido e tem um botão "Baixar PDF" que gera o arquivo e faz o download direto, sem abrir diálogo de impressão. O arquivo baixado se chama `nota-fiscal-<numero-do-pedido>.pdf` (exemplo: `nota-fiscal-4821.pdf`), o que permite validar o download no teste (por exemplo, com `cy.readFile` na pasta de downloads do Cypress). Não possui o cabeçalho global. Só mostra dados se houver um pedido finalizado; caso contrário mostra a mensagem de pedido não encontrado e o botão não gera arquivo.
+A página de Nota Fiscal (`nota-fiscal.html`) exibe um documento fictício de nota fiscal do último pedido e tem um botão "Baixar PDF" que gera o arquivo e faz o download direto. O arquivo baixado se chama `nota-fiscal-<numero-do-pedido>.pdf` (exemplo: `nota-fiscal-4821.pdf`), o que permite validar o download no teste (por exemplo, com `cy.readFile` na pasta de downloads do Cypress). Não possui o cabeçalho global nem menu lateral, então a única saída da página é o botão "Voltar" (`#botao-voltar`), que leva ao Pedido Concluído (`checkout-complete.html`); de lá se volta ao início por "Voltar à Loja" (`#botao-voltar-inicio`) ou pelo menu. Só mostra dados se houver um pedido finalizado; caso contrário mostra a mensagem de pedido não encontrado e o botão não gera arquivo.
 
 Elementos da página de Nota Fiscal da LojaQA:
 
@@ -259,8 +261,8 @@ Elementos da página de Nota Fiscal da LojaQA:
 - **Impostos da nota:** seletores `#nota-imposto`, `[data-test="nota-imposto"]`. Texto "Impostos (8%): R$ X,XX".
 - **Total da nota:** seletores `#nota-total`, `[data-test="nota-total"]`, classe `.nf_total`. Texto "Total: R$ X,XX".
 - **Aviso legal:** seletor `[data-test="aviso-nota"]`, classe `.nf_aviso`. Texto "Documento sem valor fiscal...".
-- **Botão Voltar:** seletores `#botao-voltar`, `[data-test="botao-voltar"]`, classes `.btn .btn_secondary`. Volta para `checkout-complete.html`.
-- **Botão "Baixar PDF":** seletores `#botao-baixar-pdf`, `[data-test="baixar-pdf"]`, classes `.btn .btn_action`. Ao clicar, gera o PDF e baixa o arquivo `nota-fiscal-<numero-do-pedido>.pdf` diretamente, sem diálogo de impressão e sem abrir nova aba. Se não houver pedido finalizado, o clique não gera arquivo.
+- **Botão Voltar:** seletores `#botao-voltar`, `[data-test="botao-voltar"]`, classes `.btn .btn_secondary`. Volta uma página para trás, ou seja, para `checkout-complete.html` (Pedido Concluído).
+- **Botão "Baixar PDF":** seletores `#botao-baixar-pdf`, `[data-test="baixar-pdf"]`, classes `.btn .btn_action`. Ao clicar, gera o PDF e baixa o arquivo `nota-fiscal-<numero-do-pedido>.pdf` diretamente, sem abrir nova aba. Se não houver pedido finalizado, o clique não gera arquivo.
 
 Cada linha de item da tabela da nota fiscal contém: a linha `[data-test="linha-item"]` (`<tr>`); o número sequencial `[data-test="linha-numero"]`; a descrição `[data-test="linha-descricao"]` (nome do produto); a quantidade `[data-test="linha-quantidade"]` (sempre "1"); e o valor `[data-test="linha-valor"]` (formato "R$ X,XX").
 
@@ -415,6 +417,7 @@ Perguntas comuns e respostas diretas para localizar seletores e comportamentos n
 - **Como voltar para a home/página inicial durante um teste?** Clicar no logotipo "🧪 LojaQA" do cabeçalho (`#link-logo`), ou abrir o menu (`#botao-menu`) e clicar em "Todos os Produtos" (`#link-todos-itens`), ou navegar direto para `index.html`.
 - **O logotipo da LojaQA é clicável?** Sim — no cabeçalho ele é um link (`#link-logo`, `[data-test="link-logo"]`) que leva para a home `index.html`. Na tela de login o logotipo é apenas texto (classe `.login_logo`), sem link.
 - **Como fazer login na LojaQA?** Preencher `#campo-usuario` com um usuário válido (ex.: `usuario_padrao`), preencher `#campo-senha` com `senha_teste_123` e clicar em `#botao-entrar`.
+- **Como deslogar (sair) da LojaQA?** Abrir o menu em `#botao-menu` e clicar em "Sair" (`#link-sair`) — sair é a mesma coisa que deslogar.
 - **Qual é a senha dos usuários da LojaQA?** `senha_teste_123`, para todos os 6 usuários.
 - **Quais são os usuários da LojaQA?** `usuario_padrao`, `usuario_bloqueado`, `usuario_problema`, `usuario_lento`, `usuario_erro` e `usuario_visual`.
 - **Qual usuário usar para o teste de compra bem-sucedida (caminho feliz)?** `usuario_padrao`.
@@ -423,14 +426,14 @@ Perguntas comuns e respostas diretas para localizar seletores e comportamentos n
 - **Como ir para o carrinho?** Clicar no ícone do carrinho no topo: `#link-carrinho`.
 - **Como verificar quantos itens há no carrinho?** Ler o texto do badge `#badge-carrinho`; ele fica oculto quando o carrinho está vazio.
 - **Como finalizar a compra na LojaQA?** No carrinho, clicar em `#botao-finalizar-compra`; preencher `#campo-nome`, `#campo-sobrenome` e `#campo-cep` e clicar em `#botao-continuar`; na etapa de resumo, clicar em `#botao-finalizar`.
-- **Como ordenar os produtos?** Usar o `<select>` `#seletor-ordenacao` com os valores `az`, `za`, `lohi` ou `hilo`.
+- **Como ordenar os produtos?** Usar o `<select>` `#seletor-ordenacao`: `az` e `za` ordenam por nome (ordem alfabética crescente e decrescente); `lohi` e `hilo` ordenam por preço (crescente e decrescente).
 - **Onde aparece a mensagem de erro do login?** No elemento `#texto-erro`, dentro de `#container-erro` (que fica visível com a classe `.visible`).
 - **Qual usuário faz o login falhar/ser bloqueado?** `usuario_bloqueado` — mostra "Ops! Desculpe, este usuário foi bloqueado.".
 - **Qual usuário deixa as imagens quebradas?** `usuario_problema` (imagens viram `img/broken.svg`).
 - **Qual usuário deixa o login lento?** `usuario_lento` (~5s de atraso; `#botao-entrar` fica `disabled` com texto "Carregando...").
 - **Qual usuário provoca erros nas ações?** `usuario_erro` (ordenação, adicionar itens de id ímpar e finalizar pedido falham, alguns com `alert`).
 - **Qual usuário provoca defeitos visuais?** `usuario_visual` (o `body` recebe `.bugs-visuais`; há preços errados na vitrine para ids 0, 5, 10, 15 e 20).
-- **Como gerar/baixar a nota fiscal em PDF?** Após finalizar o pedido, na página de conclusão clicar em `#botao-nota-fiscal`; na página da nota, clicar em `#botao-baixar-pdf`. O arquivo `nota-fiscal-<numero-do-pedido>.pdf` é baixado direto, sem diálogo de impressão.
-- **Como validar o download do PDF no Cypress?** Clicar em `#botao-baixar-pdf` e ler o arquivo na pasta de downloads, por exemplo `cy.readFile('cypress/downloads/nota-fiscal-4821.pdf')`. Não é preciso stub de `window.print()` — a aplicação não usa impressão para gerar o PDF.
+- **Como gerar/baixar a nota fiscal em PDF?** Após finalizar o pedido, na página de conclusão clicar em `#botao-nota-fiscal`; na página da nota, clicar em `#botao-baixar-pdf`. O arquivo `nota-fiscal-<numero-do-pedido>.pdf` é baixado direto.
+- **Como validar o download do PDF no Cypress?** Clicar em `#botao-baixar-pdf` e ler o arquivo na pasta de downloads, por exemplo `cy.readFile('cypress/downloads/nota-fiscal-4821.pdf')`.
 - **Como preparar o estado do teste sem passar pela UI?** Definir `session-username` no `sessionStorage` e `cart-contents` no `localStorage` (ver a seção "Armazenamento").
 - **Qual a taxa de imposto do checkout?** 8% sobre o subtotal.

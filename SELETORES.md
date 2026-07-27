@@ -34,7 +34,7 @@ Referência **completa** dos seletores da aplicação para automação de testes
 | Botão fechar (×) | `button` | `#botao-fechar-menu` | `[data-test="botao-fechar-menu"]` | `.bm-cross-button` | `aria-label="Fechar Menu"` |
 | Todos os Produtos | `a` | `#link-todos-itens` | `[data-test="link-todos-itens"]` | — | `href="index.html"` — volta para a página inicial (home) |
 | Sobre | `a` | `#link-sobre` | `[data-test="link-sobre"]` | — | `href="sobre.html"` — página sobre o projeto/TCC |
-| Sair | `a` | `#link-sair` | `[data-test="link-sair"]` | — | `href="#"` — encerra sessão → `login.html` |
+| Sair (= deslogar) | `a` | `#link-sair` | `[data-test="link-sair"]` | — | `href="#"` — encerra sessão → `login.html` |
 | Resetar Aplicação | `a` | `#link-resetar` | `[data-test="link-resetar"]` | — | `href="#"` — limpa o carrinho |
 | Overlay (fundo escuro) | `div` | `#sobreposicao-menu` | — | `.bm-overlay` (+ `.open` quando visível) | clique fecha o menu |
 
@@ -87,12 +87,12 @@ Página principal da loja, exibida logo após o login bem-sucedido.
 
 **Opções do seletor de ordenação:**
 
-| `value` | Texto visível |
-|---|---|
-| `az` | Nome (A a Z) |
-| `za` | Nome (Z a A) |
-| `lohi` | Preço (menor ao maior) |
-| `hilo` | Preço (maior ao menor) |
+| `value` | Texto visível | Ordena por | Sentido |
+|---|---|---|---|
+| `az` | Nome (A a Z) | nome (alfabética) | crescente |
+| `za` | Nome (Z a A) | nome (alfabética) | decrescente |
+| `lohi` | Preço (menor ao maior) | preço | crescente (mais barato primeiro) |
+| `hilo` | Preço (maior ao menor) | preço | decrescente (mais caro primeiro) |
 
 ### Card de produto (dinâmico — um por produto)
 
@@ -229,9 +229,11 @@ Página que explica o propósito do site (ambiente de testes para o TCC). Usa o 
 
 Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" gera o arquivo e baixa direto, sem diálogo: o download é `nota-fiscal-<numero-do-pedido>.pdf`.
 
+Como não há menu aqui, a única saída é o botão "Voltar" (`#botao-voltar`), que leva ao Pedido Concluído; de lá se volta ao início por "Voltar à Loja" (`#botao-voltar-inicio`) ou pelo menu.
+
 | Elemento | Tag | `id` | `data-test` | `class` | Atributos / Texto |
 |---|---|---|---|---|---|
-| Corpo da página | `body` | — | — | `.nf_body` | fundo cinza (branco na impressão) |
+| Corpo da página | `body` | — | — | `.nf_body` | fundo cinza |
 | Container da página | `main` | `#container-nota-fiscal` | `[data-test="container-nota-fiscal"]` | `.nf_container` | — |
 | Pedido não encontrado | `p` | `#pedido-nao-encontrado` | `[data-test="pedido-nao-encontrado"]` | — | `hidden` quando há pedido; texto: "Nenhum pedido encontrado..." |
 | Documento da nota | `article` | `#nota-fiscal` | `[data-test="nota-fiscal"]` | `.nf_documento` | `hidden` quando não há pedido |
@@ -254,8 +256,8 @@ Página sem cabeçalho/menu (documento isolado). O botão "Baixar PDF" gera o ar
 | Impostos | `div` | `#nota-imposto` | `[data-test="nota-imposto"]` | — | "Impostos (8%): R$ X,XX" |
 | Total | `div` | `#nota-total` | `[data-test="nota-total"]` | `.nf_total` | "Total: R$ X,XX" |
 | Aviso legal | `p` | — | `[data-test="aviso-nota"]` | `.nf_aviso` | "Documento sem valor fiscal..." |
-| Ações (ocultas na impressão) | `div` | — | — | `.nf_acoes`, `.no-print` | — |
-| Voltar | `a` | `#botao-voltar` | `[data-test="botao-voltar"]` | `.btn`, `.btn_secondary` | `href="checkout-complete.html"` |
+| Ações | `div` | — | — | `.nf_acoes` | — |
+| Voltar | `a` | `#botao-voltar` | `[data-test="botao-voltar"]` | `.btn`, `.btn_secondary` | volta uma página para trás → `href="checkout-complete.html"` |
 | Baixar PDF | `button` | `#botao-baixar-pdf` | `[data-test="baixar-pdf"]` | `.btn`, `.btn_action` | baixa `nota-fiscal-<numero>.pdf` direto (sem diálogo) |
 
 ### Linha de item da nota (dinâmica — uma por item)

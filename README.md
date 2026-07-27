@@ -64,7 +64,7 @@ js/
     complete.js            # checkout-complete.html
     nota-fiscal.js         # nota-fiscal.html
     sobre.js               # sobre.html
-css/style.css              # Estilos globais (inclui estilos de impressão da nota)
+css/style.css              # Estilos globais
 img/*.svg                  # Imagens dos produtos
 ```
 
@@ -93,7 +93,7 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 - Validação dos campos do pagamento (Nome, Sobrenome, CEP)
 - Preços em reais (`R$ X,XX`) e cálculo de impostos (8%) no resumo
 - Registro do pedido com número, data/hora e itens (`sessionStorage`)
-- **Nota fiscal fictícia** com marca d'água "SEM VALOR FISCAL", tabela de itens e totais — o botão "Baixar PDF" gera o arquivo e baixa direto (`nota-fiscal-<numero>.pdf`), sem diálogo de impressão
+- **Nota fiscal fictícia** com marca d'água "SEM VALOR FISCAL", tabela de itens e totais — o botão "Baixar PDF" gera o arquivo e baixa direto (`nota-fiscal-<numero>.pdf`)
 - Catálogo com 21 produtos e banner de boas-vindas com contador
 - Página "Sobre" explicando o propósito do projeto (ambiente de testes para TCC)
 - Menu lateral: Todos os Produtos, Sobre, Sair, Resetar Aplicação
