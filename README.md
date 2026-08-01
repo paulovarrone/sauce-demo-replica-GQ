@@ -9,10 +9,11 @@ Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem depend
 Basta baixar a extensão `Live Server` no VS Code ou servir a pasta com um servidor local:
 
 ```bash
-python -m http.server 5500
-
+python -m http.server 5500     
+```
 ou
 
+```bash
 npx serve . -l 5500       
 ```
 
