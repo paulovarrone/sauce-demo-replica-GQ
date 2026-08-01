@@ -8,15 +8,7 @@ Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem depend
 
 Basta baixar a extensão do `LIVESERVER` no VsCode ou servir a pasta com um servidor local:
 
-```powershell
-# Opção 1: Python
-python -m http.server 8000
-
-# Opção 2: Node
-npx serve .
-```
-
-Depois acesse `http://localhost:8000`.
+Depois acesse `http://localhost:5500`.
 
 ## Usuários de teste
 
