@@ -6,7 +6,9 @@ Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem depend
 
 ## Como executar
 
-Basta baixar a extensão `Live Server` no VS Code ou servir a pasta com um servidor local:
+Basta baixar a extensão `Live Server` no VS Code ou servir a pasta com um servidor local.
+
+Também possível a utilização a partir de:
 
 ```bash
 python -m http.server 5500     
