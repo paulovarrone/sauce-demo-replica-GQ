@@ -1,14 +1,18 @@
 # 🛍️ LojaQA — Loja para Prática de Testes
 
-Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem dependências), pensada para prática de automação de testes (Selenium, Playwright, Cypress etc.). Inspirada no fluxo do saucedemo.com, mas com identidade própria: interface em português, preços em reais e emissão de nota fiscal fictícia em PDF.
+Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem dependências), pensada para prática de automação de testes (Selenium, Playwright, Cypress etc.). Inspirada no fluxo do saucedemo.com, mas com identidade própria: interface em português, preços em reais e emissão de nota fiscal fictícia em PDF — gerada por um gerador de PDF escrito do zero, sem biblioteca.
 
 > Projeto educacional. Empresa, produtos, imagens e nota fiscal são fictícios.
 
 ## Como executar
 
-Basta baixar a extensão do `LIVESERVER` no VsCode ou servir a pasta com um servidor local:
+Basta baixar a extensão `Live Server` no VS Code ou servir a pasta com um servidor local:
 
-Depois acesse `http://localhost:5500`.
+```bash
+npx serve .        # ou: python -m http.server 5500
+```
+
+Depois acesse `http://localhost:5500`. A raiz do site é o `index.html` (a vitrine), que é protegida — sem sessão você é redirecionado para `login.html`. Use um dos usuários abaixo para entrar.
 
 ## Usuários de teste
 
@@ -26,12 +30,6 @@ Depois acesse `http://localhost:5500`.
 ## Produtos
 
 **21 produtos** fictícios com tema de QA/tecnologia, de R$ 19,90 a R$ 349,90 — mochila, camisetas, caneca, teclado, mouse, fone, boné, moletom, garrafa, adesivos, caderno, luminária, mousepad, webcam, suporte de notebook, pelúcia do bug, quebra-cabeça de 404 peças e mais. A lista completa com preços e os seletores de cada produto está em [SELETORES.md](SELETORES.md).
-
-
-- ✅ 75 ids presentes como #id
-- ✅ 96 data-test presentes como [data-test="..."]
-- ✅ 89 classes presentes como .classe
-
 
 ## Arquitetura
 
@@ -60,7 +58,7 @@ css/style.css              # Estilos globais
 img/*.svg                  # Imagens dos produtos
 ```
 
-Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → `pages/<página>.js`. A nota fiscal não tem cabeçalho, então troca o `ui.js` pelo `pdf.js`.
+Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → `pages/<página>.js`. As duas páginas sem cabeçalho não carregam o `ui.js`: o login vai direto para o script da página, e a nota fiscal carrega o `pdf.js` no lugar.
 
 ## Páginas
 
@@ -89,8 +87,17 @@ Ordem de importação em cada página: `data.js` → `store.js` → `ui.js` → 
 - Catálogo com 21 produtos e banner de boas-vindas com contador
 - Página "Sobre" explicando o propósito do projeto (ambiente de testes para TCC)
 - Menu lateral: Todos os Produtos, Sobre, Sair, Resetar Aplicação
+- Logo "🧪 LojaQA" do cabeçalho é link para a home
 - Atributos `data-test` e `id` em todos os elementos relevantes, para seletores estáveis
 
 ## Seletores
 
 📋 **O mapa completo de seletores, página por página, está em [SELETORES.md](SELETORES.md)** — inclui tags, classes, atributos, textos, mensagens de erro, os botões de carrinho de cada produto e chaves de armazenamento.
+
+Presentes no HTML:
+
+- ✅ 76 ids como `#id`
+- ✅ 97 data-test como `[data-test="..."]`
+- ✅ 88 classes como `.classe`
+
+Os botões de carrinho são gerados em runtime e somam mais 21 ids e 42 data-test (um por produto, alternando entre adicionar e remover).
