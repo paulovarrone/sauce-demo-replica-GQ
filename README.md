@@ -9,7 +9,11 @@ Loja virtual educacional construída com HTML, CSS e JavaScript puro (sem depend
 Basta baixar a extensão `Live Server` no VS Code ou servir a pasta com um servidor local:
 
 ```bash
-npx serve .        # ou: python -m http.server 5500
+python -m http.server 5500
+
+ou
+
+npx serve . -l 5500       
 ```
 
 Depois acesse `http://localhost:5500`. A raiz do site é o `index.html` (a vitrine), que é protegida — sem sessão você é redirecionado para `login.html`. Use um dos usuários abaixo para entrar.
